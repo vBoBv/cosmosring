@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Education</title>
+</head>
+<body>
+    <h1>Tertiary Education in New Zealand</h1>
+    <ul>
+        {% for university in universities  %}
+            <li>{{ university.name }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
