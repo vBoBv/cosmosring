@@ -1,0 +1,27 @@
+.logo {
+    text-align: center;
+    padding: 2rem 0 1rem 0;
+    font-size: 5rem;
+    color: red;
+}
+
+.custom-background {
+    background-image: linear-gradient(to bottom right, #000000, #434343);
+}
+
+.custom-card-container {
+    text-align: center;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    grid-gap: 2rem;
+}
+
+.account-name {
+    color: black;
+}
+
+.custom-card {
+    width: 200px;
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Account</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" />
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'netflix/accounts.css' %}"/>
+</head>
+<body class="custom-background">
+    <h1 class="logo">Crappy Netflix</h1>
+
+    <div class="custom-card-container">
+        {% for account in accounts %}
+            <a href="{% url 'netflix:videos' %}">
+                <div class="column custom-card">
+                    <div class="ui fluid card">
+                      <div class="image">
+                        <img src="{{ account.image.url }}">
+                      </div>
+                      <div class="content">
+                        <h2 class="account-name">{{ account.name }}</h2>
+                      </div>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw==" crossorigin="anonymous"></script>
+</body>
+</html>
