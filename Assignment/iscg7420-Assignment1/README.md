@@ -14,6 +14,15 @@ This web application will consist of common functionalities that an e-commerce w
 - Bidding space properites
 - Rating and Writing reviews
 - Discount Code function
+- Insert new space products
+- List space products based on the category
+- Display details of each space product
+- View shipment
+
+## Universal Esttate Entity-Relationship Diagram
+
+There will be more changes to the ERD during development.
+![Universal-Estate-ERD](Universal-Estate-ERD.PNG)
 
 ## Server-side Rendering
 
