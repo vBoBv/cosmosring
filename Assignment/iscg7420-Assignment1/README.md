@@ -19,7 +19,7 @@ This web application will consist of common functionalities that an e-commerce w
 - Display details of each space product
 - View shipment
 
-## Universal Esttate Entity-Relationship Diagram
+## Universal Estate Entity-Relationship Diagram
 
 There will be more changes to the ERD during development.
 ![Universal-Estate-ERD](Universal-Estate-ERD.PNG)
