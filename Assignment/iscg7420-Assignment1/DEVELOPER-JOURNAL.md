@@ -1,3 +1,14 @@
+## August 30th 2020 - Started @ 1:00pm
+
+Preparing task #1 document for the checkpoint, Estimation: 20 minutes
+
+- Check website description
+- Check ERD
+- Check Server-Side Rendering description
+- Check Issues
+
+Stopped @ 1:20pm
+
 ## August 29th 2020 - Started @ 9:15pm
 
 Finalizing task #1 document, Estimation: 2 hours
