@@ -1,3 +1,12 @@
+## August 31st 2020 - Started @ 10:30pm
+
+Working on task #2, Estimation: 1 hour
+
+- Setup project and app
+- Looked for more inspiration on different ecommerce websites
+
+Stopped @ 11:30pm
+
 ## August 30th 2020 - Started @ 1:00pm
 
 Preparing task #1 document for the checkpoint, Estimation: 20 minutes
