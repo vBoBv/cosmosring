@@ -5,7 +5,8 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 class CustomerManager(BaseUserManager):
 
     def create_customer(self, email, password=None, **other_fields):
-
+        if not email:
+            raise ValueError("Email is required!")
         customer = self.model(email=self.normalize_email(email), **other_fields)
         customer.set_password(password)
         customer.save(using=self._db)
