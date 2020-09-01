@@ -1,3 +1,11 @@
+## September 1st 2020 - Started @ 11:00pm
+
+Working on task #2, Estimation: 30 minutes
+
+- Setup Customer Model using Django User Model - [Reference](https://docs.djangoproject.com/en/3.1/topics/auth/customizing/#extending-the-existing-user-model)
+
+Stopped @ 11:50pm
+
 ## August 31st 2020 - Started @ 10:30pm
 
 Working on task #2, Estimation: 1 hour
