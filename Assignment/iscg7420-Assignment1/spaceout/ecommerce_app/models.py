@@ -2,27 +2,44 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 
 
-class CustomerManager(BaseUserManager):
+class UserManager(BaseUserManager):
 
-    def create_customer(self, email, password=None, **other_fields):
+    def create_user(self, email, password=None, **other_fields):
         if not email:
             raise ValueError("Email is required!")
-        customer = self.model(email=self.normalize_email(email), **other_fields)
-        customer.set_password(password)
-        customer.save(using=self._db)
+        user = self.model(email=self.normalize_email(email), **other_fields)
+        user.set_password(password)
+        user.save(using=self._db)
 
-        return customer
+    def create_superuser(self, email, password):
+        user = self.create_user(email, password)
+        user.is_staff = True
+        user.is_superuser = True
+        user.save(using=self._db)
+
+        return user
 
 
-class Customer(AbstractBaseUser, PermissionsMixin):
-
+class User(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
-    email = models.EmailField(max_length=255, unique=True)
     phone_number = models.IntegerField(max_length=20)
+    email = models.EmailField(max_length=255, unique=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False)
+    is_customer = models.BooleanField(default=False)
+    is_order_manger = models.BooleanField(default=False)
 
-    objects = CustomerManager()
+    objects = UserManager()
 
     USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['first_name', 'last_name']
+
+
+class Customer(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+
+
+class OrderManager(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
