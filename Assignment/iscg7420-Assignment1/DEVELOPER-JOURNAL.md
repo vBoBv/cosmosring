@@ -1,3 +1,15 @@
+## September 2nd 2020 - Started @ 12:00am
+
+Working on task #2, Estimation: 1 hour
+
+- 12:00am- Continued to setup Customer Model and OrderManager Model
+  - Stuck with creating multiple users extending django user model -> [Solution](https://stackoverflow.com/questions/59069679/python-create-multiple-user-types-and-email-as-the-username-field-in-django-2)
+  - Stopped @ 2:30am
+- 11:00pm - Setup Address and Payment Model
+  - Stopped @ 11:50pm
+
+Stopped @ 11:50pm
+
 ## September 1st 2020 - Started @ 11:00pm
 
 Working on task #2, Estimation: 30 minutes
