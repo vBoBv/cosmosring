@@ -52,7 +52,7 @@ class Address(models.Model):
     suburb = models.CharField(max_length=100)
     city = models.CharField(max_length=3, choices=CITY_IN_NZ, default=AUCKLAND)
     country = models.CharField(max_length=100, default="New Zealand")
-    postcode = models.IntegerField(max_length=4)
+    postcode = models.IntegerField()
 
 
 class Customer(models.Model):
@@ -62,3 +62,5 @@ class Customer(models.Model):
 
 class OrderManager(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+
+
