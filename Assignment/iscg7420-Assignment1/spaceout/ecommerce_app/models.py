@@ -68,3 +68,7 @@ class Payment(models.Model):
     amount = models.FloatField()
     payment_date = models.DateTimeField(auto_now_add=True)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+
+
+class Shipment(models.Model):
+    payment = models.OneToOneField(Payment, on_delete=models.CASCADE, primary_key=True)
