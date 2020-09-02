@@ -57,10 +57,14 @@ class Address(models.Model):
 
 class Customer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-    address = models.ForeignKey(Address, on_delete=models.CASCADE())
+    address = models.ForeignKey(Address, on_delete=models.CASCADE)
 
 
 class OrderManager(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
 
 
+class Payment(models.Model):
+    amount = models.FloatField()
+    payment_date = models.DateTimeField(auto_now_add=True)
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
