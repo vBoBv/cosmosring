@@ -50,7 +50,7 @@ class Address(models.Model):
 
     street_address = models.CharField(max_length=255)
     suburb = models.CharField(max_length=100)
-    city = models.CharField(max_length=3, choices=CITY_IN_NZ, default=AUCKLAND)
+    city = models.CharField(max_length=4, choices=CITY_IN_NZ, default=AUCKLAND)
     country = models.CharField(max_length=100, default="New Zealand")
     postcode = models.IntegerField()
 
