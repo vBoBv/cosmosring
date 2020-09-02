@@ -37,8 +37,27 @@ class User(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = ['first_name', 'last_name']
 
 
+class Address(models.Model):
+    AUCKLAND = 'AKL'
+    WELLINGTON = 'WELL'
+    CHRISTCHURCH = 'CHC'
+
+    CITY_IN_NZ = [
+        (AUCKLAND, 'Auckland'),
+        (WELLINGTON, 'Wellington'),
+        (CHRISTCHURCH, 'Christchurch'),
+    ]
+
+    street_address = models.CharField(max_length=255)
+    suburb = models.CharField(max_length=100)
+    city = models.CharField(max_length=3, choices=CITY_IN_NZ, default=AUCKLAND)
+    country = models.CharField(max_length=100, default="New Zealand")
+    postcode = models.IntegerField(max_length=4)
+
+
 class Customer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    address = models.ForeignKey(Address, on_delete=models.CASCADE())
 
 
 class OrderManager(models.Model):
