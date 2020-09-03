@@ -1,3 +1,20 @@
+## September 3rd 2020 - Started @ 12:00am
+
+Working on task #2, Estimation: 2 hours
+
+- 12:00am- Added requirements.txt
+- 12:30am- Added Shipment Model
+- 01:00am- Setup Postgresql and Implemented python-decouple
+- 01:30am- Updated country field
+- 02:00am- Got a bug with Customer Model
+  - Bug: Customer is missing a REQUIRED_FEILDS
+  - Stopped @ 03:00am
+- 11:00pm- Implemented the solution
+  - Solution: Change AUTH_USER_MODEL = 'ecommerce_app.Customer' to AUTH_USER_MODEL = 'ecommerce_app.User'
+  - Started makemigrations and migrate
+
+Stopped @ 11:50pm
+
 ## September 2nd 2020 - Started @ 12:00am
 
 Working on task #2, Estimation: 1 hour
