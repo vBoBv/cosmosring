@@ -3,16 +3,17 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 
 
 class UserManager(BaseUserManager):
-
-    def create_user(self, email, password=None, **other_fields):
+    def create_user(self, email, username, password=None, **other_fields):
         if not email:
             raise ValueError("Email is required!")
-        user = self.model(email=self.normalize_email(email), **other_fields)
+        user = self.model(email=self.normalize_email(email), username=username, **other_fields)
         user.set_password(password)
         user.save(using=self._db)
 
-    def create_superuser(self, email, password):
-        user = self.create_user(email, password)
+        return user
+
+    def create_superuser(self, email, username, password):
+        user = self.create_user(email, username, password)
         user.is_staff = True
         user.is_superuser = True
         user.save(using=self._db)
@@ -21,10 +22,8 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-    first_name = models.CharField(max_length=255)
-    last_name = models.CharField(max_length=255)
-    phone_number = models.IntegerField()
     email = models.EmailField(max_length=255, unique=True)
+    username = models.CharField(max_length=255, unique=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
@@ -34,7 +33,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['first_name', 'last_name']
+    REQUIRED_FIELDS = ['username']
 
 
 class Address(models.Model):
@@ -58,6 +57,9 @@ class Address(models.Model):
 class Customer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     address = models.ForeignKey(Address, on_delete=models.CASCADE)
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
+    phone_number = models.IntegerField()
 
 
 class OrderManager(models.Model):
