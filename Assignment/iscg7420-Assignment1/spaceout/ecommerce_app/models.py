@@ -55,30 +55,30 @@ class Address(models.Model):
 
 
 class Customer(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-    address = models.ForeignKey(Address, on_delete=models.CASCADE)
+    user = models.OneToOneField('User', on_delete=models.CASCADE, primary_key=True)
+    address = models.ForeignKey('Address', on_delete=models.CASCADE)
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     phone_number = models.IntegerField()
 
 
 class OrderManager(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    user = models.OneToOneField('User', on_delete=models.CASCADE, primary_key=True)
 
 
 class Payment(models.Model):
     amount = models.FloatField()
     payment_date = models.DateTimeField(auto_now_add=True)
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    customer = models.ForeignKey('Customer', on_delete=models.CASCADE)
 
 
 class Shipment(models.Model):
-    payment = models.OneToOneField(Payment, on_delete=models.CASCADE, primary_key=True)
+    payment = models.OneToOneField('Payment', on_delete=models.CASCADE, primary_key=True)
 
 
 class Order(models.Model):
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    order_manager = models.ManyToManyField(OrderManager)
+    customer = models.ForeignKey('Customer', on_delete=models.CASCADE)
+    order_manager = models.ManyToManyField('OrderManager')
     order_date = models.DateTimeField(auto_now_add=True)
 
 
@@ -97,18 +97,18 @@ class Product(models.Model):
     price = models.FloatField()
     image = models.ImageField(null=True)
     description = models.TextField(blank=True)
-    category = models.ManyToManyField(Category)
-    discount = models.ManyToManyField(Discount)
+    category = models.ManyToManyField('Category')
+    discount = models.ManyToManyField('Discount')
 
 
 class OrderDetail(models.Model):
-    order = models.OneToOneField(Order, on_delete=models.CASCADE, primary_key=True)
-    product = models.ManyToManyField(Product)
+    order = models.OneToOneField('Order', on_delete=models.CASCADE, primary_key=True)
+    product = models.ManyToManyField('Product')
     quantity = models.IntegerField()
 
 
 class Review(models.Model):
-    customer = models.ManyToManyField(Customer)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    customer = models.ManyToManyField('Customer')
+    product = models.ForeignKey('Product', on_delete=models.CASCADE)
     description = models.TextField(blank=True)
     rating = models.IntegerField()
