@@ -2,40 +2,40 @@ from django.shortcuts import render
 
 
 def home(request):
-    return render(request, 'home')
+    return render(request, 'ecommerce_app/home.html')
 
 
 def signup(request):
-    return render(request, 'signup')
+    return render(request, 'ecommerce_app/signup.html')
 
 
 def signin(request):
-    return render(request, 'signin')
+    return render(request, 'ecommerce_app/signin.html')
 
 
 def resetpassword(request):
-    return render(request, 'resetpassword')
+    return render(request, 'ecommerce_app/resetpassword.html')
 
 
 def products(request):
-    return render(request, 'products')
+    return render(request, 'ecommerce_app/products.html')
 
 
 def checkout(request):
-    return render(request, 'checkout')
+    return render(request, 'ecommerce_app/checkout.html')
 
 
 def bid(request):
-    return render(request, 'bid')
+    return render(request, 'ecommerce_app/bid.html')
 
 
 def trade(request):
-    return render(request, 'trade')
+    return render(request, 'ecommerce_app/trade.html')
 
 
 def product(request):
-    return render(request, 'product')
+    return render(request, 'ecommerce_app/product.html')
 
 
 def ordersummary(request):
-    return render(request, 'ordersummary')
+    return render(request, 'ecommerce_app/ordersummary.html')
