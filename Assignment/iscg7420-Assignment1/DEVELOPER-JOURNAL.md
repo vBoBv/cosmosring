@@ -1,3 +1,13 @@
+## September 4th 2020 - Started @ 12:00am
+
+Working on task #2, Estimation: 2 hours
+
+- 12:00am - Reset Migrations, Reset Database, Updated Model
+- 12:30am - Registered custom user moodle with django admin
+- 01:00am - Added fresh migration
+
+Stopped @ 01:30am
+
 ## September 3rd 2020 - Started @ 12:00am
 
 Working on task #2, Estimation: 2 hours
