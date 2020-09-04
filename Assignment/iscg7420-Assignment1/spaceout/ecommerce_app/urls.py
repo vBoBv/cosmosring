@@ -14,5 +14,5 @@ urlpatterns = [
     path('', views.trade, name='trade'),
     path('', views.product, name='product'),
     path('', views.ordersummary, name='ordersummary'),
-
 ]
+
