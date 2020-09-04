@@ -21,7 +21,7 @@ class UserAdmin(BaseUserAdmin):
     search_fields = ('email',)
 
 
-ecommerce_app_models= [
+ecommerce_app_models = [
     models.Customer,
     models.OrderManager,
     models.Address,
