@@ -21,4 +21,20 @@ class UserAdmin(BaseUserAdmin):
     search_fields = ('email',)
 
 
+ecommerce_app_models= [
+    models.Customer,
+    models.OrderManager,
+    models.Address,
+    models.Payment,
+    models.Shipment,
+    models.Order,
+    models.OrderDetail,
+    models.Product,
+    models.Review,
+    models.Discount,
+    models.Category
+]
+
 admin.site.register(models.User, UserAdmin)
+admin.site.register(ecommerce_app_models)
+
