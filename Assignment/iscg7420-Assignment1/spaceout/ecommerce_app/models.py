@@ -74,3 +74,41 @@ class Payment(models.Model):
 
 class Shipment(models.Model):
     payment = models.OneToOneField(Payment, on_delete=models.CASCADE, primary_key=True)
+
+
+class Order(models.Model):
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    order_manager = models.ManyToManyField(OrderManager)
+    order_date = models.DateTimeField(auto_now_add=True)
+
+
+class Discount(models.Model):
+    discount_code = models.CharField(max_length=100)
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=255)
+    description = models.TextField(blank=True)
+    image = models.ImageField(null=True)
+
+
+class Product(models.Model):
+    name = models.CharField(max_length=255)
+    price = models.FloatField()
+    image = models.ImageField(null=True)
+    description = models.TextField(blank=True)
+    category = models.ManyToManyField(Category)
+    discount = models.ManyToManyField(Discount)
+
+
+class OrderDetail(models.Model):
+    order = models.OneToOneField(Order, on_delete=models.CASCADE, primary_key=True)
+    product = models.ManyToManyField(Product)
+    quantity = models.IntegerField()
+
+
+class Review(models.Model):
+    customer = models.ManyToManyField(Customer)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    description = models.TextField(blank=True)
+    rating = models.IntegerField()
