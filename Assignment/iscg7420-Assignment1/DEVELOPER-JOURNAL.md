@@ -1,3 +1,14 @@
+## September 5th 2020 - Started @ 12:00am
+
+Working on task #2, Estimation: 2 hours
+
+- 12:00am - Added Order, Discount, Category, Product, OrderDetail, Review Models
+- 12:45am - Added 10 basic urls
+- 01:00am - Added 10 basic views
+- 01:30am - Added 10 basic templates
+
+Stopped @ 02:00am
+
 ## September 4th 2020 - Started @ 12:00am
 
 Working on task #2, Estimation: 2 hours
