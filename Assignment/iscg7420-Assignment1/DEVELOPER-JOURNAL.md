@@ -1,3 +1,12 @@
+## September 6th 2020 - Started @ 11:30pm
+
+Working on task #2, Estimation: 30 minutes
+
+- Tested ModelForm
+- Embedded to signup.html
+
+Stopped @ 12:00am
+
 ## September 5th 2020 - Started @ 12:00am
 
 Working on task #2, Estimation: 2 hours
