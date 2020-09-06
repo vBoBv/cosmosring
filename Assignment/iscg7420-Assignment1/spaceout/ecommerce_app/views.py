@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .forms import CustomerForm
 
 
 def home(request):
@@ -6,7 +7,7 @@ def home(request):
 
 
 def signup(request):
-    return render(request, 'ecommerce_app/signup.html')
+    return render(request, 'ecommerce_app/signup.html', {"form": CustomerForm()})
 
 
 def signin(request):
@@ -39,3 +40,4 @@ def product(request):
 
 def ordersummary(request):
     return render(request, 'ecommerce_app/ordersummary.html')
+
