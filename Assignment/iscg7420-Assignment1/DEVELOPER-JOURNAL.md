@@ -1,3 +1,11 @@
+## September 7th 2020 - Started @ 11:30pm
+
+Working on task #2, Estimation: 30 minutes
+
+- Customizing Customer Sign up form
+
+Stopped @ 12:00am
+
 ## September 6th 2020 - Started @ 11:30pm
 
 Working on task #2, Estimation: 30 minutes
