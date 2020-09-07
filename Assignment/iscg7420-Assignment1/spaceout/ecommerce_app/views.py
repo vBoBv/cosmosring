@@ -1,17 +1,23 @@
 from django.shortcuts import render
 from .forms import CustomerSignUpForm
+from django.contrib.auth.forms import AuthenticationForm
+
 
 
 def home(request):
     return render(request, 'ecommerce_app/home.html')
 
 
-def signup(request):
+def signup_customer(request):
     return render(request, 'ecommerce_app/signup.html', {"form": CustomerSignUpForm()})
 
 
+# def signup_ordermanager(request):
+#     return render(request, 'ecommerce_app/signup.html', {"form": CustomerSignUpForm()})
+
+
 def signin(request):
-    return render(request, 'ecommerce_app/signin.html')
+    return render(request, 'ecommerce_app/signin.html', {"form": AuthenticationForm()})
 
 
 def resetpassword(request):
