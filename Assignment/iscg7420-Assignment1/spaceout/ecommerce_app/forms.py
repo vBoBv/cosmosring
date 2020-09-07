@@ -1,44 +1,28 @@
 from django import forms
 from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import UserCreationForm
+from django.db import transaction
 from django.forms import ModelForm
 from .models import User, Customer
 
 
-# class CustomerCreationForm(forms.ModelForm):
-#     password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
-#     password2 = forms.CharField(label='Password confirmation', widget=forms.PasswordInput)
-#
-#     class Meta:
-#         model = Customer
-#         fields = ('first_name', 'last_name', 'first_name', 'last_name', 'phone_number', 'address', 'user')
-#
-#     def clean_password2(self):
-#         # Check that the two password entries match
-#         password1 = self.cleaned_data.get("password1")
-#         password2 = self.cleaned_data.get("password2")
-#         if password1 and password2 and password1 != password2:
-#             raise ValidationError("Passwords don't match")
-#         return password2
-#
-#     def save(self, commit=True):
-#         # Save the provided password in hashed format
-#         user = super().save(commit=False)
-#         user.set_password(self.cleaned_data["password1"])
-#         if commit:
-#             user.save()
-#         return user
+class CustomerSignUpForm(UserCreationForm):
+    first_name = forms.CharField(max_length=255)
+    last_name = forms.CharField(max_length=255)
+    phone_number = forms.IntegerField()
 
-
-class CustomerSignUpForm(UserCreationForm.Meta):
-    class Meta:
+    class Meta(UserCreationForm.Meta):
         model = User
-        fields=['first_name', 'last_name', 'phone_number', 'address']
+        fields = ['email', 'username']
 
-    def save(self, commit=True):
+    @transaction.atomic
+    def save(self):
         user = super().save(commit=False)
         user.is_customer = True
-        if commit:
-            user.save()
-            # customer = Customer.objects.create(user=user)
+        user.save()
+        customer = Customer.objects.create(user=user)
+        customer.first_name = self.first_name
+        customer.last_name = self.last_name
+        customer.phone_number = self.phone_number
+        customer.save()
         return user
