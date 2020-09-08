@@ -1,3 +1,12 @@
+## September 8th 2020 - Started @ 11:00pm
+
+Working on task #2, Estimation: 30 minutes
+
+- Configuring Class-based view for sign up
+- Got a bug, the form is not saving customer to the database
+
+Stopped @ 12:00am
+
 ## September 7th 2020 - Started @ 11:30pm
 
 Working on task #2, Estimation: 30 minutes
