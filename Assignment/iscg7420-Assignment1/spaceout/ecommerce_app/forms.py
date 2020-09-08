@@ -16,13 +16,14 @@ class CustomerSignUpForm(UserCreationForm):
         fields = ['email', 'username']
 
     @transaction.atomic
-    def save(self):
+    def save(self, commit=True):
         user = super().save(commit=False)
         user.is_customer = True
-        user.save()
-        customer = Customer.objects.create(user=user)
-        customer.first_name = self.first_name
-        customer.last_name = self.last_name
-        customer.phone_number = self.phone_number
-        customer.save()
+        if commit:
+            user.save()
+            customer = Customer.objects.create(user=user)
+            customer.first_name = self.first_name
+            customer.last_name = self.last_name
+            customer.phone_number = self.phone_number
+            customer.save()
         return user
