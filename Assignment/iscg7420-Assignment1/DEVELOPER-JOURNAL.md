@@ -1,3 +1,11 @@
+## September 9th 2020 - Started @ 11:30pm
+
+Working on task #2, Estimation: 30 minutes
+
+- Configuring CreateView to allow Customer to sign up
+
+Stopped @ 12:00am
+
 ## September 8th 2020 - Started @ 11:00pm
 
 Working on task #2, Estimation: 30 minutes
