@@ -59,7 +59,7 @@ class Customer(models.Model):
     address = models.ForeignKey('Address', on_delete=models.CASCADE)
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
-    phone_number = models.IntegerField()
+    phone_number = models.CharField(max_length=50)
 
 
 class OrderManager(models.Model):

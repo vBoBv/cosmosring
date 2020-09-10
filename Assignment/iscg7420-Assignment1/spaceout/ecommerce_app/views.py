@@ -25,12 +25,12 @@ class CustomerSignUpView(CreateView):
         # login(self.request, user)
         return redirect('home')
 
-    def form_valid(self, form):
-        print(form.cleaned_data)
-        return super().form_valid(form)
-
-    def get_success_url(self):
-        return '/'
+    # def form_valid(self, form):
+    #     print(form.cleaned_data)
+    #     return super().form_valid(form)
+    #
+    # def get_success_url(self):
+    #     return '/'
 
 # def signup_customer(request):
 #     return render(request, 'ecommerce_app/signup.html', {"form": CustomerSignUpForm()})
