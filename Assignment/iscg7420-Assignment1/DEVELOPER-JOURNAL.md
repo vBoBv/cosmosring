@@ -1,3 +1,12 @@
+## September 10th 2020 - Started @ 11:00pm
+
+Working on task #2, Estimation: 1 hour
+
+- Updated Phone Number Field
+- Trying to complete the Sign Up Customer Form but no luck
+
+Stopped @ 12:00
+
 ## September 9th 2020 - Started @ 11:30pm
 
 Working on task #2, Estimation: 30 minutes
