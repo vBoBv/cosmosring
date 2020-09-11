@@ -1,3 +1,12 @@
+## September 11th 2020 - Started @ 11:00pm
+
+Working on task #2, Estimation: 1 hour
+
+- Created Users, Customers, Order managers, Orders via Admin portal
+- Created base template
+
+Stopped @ 11:30
+
 ## September 10th 2020 - Started @ 11:00pm
 
 Working on task #2, Estimation: 1 hour
