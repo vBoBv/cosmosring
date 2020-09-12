@@ -35,6 +35,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
 
+    def __str__(self):
+        return self.email
+
 
 class Address(models.Model):
     AUCKLAND = 'AKL'
@@ -53,6 +56,9 @@ class Address(models.Model):
     country = models.CharField(max_length=100, default="New Zealand")
     postcode = models.IntegerField()
 
+    def __str__(self):
+        return f'{self.street_address} {self.suburb} {self.city}'
+
 
 class Customer(models.Model):
     user = models.OneToOneField('User', on_delete=models.CASCADE, primary_key=True)
@@ -60,6 +66,9 @@ class Customer(models.Model):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     phone_number = models.CharField(max_length=50)
+
+    def __str__(self):
+        return f'{self.first_name} {self.last_name}'
 
 
 class OrderManager(models.Model):
@@ -71,6 +80,9 @@ class Payment(models.Model):
     payment_date = models.DateTimeField(auto_now_add=True)
     customer = models.ForeignKey('Customer', on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.customer
+
 
 class Shipment(models.Model):
     payment = models.OneToOneField('Payment', on_delete=models.CASCADE, primary_key=True)
@@ -81,15 +93,24 @@ class Order(models.Model):
     order_manager = models.ManyToManyField('OrderManager')
     order_date = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.customer
+
 
 class Discount(models.Model):
     discount_code = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.discount_code
 
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField(blank=True)
     image = models.ImageField(null=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Product(models.Model):
@@ -100,15 +121,23 @@ class Product(models.Model):
     category = models.ManyToManyField('Category')
     discount = models.ManyToManyField('Discount')
 
+    def __str__(self):
+        return self.name
+
 
 class OrderDetail(models.Model):
     order = models.OneToOneField('Order', on_delete=models.CASCADE, primary_key=True)
     product = models.ManyToManyField('Product')
     quantity = models.IntegerField()
 
+    def __str__(self):
+        return f'{self.product} {self.quantity}'
 
 class Review(models.Model):
     customer = models.ManyToManyField('Customer')
     product = models.ForeignKey('Product', on_delete=models.CASCADE)
     description = models.TextField(blank=True)
     rating = models.IntegerField()
+
+    def __str__(self):
+        self.customer
