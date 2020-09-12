@@ -1,3 +1,13 @@
+## September 12th 2020 - Started @ 6:00pm
+
+Finishing task #2, Estimation: 4 hour
+
+- Implemented SpaceObject, Category, Discount templates
+- Implemented ModelForms and Formsets
+- Implemented Authentication(Sign Up, Sign In, Logout)
+
+Stopped @ 12:00
+
 ## September 11th 2020 - Started @ 11:00pm
 
 Working on task #2, Estimation: 1 hour
