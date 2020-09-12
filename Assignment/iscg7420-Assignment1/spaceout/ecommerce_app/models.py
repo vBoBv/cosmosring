@@ -56,6 +56,9 @@ class Address(models.Model):
     country = models.CharField(max_length=100, default="New Zealand")
     postcode = models.IntegerField()
 
+    class Meta:
+        verbose_name_plural = 'Addresses'
+
     def __str__(self):
         return f'{self.street_address} {self.suburb} {self.city}'
 
@@ -97,7 +100,7 @@ class Order(models.Model):
     order_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.customer
+        return self.id
 
 
 class Discount(models.Model):
@@ -110,7 +113,10 @@ class Discount(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField(blank=True)
-    image = models.ImageField(null=True)
+    image = models.ImageField(null=True, blank=True)
+
+    class Meta:
+        verbose_name_plural = 'Categories'
 
     def __str__(self):
         return self.name
@@ -119,10 +125,10 @@ class Category(models.Model):
 class Product(models.Model):
     name = models.CharField(max_length=255)
     price = models.FloatField()
-    image = models.ImageField(null=True)
+    image = models.ImageField(null=True, blank=True)
     description = models.TextField(blank=True)
     category = models.ManyToManyField('Category')
-    discount = models.ManyToManyField('Discount')
+    discount = models.ManyToManyField('Discount', blank=True)
 
     def __str__(self):
         return self.name
@@ -136,6 +142,7 @@ class OrderDetail(models.Model):
     def __str__(self):
         return f'{self.product} {self.quantity}'
 
+
 class Review(models.Model):
     customer = models.ManyToManyField('Customer')
     product = models.ForeignKey('Product', on_delete=models.CASCADE)
@@ -143,4 +150,4 @@ class Review(models.Model):
     rating = models.IntegerField()
 
     def __str__(self):
-        self.customer
+        return self.customer

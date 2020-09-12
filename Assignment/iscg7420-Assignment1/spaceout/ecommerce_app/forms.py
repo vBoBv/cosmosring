@@ -1,9 +1,33 @@
 from django import forms
 from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import UserCreationForm
-from django.db import transaction
 from django.forms import ModelForm
-from .models import User, Customer, Address
+from .models import User, Customer, Address, Product, Category, Discount
+
+
+class SpaceObjectForm(ModelForm):
+    class Meta:
+        model = Product
+        fields = '__all__'
+
+
+class CategoryForm(ModelForm):
+    class Meta:
+        model = Category
+        fields = '__all__'
+
+
+class DiscountForm(ModelForm):
+    class Meta:
+        model = Discount
+        fields = '__all__'
+
+
+class CustomAdminForm(UserCreationForm):
+    email = forms.EmailField()
+
+    class Meta(UserCreationForm.Meta):
+        model = User
 
 
 class CustomerSignUpForm(UserCreationForm):
@@ -64,4 +88,4 @@ class CustomerSignUpForm(UserCreationForm):
             customer.phone_number.add(*self.cleaned_data.get('phone_number'))
 
             customer.save()
-        return user
+            return user
