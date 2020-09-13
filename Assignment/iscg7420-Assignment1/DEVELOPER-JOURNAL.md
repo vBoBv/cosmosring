@@ -1,12 +1,21 @@
+## September 13th 2020 - Started @ 7:00pm
+
+Finishing task #2, Estimation: 2 hours
+
+- Implemented and tested built-in Authentication Views and Templates
+- Configured email backend to reset user password
+
+Stopped @ 10:00pm
+
 ## September 12th 2020 - Started @ 6:00pm
 
-Finishing task #2, Estimation: 4 hour
+Finishing task #2, Estimation: 4 hours
 
 - Implemented SpaceObject, Category, Discount templates
 - Implemented ModelForms and Formsets
 - Implemented Authentication(Sign Up, Sign In, Logout)
 
-Stopped @ 12:00
+Stopped @ 12:00pm
 
 ## September 11th 2020 - Started @ 11:00pm
 
@@ -15,7 +24,7 @@ Working on task #2, Estimation: 1 hour
 - Created Users, Customers, Order managers, Orders via Admin portal
 - Created base template
 
-Stopped @ 11:30
+Stopped @ 11:30pm
 
 ## September 10th 2020 - Started @ 11:00pm
 
@@ -24,7 +33,7 @@ Working on task #2, Estimation: 1 hour
 - Updated Phone Number Field
 - Trying to complete the Sign Up Customer Form but no luck
 
-Stopped @ 12:00
+Stopped @ 12:00am
 
 ## September 9th 2020 - Started @ 11:30pm
 
