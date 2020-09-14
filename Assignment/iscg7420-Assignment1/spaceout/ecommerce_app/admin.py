@@ -19,6 +19,7 @@ class UserAdmin(BaseUserAdmin):
     )
     ordering = ['id']
     search_fields = ('email',)
+    list_filter = ('is_customer', 'is_order_manger', 'is_superuser',)
 
 
 ecommerce_app_models = [
