@@ -1,3 +1,11 @@
+## September 14th 2020 - Started @ 10:30pm
+
+Starting task #3, Estimation: 30 minutes
+
+- Added list_filter to admin.py
+
+Stopped @ 11:00pm
+
 ## September 13th 2020 - Started @ 7:00pm
 
 Finishing task #2, Estimation: 2 hours
