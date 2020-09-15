@@ -1,3 +1,11 @@
+## September 15th 2020 - Started @ 10:30pm
+
+Starting task #3, Estimation: 30 minutes
+
+- Tested Django Message
+
+Stopped @ 11:00pm
+
 ## September 14th 2020 - Started @ 10:30pm
 
 Starting task #3, Estimation: 30 minutes
