@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
-
+from django.db.models.signals import post_save
 
 class UserManager(BaseUserManager):
     def create_user(self, email, username, password=None, **other_fields):
@@ -9,6 +9,7 @@ class UserManager(BaseUserManager):
         user = self.model(email=self.normalize_email(email), username=username, **other_fields)
         user.set_password(password)
         user.save(using=self._db)
+        print('User created')
 
         return user
 
@@ -19,6 +20,8 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
 
         return user
+
+# post_save.connect(create_user, sender=UserManager)
 
 
 class User(AbstractBaseUser, PermissionsMixin):
@@ -37,6 +40,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+
 
 
 class Address(models.Model):
