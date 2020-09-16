@@ -1,3 +1,11 @@
+## September 16th 2020 - Started @ 10:30pm
+
+Starting task #3, Estimation: 30 minutes
+
+- Configured Django message engine
+
+Stopped @ 11:00pm
+
 ## September 15th 2020 - Started @ 10:30pm
 
 Starting task #3, Estimation: 30 minutes
