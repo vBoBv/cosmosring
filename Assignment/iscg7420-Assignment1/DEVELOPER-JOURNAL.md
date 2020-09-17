@@ -1,3 +1,11 @@
+## September 17th 2020 - Started @ 9:30pm
+
+Starting task #3, Estimation: 30 minutes
+
+- Research about Unit tests
+
+Stopped @ 10:00pm
+
 ## September 16th 2020 - Started @ 10:30pm
 
 Starting task #3, Estimation: 30 minutes
