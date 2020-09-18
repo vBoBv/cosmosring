@@ -1,3 +1,11 @@
+## September 18th 2020 - Started @ 9:30pm
+
+Starting task #3, Estimation: 30 minutes
+
+- Rewatch the lecture on how to use the dumpdata command
+
+Stopped @ 10:00pm
+
 ## September 17th 2020 - Started @ 9:30pm
 
 Starting task #3, Estimation: 30 minutes
