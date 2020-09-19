@@ -1,3 +1,11 @@
+## September 19th 2020 - Started @ 9:30pm
+
+Starting task #3, Estimation: 30 minutes
+
+- Read heroku documentation to deploy django app
+
+Stopped @ 10:00pm
+
 ## September 18th 2020 - Started @ 9:30pm
 
 Starting task #3, Estimation: 30 minutes
