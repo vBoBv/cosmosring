@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import os
 from pathlib import Path
 from decouple import config
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
@@ -25,7 +26,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'glacial-thicket-14145.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'glacial-thicket-14145.herokuapp.com']
 
 # Application definition
 
@@ -73,20 +74,35 @@ WSGI_APPLICATION = 'spaceout.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': config('DB_NAME'),
-    #     'USER': config('DB_USER'),
-    #     'PASSWORD': config('DB_PASSWORD'),
-    #     'HOST': 'localhost',
-    #     'PORT': '',
-    # }
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+# DATABASES = {
+#     # 'default': {
+#     #     'ENGINE': 'django.db.backends.postgresql',
+#     #     'NAME': config('DB_NAME'),
+#     #     'USER': config('DB_USER'),
+#     #     'PASSWORD': config('DB_PASSWORD'),
+#     #     'HOST': 'localhost',
+#     #     'PORT': '',
+#     # }
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
+# if os.environ.get('DATABASE_URL'):
+if config('DATABASE_URL'):
+    print('Using heroku database')
+    DATABASES = {
+        'default': dj_database_url.config(conn_max_age=600),
     }
-}
+else:
+    print('Using sqlite database')
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
