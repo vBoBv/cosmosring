@@ -1,9 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db.models.signals import post_save
-
+from django.dispatch import receiver
 
 class UserManager(BaseUserManager):
+    @receiver(post_save, sender=BaseUserManager)
     def create_user(self, email, username, password=None, **other_fields):
         if not email:
             raise ValueError("Email is required!")
