@@ -1,3 +1,16 @@
+## September 20th 2020 - Started @ 6:30pm
+
+Starting task #3, Estimation: 30 minutes
+
+- Altered Order and Discount Model
+- Added Customers url and template
+- Added new migrations
+- Added unit tests
+- Update requirements.txt
+- Moved Django-app to root inorder to deploy to heroku
+
+Stopped @ 12:00am
+
 ## September 19th 2020 - Started @ 9:30pm
 
 Starting task #3, Estimation: 30 minutes
