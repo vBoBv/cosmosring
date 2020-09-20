@@ -89,8 +89,9 @@ WSGI_APPLICATION = 'spaceout.wsgi.application'
 #     }
 # }
 
-# if os.environ.get('DATABASE_URL'):
-if config('DATABASE_URL'):
+if os.environ.get('DATABASE_URL'):
+# if config('DATABASE_URL'):
+    print(config('DATABASE_URL'))
     print('Using heroku database')
     DATABASES = {
         'default': dj_database_url.config(conn_max_age=600),
