@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db.models.signals import post_save
 
+
 class UserManager(BaseUserManager):
     def create_user(self, email, username, password=None, **other_fields):
         if not email:
@@ -40,7 +41,6 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
-
 
 
 class Address(models.Model):
@@ -104,11 +104,12 @@ class Order(models.Model):
     order_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.id
+        return self.customer
 
 
 class Discount(models.Model):
     discount_code = models.CharField(max_length=100)
+    is_expired = models.BooleanField(default=False)
 
     def __str__(self):
         return self.discount_code
