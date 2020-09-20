@@ -1,0 +1,18 @@
+{% extends 'ecommerce_app/base.html' %}
+
+{%  block content %}
+{% for customer in customers %}
+    <ul>
+        <li>
+            {{ customer.first_name }} {{ customer.last_name }}
+        </li>
+        <li>
+            {{ customer.phone_number }}
+        </li>
+        <li>
+            {{ customer.address }}
+        </li>
+    </ul>
+
+{% endfor %}
+{%  endblock %}
