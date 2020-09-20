@@ -1,9 +1,0 @@
-{% extends 'ecommerce_app/base.html' %}
-
-{% block content %}
-    <div class="ui bulleted list">
-    {% for discount in discounts %}
-        <div class="item">{{ discount.discount_code}}</div>
-    {% endfor %}
-    </div>
-{% endblock %}
