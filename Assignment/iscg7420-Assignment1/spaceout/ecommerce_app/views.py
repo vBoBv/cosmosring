@@ -18,7 +18,7 @@ from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm, Pa
 from django.views.generic import CreateView, FormView, TemplateView
 from .models import User, Product, Category, Discount, Customer
 from django.forms import modelformset_factory
-
+from django.contrib import messages
 
 def home(request):
     return render(request, 'ecommerce_app/home.html')
@@ -107,6 +107,7 @@ def adminsignup(request):
             except IntegrityError:
                 return render(request, 'ecommerce_app/adminsignup.html', {'form': CustomAdminForm()})
         else:
+            messages.info(request, 'Password did not match!!!')
             return render(request, 'ecommerce_app/adminsignup.html',
                           {'form': CustomAdminForm(), 'error': 'Passwords did not match'})
 
@@ -117,6 +118,7 @@ def adminsignin(request):
     else:
         user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
         if user is None:
+            messages.info(request, 'Incorrect Email or password!!!')
             return render(request, 'ecommerce_app/adminsignin.html', {'form': AuthenticationForm(), 'error': 'Incorrect email or password!'})
         else:
             login(request, user)
