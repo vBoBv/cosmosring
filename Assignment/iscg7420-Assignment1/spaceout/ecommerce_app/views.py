@@ -16,7 +16,7 @@ from django.views.decorators.debug import sensitive_post_parameters
 from .forms import CustomAdminForm, CustomerSignUpForm, SpaceObjectForm, CategoryForm
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm, PasswordResetForm
 from django.views.generic import CreateView, FormView, TemplateView
-from .models import User, Product, Category, Discount
+from .models import User, Product, Category, Discount, Customer
 from django.forms import modelformset_factory
 
 
@@ -61,7 +61,7 @@ def createcategory(request):
 
 
 def categories(request):
-    categories = Category.objects.all()
+    categories = Category.objects.order_by('name')
     return render(request, 'ecommerce_app/categories.html', {'categories': categories})
 
 
@@ -85,8 +85,13 @@ def creatediscount(request):
 
 
 def discounts(request):
-    discounts = Discount.objects.all()
+    discounts = Discount.objects.exclude(is_expired=True)
     return render(request, 'ecommerce_app/discounts.html', {'discounts': discounts})
+
+
+def customers(request):
+    customers = Customer.objects.select_related('address').all();
+    return render(request, 'ecommerce_app/customers.html', {'customers': customers})
 
 
 def adminsignup(request):
