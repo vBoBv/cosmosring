@@ -1,6 +1,19 @@
+## September 21st 2020 - Started @ 7:30pm
+
+Finalizing task#3 and #4, Estimation: 2 hours
+
+- Re-setting up project to deploy to Heroku
+- Fixed Heroku deployment issue by initializin git inside the project root
+- Setup app to use Postgresql instance on Heroku
+- Added Django signal when user is created
+- Added json files for each model by using dumpdata
+- Used test fixtures for model test cases
+
+Stopped @ 12:00am
+
 ## September 20th 2020 - Started @ 6:30pm
 
-Starting task #3, Estimation: 30 minutes
+Starting task #3, Estimation: 2 hours
 
 - Altered Order and Discount Model
 - Added Customers url and template
