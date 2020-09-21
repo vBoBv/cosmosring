@@ -148,3 +148,4 @@ EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 EMAIL_FILE_PATH = str(BASE_DIR.joinpath('sent_emails'))
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
+FIXTURE_DIRS = ('/path/to/spaceout/fixtures/',)
