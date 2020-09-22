@@ -90,6 +90,9 @@ class Payment(models.Model):
 class Shipment(models.Model):
     payment = models.OneToOneField('Payment', on_delete=models.CASCADE, primary_key=True)
 
+    def __str__(self):
+        return f'Address: {self.payment.customer.street_address}, {self.payment.customer.suburb}, {self.payment.customer.city}, {self.payment.customer.country}'
+
 
 class Order(models.Model):
     customer = models.ForeignKey('Customer', on_delete=models.CASCADE)
