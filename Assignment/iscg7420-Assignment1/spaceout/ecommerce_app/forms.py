@@ -2,7 +2,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import UserCreationForm
 from django.forms import ModelForm
-from .models import User, Customer, Product, Category, Discount, OrderManager
+from .models import User, Customer, Product, Category, Discount, OrderManager, Payment
 from django.db import transaction
 
 
@@ -29,6 +29,12 @@ class CustomAdminForm(UserCreationForm):
 
     class Meta(UserCreationForm.Meta):
         model = User
+
+
+class PaymentForm(ModelForm):
+    class Meta:
+        model = Payment
+        fields = '__all__'
 
 
 class CustomerSignUpForm(UserCreationForm):
