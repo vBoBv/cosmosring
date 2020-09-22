@@ -2,7 +2,8 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import UserCreationForm
 from django.forms import ModelForm
-from .models import User, Customer, Address, Product, Category, Discount
+from .models import User, Customer, Product, Category, Discount, OrderManager
+from django.db import transaction
 
 
 class SpaceObjectForm(ModelForm):
@@ -41,6 +42,7 @@ class CustomerSignUpForm(UserCreationForm):
         (CHRISTCHURCH, 'Christchurch'),
     ]
 
+    email = forms.EmailField()
     first_name = forms.CharField(max_length=255)
     last_name = forms.CharField(max_length=255)
     phone_number = forms.CharField(max_length=50)
@@ -56,36 +58,38 @@ class CustomerSignUpForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
 
-    def save(self, commit=True):
+    @transaction.atomic
+    def save(self):
         user = super().save(commit=False)
         user.is_customer = True
-        # user.save()
-        # address = Address.objects.create(
-        #     street_address=self.street_address,
-        #     suburb=self.suburb,
-        #     city=self.city,
-        #     country=self.country,
-        #     postcode=self.postcode
-        # )
-        # customer = Customer.objects.create(user=user, address=address)
-        # customer.first_name.add(*self.cleaned_data.get('first_name'))
-        # customer.last_name.add(*self.cleaned_data.get('last_name'))
-        # customer.phone_number.add(*self.cleaned_data.get('phone_number'))
-        # customer.save()
-        # return user
-        if commit:
-            user.save()
-            address = Address.objects.create(
-                street_address=self.street_address,
-                suburb=self.suburb,
-                city=self.city,
-                country=self.country,
-                postcode=self.postcode
-            )
-            customer = Customer.objects.create(user=user, address=address)
-            customer.first_name.add(*self.cleaned_data.get('first_name'))
-            customer.last_name.add(*self.cleaned_data.get('last_name'))
-            customer.phone_number.add(*self.cleaned_data.get('phone_number'))
+        user.email = self.cleaned_data.get('email')
+        user.save()
+        customer = Customer.objects.create(
+            user=user,
+            first_name=self.cleaned_data.get('first_name'),
+            last_name=self.cleaned_data.get('last_name'),
+            phone_number=self.cleaned_data.get('phone_number'),
+            street_address=self.cleaned_data.get('street_address'),
+            suburb=self.cleaned_data.get('suburb'),
+            city=self.cleaned_data.get('city'),
+            country=self.cleaned_data.get('country'),
+            postcode=self.cleaned_data.get('postcode')
+        )
+        return user
 
-            customer.save()
-            return user
+
+class OrderManagerSignUpForm(UserCreationForm):
+    email = forms.EmailField()
+
+    class Meta(UserCreationForm.Meta):
+        model = User
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.is_order_manager = True
+        user.email = self.cleaned_data.get('email')
+        user.save()
+        order_manager = OrderManager.objects.create(
+            user=user
+        )
+        return user
