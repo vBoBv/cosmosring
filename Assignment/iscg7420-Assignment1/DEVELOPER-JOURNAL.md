@@ -1,9 +1,17 @@
+## September 23rd 2020 - Started @ 12:00am
+
+Tweaking website, Estimation: --
+
+- Deleted database and all migrations
+- Started fresh migration to fix customer and order manager sign up
+
 ## September 22nd 2020 - Started @ 8:30pm
 
 Tweaking signing up for customer and order manager, Estimation: 2 hours
 
 - Added view for customer sign up and order manager to sign up
 - Added template for customer sign up and order manager to sign up
+- Removed Address table and merged it with Customer table
 
 Stopped @ 12:00am
 
