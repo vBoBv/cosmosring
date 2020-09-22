@@ -13,7 +13,7 @@ from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.debug import sensitive_post_parameters
 
-from .forms import CustomAdminForm, CustomerSignUpForm, SpaceObjectForm, CategoryForm
+from .forms import CustomAdminForm, CustomerSignUpForm, OrderManagerSignUpForm, SpaceObjectForm, CategoryForm
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm, PasswordResetForm
 from django.views.generic import CreateView, FormView, TemplateView
 from .models import User, Product, Category, Discount, Customer
@@ -291,7 +291,7 @@ class PasswordResetDoneView(PasswordContextMixin, TemplateView):
 class CustomerSignUpView(CreateView):
     model = User
     form_class = CustomerSignUpForm
-    template_name = 'ecommerce_app/signup.html'
+    template_name = 'ecommerce_app/customer_signup.html'
 
     def get_context_data(self, **kwargs):
         kwargs['user_type'] = 'customer'
@@ -299,24 +299,31 @@ class CustomerSignUpView(CreateView):
 
     def form_valid(self, form):
         user = form.save()
-        print(user)
-        # login(self.request, user)
+        login(self.request, user)
         return redirect('home')
 
-    # def form_valid(self, form):
-    #     print(form.cleaned_data)
-    #     return super().form_valid(form)
-    #
-    # def get_success_url(self):
-    #     return '/'
+
+class OrderManagerSignUpView(CreateView):
+    model = User
+    form_class = OrderManagerSignUpForm
+    template_name = 'ecommerce_app/order_manager_signup.html'
+
+    def get_context_data(self, **kwargs):
+        kwargs['user_type'] = 'order_manager'
+        return super().get_context_data(**kwargs)
+
+    def form_valid(self, form):
+        user = form.save()
+        login(self.request, user)
+        return redirect('home')
 
 
 # def signup_customer(request):
-#     return render(request, 'ecommerce_app/signup.html', {"form": CustomerSignUpForm()})
+#     return render(request, 'ecommerce_app/customer_signup.html', {"form": CustomerSignUpForm()})
 
 
 # def signup_ordermanager(request):
-#     return render(request, 'ecommerce_app/signup.html', {"form": CustomerSignUpForm()})
+#     return render(request, 'ecommerce_app/customer_signup.html', {"form": CustomerSignUpForm()})
 
 def signin(request):
     return render(request, 'ecommerce_app/signin.html', {"form": AuthenticationForm()})
