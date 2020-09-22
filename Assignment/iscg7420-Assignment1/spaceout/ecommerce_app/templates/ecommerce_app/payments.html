@@ -1,0 +1,9 @@
+{% extends 'ecommerce_app/base.html' %}
+
+{% block content %}
+{% for payment in payments %}
+    <div class="ui bulleted list">
+        <div class="item">Customer: {{ payment.customer }} Amount: {{ payment.amount }} Date: {{ payment.payment_date }}</div>
+    </div>
+{% endfor %}
+{% endblock %}
