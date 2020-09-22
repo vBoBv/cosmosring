@@ -12,7 +12,10 @@ urlpatterns = [
     path('category/<int:category_id>', views.viewcategory, name='viewcategory'),
     path('discounts/', views.discounts, name='discounts'),
     path('creatediscount/', views.creatediscount, name='creatediscount'),
+    path('payments/', views.payments, name='payments'),
+    path('createpayment/', views.createpayment, name='createpayment'),
     path('customers', views.customers, name='customers'),
+
 
     # Custom Authentication View
     path('admin/signup', views.adminsignup, name='adminsignup'),
