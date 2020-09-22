@@ -32,8 +32,10 @@ urlpatterns = [
     # path('reset/<uidb64>/<token>/', views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     # path('reset/done/', views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
 
-    # TODO
+
     path('signup/customer/', views.CustomerSignUpView.as_view(), name='signup_customer'),
+    path('signup/order_manager/', views.OrderManagerSignUpView.as_view(), name='signup_order_manager'),
+    # TODO
     # path('signup/customer/', views.signup_customer, name='signup_customer'),
     # path('signup/ordermanager/', views.signup_ordermanager, name='signup_ordermanager'),
     path('signin/', views.signin, name='signin'),
