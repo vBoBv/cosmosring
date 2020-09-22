@@ -1,3 +1,12 @@
+## September 22nd 2020 - Started @ 8:30pm
+
+Tweaking signing up for customer and order manager, Estimation: 2 hours
+
+- Added view for customer sign up and order manager to sign up
+- Added template for customer sign up and order manager to sign up
+
+Stopped @ 12:00am
+
 ## September 21st 2020 - Started @ 7:30pm
 
 Finalizing task#3 and #4, Estimation: 2 hours
