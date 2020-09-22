@@ -13,12 +13,13 @@ from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.debug import sensitive_post_parameters
 
-from .forms import CustomAdminForm, CustomerSignUpForm, OrderManagerSignUpForm, SpaceObjectForm, CategoryForm
+from .forms import CustomAdminForm, CustomerSignUpForm, OrderManagerSignUpForm, SpaceObjectForm, CategoryForm, PaymentForm
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm, PasswordResetForm
 from django.views.generic import CreateView, FormView, TemplateView
-from .models import User, Product, Category, Discount, Customer
+from .models import User, Product, Category, Discount, Customer, Payment
 from django.forms import modelformset_factory
 from django.contrib import messages
+
 
 def home(request):
     return render(request, 'ecommerce_app/home.html')
@@ -94,6 +95,24 @@ def customers(request):
     return render(request, 'ecommerce_app/customers.html', {'customers': customers})
 
 
+def payments(request):
+    payments = Payment.objects.select_related('customer').all();
+    return render(request, 'ecommerce_app/payments.html', {'payments': payments})
+
+
+def createpayment(request):
+    if request.method == 'GET':
+        return render(request, 'ecommerce_app/createpayment.html', {'form': PaymentForm()})
+    else:
+        try:
+            form = PaymentForm(request.POST)
+            form.save()
+            return redirect('payments')
+        except ValueError:
+            return render(request, 'ecommerce_app/createpayment.html',
+                          {'form': PaymentForm(), 'error': 'An error has occured. Please retry.'})
+
+
 def adminsignup(request):
     if request.method == 'GET':
         return render(request, 'ecommerce_app/adminsignup.html', {'form': CustomAdminForm()})
@@ -145,7 +164,7 @@ class LoginView(SuccessURLAllowedHostsMixin, FormView):
 
     def get_success_url(self):
         url = self.get_redirect_url()
-        return url or resolve_url("spaceobjects")
+        return url or resolve_url("home")
 
     def get_redirect_url(self):
         """Return the user-originating redirect URL if it's safe."""
@@ -287,7 +306,6 @@ class PasswordResetDoneView(PasswordContextMixin, TemplateView):
     title = ('Password reset sent')
 
 
-# TODO
 class CustomerSignUpView(CreateView):
     model = User
     form_class = CustomerSignUpForm
@@ -318,13 +336,7 @@ class OrderManagerSignUpView(CreateView):
         return redirect('home')
 
 
-# def signup_customer(request):
-#     return render(request, 'ecommerce_app/customer_signup.html', {"form": CustomerSignUpForm()})
-
-
-# def signup_ordermanager(request):
-#     return render(request, 'ecommerce_app/customer_signup.html', {"form": CustomerSignUpForm()})
-
+# TODO
 def signin(request):
     return render(request, 'ecommerce_app/signin.html', {"form": AuthenticationForm()})
 
