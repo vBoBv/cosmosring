@@ -13,10 +13,10 @@ from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.debug import sensitive_post_parameters
 
-from .forms import CustomAdminForm, CustomerSignUpForm, OrderManagerSignUpForm, SpaceObjectForm, CategoryForm, PaymentForm
+from .forms import CustomAdminForm, CustomerSignUpForm, OrderManagerSignUpForm, SpaceObjectForm, CategoryForm, PaymentForm, OrderForm, OrderDetailForm
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm, PasswordResetForm
 from django.views.generic import CreateView, FormView, TemplateView
-from .models import User, Product, Category, Discount, Customer, Payment
+from .models import User, Product, Category, Discount, Customer, Payment, Order, OrderDetail
 from django.forms import modelformset_factory
 from django.contrib import messages
 
@@ -112,6 +112,35 @@ def createpayment(request):
             return render(request, 'ecommerce_app/createpayment.html',
                           {'form': PaymentForm(), 'error': 'An error has occured. Please retry.'})
 
+
+def orderdetails(request):
+    orderDetails = OrderDetail.objects.select_related('order').all();
+    return render(request, 'ecommerce_app/orderDetails.html', {'orderDetails': orderDetails})
+
+
+def createorder(request):
+    if request.method == 'GET':
+        return render(request, 'ecommerce_app/createorder.html', {'form': OrderForm()})
+    else:
+        try:
+            form = OrderForm(request.POST)
+            form.save()
+            return redirect('createorderdetail')
+        except ValueError:
+            return render(request, 'ecommerce_app/createorder.html',
+                          {'form': OrderForm(), 'error': 'An error has occured. Please retry.'})
+
+def createorderdetail(request):
+    if request.method == 'GET':
+        return render(request, 'ecommerce_app/createorderdetail.html', {'form': OrderDetailForm()})
+    else:
+        try:
+            form = OrderDetailForm(request.POST)
+            form.save()
+            return redirect('orders')
+        except ValueError:
+            return render(request, 'ecommerce_app/createorderdetail.html',
+                          {'form': OrderDetailForm(), 'error': 'An error has occured. Please retry.'})
 
 def adminsignup(request):
     if request.method == 'GET':
