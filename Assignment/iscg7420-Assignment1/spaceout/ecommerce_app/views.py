@@ -13,10 +13,10 @@ from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.debug import sensitive_post_parameters
 
-from .forms import CustomAdminForm, CustomerSignUpForm, OrderManagerSignUpForm, SpaceObjectForm, CategoryForm, PaymentForm, OrderForm, OrderDetailForm
+from .forms import CustomAdminForm, CustomerSignUpForm, OrderManagerSignUpForm, SpaceObjectForm, CategoryForm, PaymentForm, OrderForm, OrderDetailForm, ShipmentForm
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm, PasswordResetForm
 from django.views.generic import CreateView, FormView, TemplateView
-from .models import User, Product, Category, Discount, Customer, Payment, Order, OrderDetail
+from .models import User, Product, Category, Discount, Customer, Payment, OrderDetail, Shipment
 from django.forms import modelformset_factory
 from django.contrib import messages
 
@@ -130,6 +130,7 @@ def createorder(request):
             return render(request, 'ecommerce_app/createorder.html',
                           {'form': OrderForm(), 'error': 'An error has occured. Please retry.'})
 
+
 def createorderdetail(request):
     if request.method == 'GET':
         return render(request, 'ecommerce_app/createorderdetail.html', {'form': OrderDetailForm()})
@@ -141,6 +142,25 @@ def createorderdetail(request):
         except ValueError:
             return render(request, 'ecommerce_app/createorderdetail.html',
                           {'form': OrderDetailForm(), 'error': 'An error has occured. Please retry.'})
+
+
+def shipments(request):
+    shipments = Shipment.objects.all();
+    return render(request, 'ecommerce_app/shipments.html', {'shipments': shipments})
+
+
+def createshipment(request):
+    if request.method == 'GET':
+        return render(request, 'ecommerce_app/createshipment.html', {'form': ShipmentForm()})
+    else:
+        try:
+            form = ShipmentForm(request.POST)
+            form.save()
+            return redirect('shipments')
+        except ValueError:
+            return render(request, 'ecommerce_app/createshipment.html',
+                          {'form': ShipmentForm(), 'error': 'An error has occured. Please retry.'})
+
 
 def adminsignup(request):
     if request.method == 'GET':

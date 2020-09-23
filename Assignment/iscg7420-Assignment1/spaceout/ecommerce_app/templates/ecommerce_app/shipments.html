@@ -1,0 +1,9 @@
+{% extends 'ecommerce_app/base.html' %}
+
+{% block content %}
+    <div class="ui bulleted list">
+    {% for shipment in shipments %}
+        <div class="item">{{ shipment.payment }}</div>
+    {% endfor %}
+    </div>
+{% endblock %}

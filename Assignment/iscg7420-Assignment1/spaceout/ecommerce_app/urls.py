@@ -18,6 +18,8 @@ urlpatterns = [
     path('orderdetails/', views.orderdetails, name='orderdetails'),
     path('createorder/', views.createorder, name='createorder'),
     path('createorderdetail/', views.createorderdetail, name='createorderdetail'),
+    path('shipments/', views.shipments, name='shipments'),
+    path('createshipment/', views.createshipment, name='createshipment'),
 
     # Custom Authentication View
     path('admin/signup', views.adminsignup, name='adminsignup'),
