@@ -12,9 +12,11 @@
         <h1 style="text-align: center">Welcome back customer {{ user.username }} !</h1>
         <div class="ui bulleted list">
             <a class="item" href="{% url 'createpayment' %}">Add Payment</a>
+            <a class="item" href="{% url 'createorder' %}">Add Order</a>
         </div>
     {% else %}
         <h1 style="text-align: center">Online market place to browse, buy, sell space objects!</h1>
         <h4 style="text-align: center">Please sign in to unlock more features!</h4>
+        <h4 style="text-align: center">Admin and Customer have separate features!</h4>
     {% endif %}
 {% endblock %}
