@@ -1,9 +1,17 @@
 ## September 23rd 2020 - Started @ 12:00am
 
-Tweaking website, Estimation: --
+Tweaking website, Estimation: 3 hours
 
 - Deleted database and all migrations
 - Started fresh migration to fix customer and order manager sign up
+- Removed Address model
+- Added Payment View, Template, Url
+- Added Order View, Template, Url
+- Added Shipment View, Template, Url
+- Added Review View, Template, Url
+- Refactored Home and Navbar
+
+Stopped @ 11:00pm
 
 ## September 22nd 2020 - Started @ 8:30pm
 
