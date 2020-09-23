@@ -14,8 +14,10 @@ urlpatterns = [
     path('creatediscount/', views.creatediscount, name='creatediscount'),
     path('payments/', views.payments, name='payments'),
     path('createpayment/', views.createpayment, name='createpayment'),
-    path('customers', views.customers, name='customers'),
-
+    path('customers/', views.customers, name='customers'),
+    path('orderdetails/', views.orderdetails, name='orderdetails'),
+    path('createorder/', views.createorder, name='createorder'),
+    path('createorderdetail/', views.createorderdetail, name='createorderdetail'),
 
     # Custom Authentication View
     path('admin/signup', views.adminsignup, name='adminsignup'),
