@@ -1,0 +1,11 @@
+{% extends 'ecommerce_app/base.html' %}
+{% block content %}
+    Order History
+    <div class="ui bulleted list">
+    {% for orderDetail in orderDetails %}
+        <div class="item"><b>Order:</b> {{ orderDetail.order.customer }} - <b>Date:</b> {{ orderDetail.order.order_date }}</div>
+        <div class="item"><b>Item:</b> {{ orderDetail.product.get.name }} - <b>Quantity:</b> {{ orderDetail.quantity }}</div>
+        <br />
+    {% endfor %}
+    </div>
+{% endblock %}
