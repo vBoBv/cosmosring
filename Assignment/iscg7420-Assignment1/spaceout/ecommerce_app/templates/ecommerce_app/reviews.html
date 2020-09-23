@@ -1,0 +1,14 @@
+{% extends 'ecommerce_app/base.html' %}
+
+{% block content %}
+    Reviews
+    <div class="ui bulleted list">
+    {% for review in reviews %}
+        <div class="item">{{ review.product.name }}</div>
+        <div class="item">{{ review.customer.name }}</div>
+        <div class="item">{{ review.description }}</div>
+        <div class="item">{{ review.rating }}</div>
+        <br />
+    {% endfor %}
+    </div>
+{% endblock %}

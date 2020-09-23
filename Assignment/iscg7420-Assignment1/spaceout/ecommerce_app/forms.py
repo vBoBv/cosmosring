@@ -2,7 +2,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import UserCreationForm
 from django.forms import ModelForm
-from .models import User, Customer, Product, Category, Discount, OrderManager, Payment, Order, OrderDetail, Shipment
+from .models import User, Customer, Product, Category, Discount, OrderManager, Payment, Order, OrderDetail, Shipment, Review
 from django.db import transaction
 
 
@@ -52,6 +52,12 @@ class OrderDetailForm(ModelForm):
 class ShipmentForm(ModelForm):
     class Meta:
         model = Shipment
+        fields = '__all__'
+
+
+class ReviewForm(ModelForm):
+    class Meta:
+        model = Review
         fields = '__all__'
 
 

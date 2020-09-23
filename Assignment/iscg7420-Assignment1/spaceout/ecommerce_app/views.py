@@ -13,10 +13,10 @@ from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.debug import sensitive_post_parameters
 
-from .forms import CustomAdminForm, CustomerSignUpForm, OrderManagerSignUpForm, SpaceObjectForm, CategoryForm, PaymentForm, OrderForm, OrderDetailForm, ShipmentForm
+from .forms import CustomAdminForm, CustomerSignUpForm, OrderManagerSignUpForm, SpaceObjectForm, CategoryForm, PaymentForm, OrderForm, OrderDetailForm, ShipmentForm, ReviewForm
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm, PasswordResetForm
 from django.views.generic import CreateView, FormView, TemplateView
-from .models import User, Product, Category, Discount, Customer, Payment, OrderDetail, Shipment
+from .models import User, Product, Category, Discount, Customer, Payment, OrderDetail, Shipment, Review
 from django.forms import modelformset_factory
 from django.contrib import messages
 
@@ -160,6 +160,24 @@ def createshipment(request):
         except ValueError:
             return render(request, 'ecommerce_app/createshipment.html',
                           {'form': ShipmentForm(), 'error': 'An error has occured. Please retry.'})
+
+
+def reviews(request):
+    reviews = Review.objects.all();
+    return render(request, 'ecommerce_app/reviews.html', {'reviews': reviews})
+
+
+def createreview(request):
+    if request.method == 'GET':
+        return render(request, 'ecommerce_app/createreview.html', {'form': ReviewForm()})
+    else:
+        try:
+            form = ReviewForm(request.POST)
+            form.save()
+            return redirect('reviews')
+        except ValueError:
+            return render(request, 'ecommerce_app/createreview.html.html',
+                          {'form': ReviewForm(), 'error': 'An error has occured. Please retry.'})
 
 
 def adminsignup(request):
