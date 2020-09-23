@@ -2,7 +2,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import UserCreationForm
 from django.forms import ModelForm
-from .models import User, Customer, Product, Category, Discount, OrderManager, Payment
+from .models import User, Customer, Product, Category, Discount, OrderManager, Payment, Order, OrderDetail
 from django.db import transaction
 
 
@@ -34,6 +34,18 @@ class CustomAdminForm(UserCreationForm):
 class PaymentForm(ModelForm):
     class Meta:
         model = Payment
+        fields = '__all__'
+
+
+class OrderForm(ModelForm):
+    class Meta:
+        model = Order
+        fields = '__all__'
+
+
+class OrderDetailForm(ModelForm):
+    class Meta:
+        model = OrderDetail
         fields = '__all__'
 
 
