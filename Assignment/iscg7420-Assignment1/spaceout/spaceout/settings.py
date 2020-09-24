@@ -158,8 +158,7 @@ MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 FIXTURE_DIRS = ('/path/to/spaceout/fixtures/',)
 
 # Celery
-BROKER_URL = 'redis://h:pb7efb569b1ff363a999d395f0ba47bce79621ec6c0861649f82f018bbe027d07@ec2-100-25-61-222.compute-1.amazonaws.com:24999'
-BROKER_TRANSPORT = 'redis'
+CELERY_BROKER_URL = 'redis://h:pb7efb569b1ff363a999d395f0ba47bce79621ec6c0861649f82f018bbe027d07@ec2-100-25-61-222.compute-1.amazonaws.com:24999'
 CELERY_RESULT_BACKEND = 'redis://h:pb7efb569b1ff363a999d395f0ba47bce79621ec6c0861649f82f018bbe027d07@ec2-100-25-61-222.compute-1.amazonaws.com:24999'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
