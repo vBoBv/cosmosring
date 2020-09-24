@@ -1,3 +1,14 @@
+## September 24th 2020 - Started @ 12:00am
+
+Working on task #5, Estimation: 3 hours
+
+- Setup and configured redis on heroku as an application cache
+- Setup and configured celery and redis as a task queue
+- Got a bug with celery stating the machine rejected the connection
+  - Fixed bug by changing BROKER_URL to CELERY_BROKER_URL in settings.py
+
+Stopped @ 11:00pm
+
 ## September 23rd 2020 - Started @ 12:00am
 
 Tweaking website, Estimation: 3 hours
