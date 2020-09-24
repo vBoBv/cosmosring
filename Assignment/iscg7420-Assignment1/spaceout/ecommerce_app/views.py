@@ -20,11 +20,12 @@ from .models import User, Product, Category, Discount, Customer, Payment, OrderD
 from django.forms import modelformset_factory
 from django.contrib import messages
 
-from .tasks import hello_world
+from .tasks import hello_world, add
 
 
 def home(request):
-    # hello_world.delay()
+    hello_world.delay()
+    add.delay(2, 5)
     return render(request, 'ecommerce_app/home.html')
 
 
