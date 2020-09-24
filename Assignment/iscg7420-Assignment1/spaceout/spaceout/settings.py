@@ -96,21 +96,21 @@ CACHES = {
 #     }
 # }
 
-# if os.environ.get('DATABASE_URL'):
-# # if config('DATABASE_URL'):
-#     print(config('DATABASE_URL'))
-#     print('Using heroku database')
-#     DATABASES = {
-#         'default': dj_database_url.config(conn_max_age=600),
-#     }
-# else:
-#     print('Using sqlite database')
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+if os.environ.get('DATABASE_URL'):
+# if config('DATABASE_URL'):
+    print(config('DATABASE_URL'))
+    print('Using heroku database')
+    DATABASES = {
+        'default': dj_database_url.config(conn_max_age=600),
     }
-}
+else:
+    print('Using sqlite database')
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
