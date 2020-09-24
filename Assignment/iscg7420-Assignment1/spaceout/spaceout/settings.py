@@ -96,21 +96,21 @@ CACHES = {
 #     }
 # }
 
-if os.environ.get('DATABASE_URL'):
-# if config('DATABASE_URL'):
-    print(config('DATABASE_URL'))
-    print('Using heroku database')
-    DATABASES = {
-        'default': dj_database_url.config(conn_max_age=600),
+# if os.environ.get('DATABASE_URL'):
+# # if config('DATABASE_URL'):
+#     print(config('DATABASE_URL'))
+#     print('Using heroku database')
+#     DATABASES = {
+#         'default': dj_database_url.config(conn_max_age=600),
+#     }
+# else:
+#     print('Using sqlite database')
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-else:
-    print('Using sqlite database')
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        }
-    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -163,3 +163,6 @@ CELERY_RESULT_BACKEND = 'redis://h:pb7efb569b1ff363a999d395f0ba47bce79621ec6c086
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
