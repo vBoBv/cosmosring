@@ -7,6 +7,8 @@ Working on task #5, Estimation: 2 hours
 - Setup Sendgrid
 - Setup Sentry
 
+Stopped @ 12:00am
+
 ## September 24th 2020 - Started @ 12:00am
 
 Working on task #5, Estimation: 3 hours
