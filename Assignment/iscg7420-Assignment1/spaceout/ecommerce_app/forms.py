@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.forms import ModelForm
 from .models import User, Customer, Product, Category, Discount, OrderManager, Payment, Order, OrderDetail, Shipment, Review
 from django.db import transaction
+from django.core.mail import send_mail
 
 
 class SpaceObjectForm(ModelForm):
@@ -104,6 +105,13 @@ class CustomerSignUpForm(UserCreationForm):
             city=self.cleaned_data.get('city'),
             country=self.cleaned_data.get('country'),
             postcode=self.cleaned_data.get('postcode')
+        )
+        send_mail(
+            'Welcome to SpaceOut!',
+            'You have successfully signed up with us!',
+            'bobdev2222@gmail.com',
+            [self.cleaned_data.get('email')],
+            fail_silently=False,
         )
         return user
 
