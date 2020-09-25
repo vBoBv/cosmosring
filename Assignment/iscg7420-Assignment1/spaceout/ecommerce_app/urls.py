@@ -55,6 +55,7 @@ urlpatterns = [
     path('bid/', views.bid, name='bid'),
     path('trade/', views.trade, name='trade'),
     path('ordersummary/', views.ordersummary, name='ordersummary'),
+    path('sentry-debug/', views.trigger_error),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
