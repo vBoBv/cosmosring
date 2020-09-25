@@ -97,21 +97,21 @@ CACHES = {
 #     }
 # }
 
-if os.environ.get('DATABASE_URL'):
-# if config('DATABASE_URL'):
-    print(config('DATABASE_URL'))
-    print('Using heroku database')
-    DATABASES = {
-        'default': dj_database_url.config(conn_max_age=600),
+# if os.environ.get('DATABASE_URL'):
+# # if config('DATABASE_URL'):
+#     print(config('DATABASE_URL'))
+#     print('Using heroku database')
+#     DATABASES = {
+#         'default': dj_database_url.config(conn_max_age=600),
+#     }
+# else:
+#     print('Using sqlite database')
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-else:
-    print('Using sqlite database')
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        }
-    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -181,3 +181,12 @@ AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+# SendGrid
+SENDGRID_SANDBOX_MODE_IN_DEBUG = True
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'apikey' # this is exactly the value 'apikey'
+EMAIL_HOST_PASSWORD = config('SENDGRID_API_KEY')
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
