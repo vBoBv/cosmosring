@@ -407,6 +407,10 @@ class OrderManagerSignUpView(CreateView):
         return redirect('home')
 
 
+def trigger_error(request):
+    division_by_zero = 1 / 0
+
+
 # TODO
 def signin(request):
     return render(request, 'ecommerce_app/signin.html', {"form": AuthenticationForm()})
