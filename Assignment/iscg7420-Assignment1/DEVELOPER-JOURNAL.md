@@ -1,3 +1,12 @@
+## September 25th 2020 - Started @ 12:00am
+
+Working on task #5, Estimation: 2 hours
+
+- Setup and configured Static and Media Files
+- Setup S3 buckets
+- Setup Sendgrid
+- Setup Sentry
+
 ## September 24th 2020 - Started @ 12:00am
 
 Working on task #5, Estimation: 3 hours
