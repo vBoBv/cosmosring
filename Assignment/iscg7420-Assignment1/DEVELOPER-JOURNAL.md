@@ -1,3 +1,12 @@
+## September 26th 2020 - Started @ 12:00am
+
+Finishing task #5, Estimation: 1 hours
+
+- Setup custom domain name
+- Setup and configured Cloudflare
+
+Stopped @ 12:00am
+
 ## September 25th 2020 - Started @ 12:00am
 
 Working on task #5, Estimation: 2 hours
