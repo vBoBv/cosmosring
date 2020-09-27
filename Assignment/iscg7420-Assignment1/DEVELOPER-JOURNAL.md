@@ -1,3 +1,12 @@
+## September 27th 2020 - Started @ 10:00pm
+
+Finishing task #5, Estimation: 1 hours
+
+- Updated README.md with website link
+- Tweaked templates
+
+Stopped @ 11:00pm
+
 ## September 26th 2020 - Started @ 12:00am
 
 Finishing task #5, Estimation: 1 hours
