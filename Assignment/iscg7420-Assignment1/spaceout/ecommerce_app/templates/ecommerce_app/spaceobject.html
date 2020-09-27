@@ -4,13 +4,15 @@
     <div class="ui card">
      {% if spaceobject.image %}
          <div class="image">
-            <img src={{ spaceobject.image }}>
+            <img src={{ spaceobject.image.url }}>
           </div>
      {% endif %}
       <div class="content">
-        <a class="header">{{ spaceobject.name }}</a>
+        <div class="header">{{ spaceobject.name }}</div>
         <div class="meta">
-          <span class="date">{{ spaceobject.category }}</span>
+            {% for category in spaceobject.category.all %}
+                <a class="ui teal tag label" href="{% url 'viewcategory' category.id %}">{{ category.name }}</a>
+            {% endfor %}
         </div>
         <div class="description">
             {{ spaceobject.description}}
@@ -18,7 +20,7 @@
       </div>
       <div class="extra content">
         <a>
-          <i class="user icon"></i>
+          <i class="dollar sign icon"></i>
             {{ spaceobject.price}}
         </a>
       </div>

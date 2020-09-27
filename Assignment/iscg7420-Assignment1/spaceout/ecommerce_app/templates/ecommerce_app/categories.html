@@ -5,10 +5,10 @@
     <div class="ui list">
       <div class="item">
           {% if category.image %}
-            <img class="ui avatar image" src={{ category.image }} alt={{ category.name }}>
+            <img class="ui avatar image" src={{ category.image.url }} alt={{ category.name }}>
           {% endif %}
         <div class="content">
-          <a class="header">{{ category.name }}</a>
+          <a class="header" href="{% url 'viewcategory' category.id %}">{{ category.name }}</a>
           <div class="description">{{ category.description }}</div>
         </div>
       </div>

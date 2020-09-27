@@ -2,16 +2,18 @@
 
 {% block content %}
 {% for spaceobject in spaceobjects %}
-    <div class="ui card">
+    <div class="ui card" href="#">
      {% if spaceobject.image %}
          <div class="image">
             <img src={{ spaceobject.image.url }}>
           </div>
      {% endif %}
       <div class="content">
-        <a class="header">{{ spaceobject.name }}</a>
+        <a class="header" href="{% url 'viewspaceobject' spaceobject.id %}">{{ spaceobject.name }}</a>
         <div class="meta">
-          <span class="date">{{ spaceobject.category.name }}</span>
+            {% for category in spaceobject.category.all %}
+                <a class="ui teal tag label" href="{% url 'viewcategory' category.id %}">{{ category.name }}</a>
+            {% endfor %}
         </div>
         <div class="description">
             {{ spaceobject.description}}
@@ -19,7 +21,8 @@
       </div>
       <div class="extra content">
         <a>
-          <i class="user icon"></i>
+
+          <i class="dollar sign icon"></i>
             {{ spaceobject.price}}
         </a>
       </div>

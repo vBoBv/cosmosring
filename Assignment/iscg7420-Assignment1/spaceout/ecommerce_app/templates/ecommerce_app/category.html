@@ -1,28 +1,35 @@
 {% extends 'ecommerce_app/base.html' %}
 
 {% block content %}
-    {% for spaceobject in spaceobjects %}
-        <div class="ui card">
-         {% if spaceobject.image %}
-             <div class="image">
-                <img src={{ spaceobject.image }}>
+    {% if spaceobjects.count != 0  %}
+        {% for spaceobject in spaceobjects %}
+            <div class="ui card">
+             {% if spaceobject.image %}
+                 <div class="image">
+                    <img src={{ spaceobject.image.url }}>
+                  </div>
+             {% endif %}
+              <div class="content">
+                <a class="header">{{ spaceobject.name }}</a>
+                <div class="meta">
+                    {% for category in spaceobject.category.all %}
+                        <a class="ui teal tag label" href="{% url 'viewcategory' category.id %}">{{ category.name }}</a>
+                    {% endfor %}
+                </div>
+                <div class="description">
+                    {{ spaceobject.description}}
+                </div>
               </div>
-         {% endif %}
-          <div class="content">
-            <a class="header">{{ spaceobject.name }}</a>
-            <div class="meta">
-              <span class="date">{{ spaceobject.category }}</span>
+              <div class="extra content">
+                <a>
+                  <i class="dollar sign icon"></i>
+                    {{ spaceobject.price}}
+                </a>
+              </div>
             </div>
-            <div class="description">
-                {{ spaceobject.description}}
-            </div>
-          </div>
-          <div class="extra content">
-            <a>
-              <i class="user icon"></i>
-                {{ spaceobject.price}}
-            </a>
-          </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
+        {% else %}
+        <div>Sorry there is no product for this category!</div>
+    {% endif %}
+
 {% endblock %}
