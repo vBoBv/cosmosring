@@ -1,3 +1,11 @@
+## September 28th 2020 - Started @ 10:00pm
+
+Finishing task #5, Estimation: 30 minutes
+
+- Updated ERD
+
+Stopped @ 10:15pm
+
 ## September 27th 2020 - Started @ 10:00pm
 
 Finishing task #5, Estimation: 1 hours
