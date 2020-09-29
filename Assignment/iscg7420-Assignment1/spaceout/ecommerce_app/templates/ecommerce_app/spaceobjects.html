@@ -25,6 +25,9 @@
           <i class="dollar sign icon"></i>
             {{ spaceobject.price}}
         </a>
+        <a href="{% url 'addtocart' spaceobject.id %}" class="ui primary button">
+            Add to cart
+        </a>
       </div>
     </div>
 {% endfor %}
