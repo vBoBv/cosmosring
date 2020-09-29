@@ -1,5 +1,5 @@
 from django.test import TestCase
-from ecommerce_app.models import Product, Category, Discount, Address
+from ecommerce_app.models import Product, Category, Discount
 
 
 class TestModels(TestCase):

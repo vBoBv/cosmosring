@@ -1,6 +1,6 @@
 from django.test import TestCase, Client
 from django.urls import reverse
-from ecommerce_app.models import Product, Category, Discount, Address
+from ecommerce_app.models import Product, Category, Discount
 
 
 class TestViews(TestCase):
