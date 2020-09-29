@@ -141,7 +141,7 @@ class OrderDetail(models.Model):
     quantity = models.IntegerField()
 
     def __str__(self):
-        return f'Product: {self.product.first().name} - Quantity: {self.quantity}'
+        return f'Product: {self.product.first()} - Quantity: {self.quantity}'
 
 
 class Review(models.Model):
