@@ -10,6 +10,7 @@
         </div>
     {% elif user.is_authenticated and user.is_customer %}
         <h1 style="text-align: center">Welcome back customer {{ user.username }} !</h1>
+        <h4 style="text-align: center">Please go to Space Objects to browse products!</h4>
         <div class="ui bulleted list">
             <a class="item" href="{% url 'createorder' %}">Add Order</a>
             <a class="item" href="{% url 'createpayment' %}">Add Payment</a>
