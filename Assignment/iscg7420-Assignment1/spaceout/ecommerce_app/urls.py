@@ -24,6 +24,9 @@ urlpatterns = [
     path('createshipment/', views.createshipment, name='createshipment'),
     path('reviews/', views.reviews, name='reviews'),
     path('createreview/', views.createreview, name='createreview'),
+    path('addtocart/<int:spaceobject_id>', views.addtocart, name='addtocart'),
+    path('removefromcart/<int:spaceobject_id>', views.removefromcart, name='removefromcart'),
+    path('viewcart', views.viewcart, name='viewcart'),
 
     # Custom Authentication View
     path('admin/signup', views.adminsignup, name='adminsignup'),
