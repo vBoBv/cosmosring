@@ -16,7 +16,7 @@ from django.views.decorators.debug import sensitive_post_parameters
 from .forms import CustomAdminForm, CustomerSignUpForm, OrderManagerSignUpForm, SpaceObjectForm, CategoryForm, PaymentForm, OrderForm, OrderDetailForm, ShipmentForm, ReviewForm
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm, PasswordResetForm
 from django.views.generic import CreateView, FormView, TemplateView
-from .models import User, Product, Category, Discount, Customer, Payment, OrderDetail, Shipment, Review
+from .models import User, Product, Category, Discount, Customer, Payment, OrderDetail, Shipment, Review, Order, OrderManager
 from django.forms import modelformset_factory
 from django.contrib import messages
 
@@ -219,6 +219,38 @@ def adminlogout(request):
     if request.method == 'POST':
         logout(request)
     return redirect('home')
+
+
+def addtocart(request, spaceobject_id):
+    spaceobject = get_object_or_404(Product, pk=spaceobject_id)
+    quantity=0
+    order = Order.objects.create(
+        customer=Customer.objects.get(user=request.user),
+    )
+    order.order_manager.add(OrderManager.objects.first())
+    order.save()
+    orderdetails = OrderDetail.objects.create(
+        order=order,
+        # product=spaceobject,
+        quantity=quantity + 1
+    )
+    orderdetails.product.add(spaceobject)
+    orderdetails.save()
+    return redirect("viewcart")
+
+
+def removefromcart(request, spaceobject_id):
+    # order = Order.objects.filter(customer=Customer.objects.get(user=request.user))
+    spaceobject = get_object_or_404(Product, pk=spaceobject_id)
+    orderdetails = OrderDetail.objects.filter(product=spaceobject)
+    orderdetails.delete()
+    # order.delete()
+    return redirect("viewcart")
+
+
+def viewcart(request):
+    carts = OrderDetail.objects.all()
+    return render(request, 'ecommerce_app/viewcart.html', {'carts': carts})
 
 
 # Authentication
