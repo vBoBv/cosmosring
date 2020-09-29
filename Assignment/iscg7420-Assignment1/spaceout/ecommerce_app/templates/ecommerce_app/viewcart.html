@@ -1,0 +1,25 @@
+{% extends 'ecommerce_app/base.html' %}
+
+{% block content %}
+<h1>Your shopping cart:</h1>
+{% if carts.count != 0 %}
+    {% for cart in carts %}
+        <div class="ui list">
+          <div class="item">
+            <div>
+                {% for product in cart.product.all %}
+                    <div>
+                        {{ product.name }} x {{ cart.quantity }}
+                        <a class="ui primary button" href="{% url 'removefromcart' product.id %}">
+                          Remove from cart
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+          </div>
+        </div>
+    {% endfor %}
+{% else %}
+    <h1>You have nothing in your shopping cart!</h1>
+{% endif %}
+{% endblock %}
