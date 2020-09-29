@@ -15,6 +15,9 @@
     </a>
     <div class="right menu">
         {% if user.is_authenticated %}
+            <a class="ui item" href="{% url 'viewcart' %}">
+              View Shopping Cart
+            </a>
             <a class="ui item" href="{% url 'logout' %}">
               Logout
             </a>
