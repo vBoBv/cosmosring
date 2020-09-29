@@ -1,10 +1,11 @@
-## September 28th 2020 - Started @ 10:00pm
+## September 29th 2020 - Started @ 07:00pm
 
-Finishing task #5, Estimation: 30 minutes
+Tweaking website, Estimation: 30 minutes
 
-- Updated ERD
+- Added Add_To_Cart and Remove_From_Cart Views, Urls
+- Tweaked templates to use add to cart and remove from cart
 
-Stopped @ 10:15pm
+Stopped @ 10:00pm
 
 ## September 27th 2020 - Started @ 10:00pm
 
