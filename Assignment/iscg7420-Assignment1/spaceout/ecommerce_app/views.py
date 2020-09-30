@@ -19,6 +19,7 @@ from django.views.generic import CreateView, FormView, TemplateView
 from .models import User, Product, Category, Discount, Customer, Payment, OrderDetail, Shipment, Review, Order, OrderManager
 from django.forms import modelformset_factory
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 from .tasks import hello_world, add
 
@@ -221,6 +222,7 @@ def adminlogout(request):
     return redirect('home')
 
 
+@login_required(login_url='/login/')
 def addtocart(request, spaceobject_id):
     spaceobject = get_object_or_404(Product, pk=spaceobject_id)
     quantity=0
