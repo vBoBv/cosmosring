@@ -1,3 +1,14 @@
+## September 30th 2020 - Started @ 07:00pm
+
+Tweaking website, Estimation: 1 hour
+
+- Added login_required decorator to addtocart route
+- Added addreview form
+- Added Review section into spaceobject route
+- Fixed bugs and updated views and templates related to Review function
+
+Stopped @ 11:00pm
+
 ## September 29th 2020 - Started @ 07:00pm
 
 Tweaking website, Estimation: 30 minutes
@@ -9,7 +20,7 @@ Stopped @ 10:00pm
 
 ## September 27th 2020 - Started @ 10:00pm
 
-Finishing task #5, Estimation: 1 hours
+Finishing task #5, Estimation: 1 hour
 
 - Updated README.md with website link
 - Tweaked templates
@@ -18,7 +29,7 @@ Stopped @ 11:00pm
 
 ## September 26th 2020 - Started @ 12:00am
 
-Finishing task #5, Estimation: 1 hours
+Finishing task #5, Estimation: 1 hour
 
 - Setup custom domain name
 - Setup and configured Cloudflare
