@@ -1,6 +1,9 @@
 {% extends 'ecommerce_app/base.html' %}
 
 {% block content %}
+    {% if error %}
+        <h1>{{ error }}</h1>
+    {% endif %}
 {% for spaceobject in spaceobjects %}
     <div class="ui card" href="#">
      {% if spaceobject.image %}
