@@ -13,7 +13,7 @@ from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.debug import sensitive_post_parameters
 
-from .forms import CustomAdminForm, CustomerSignUpForm, OrderManagerSignUpForm, SpaceObjectForm, CategoryForm, PaymentForm, OrderForm, OrderDetailForm, ShipmentForm, ReviewForm
+from .forms import CustomAdminForm, CustomerSignUpForm, OrderManagerSignUpForm, SpaceObjectForm, CategoryForm, PaymentForm, OrderForm, OrderDetailForm, ShipmentForm, ReviewForm, AddReviewForm
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm, PasswordResetForm
 from django.views.generic import CreateView, FormView, TemplateView
 from .models import User, Product, Category, Discount, Customer, Payment, OrderDetail, Shipment, Review, Order, OrderManager
@@ -50,7 +50,24 @@ def spaceobjects(request):
 
 def viewspaceobject(request, spaceobject_id):
     spaceobject = get_object_or_404(Product, pk=spaceobject_id)
-    return render(request, 'ecommerce_app/spaceobject.html', {'spaceobject': spaceobject})
+    reviews = Review.objects.filter(product=spaceobject)
+    if request.method == 'GET':
+        return render(request, 'ecommerce_app/spaceobject.html', {'spaceobject': spaceobject, 'reviews': reviews, 'form': AddReviewForm()})
+    else:
+        if request.user.is_authenticated and request.user.is_customer:
+            customer = Customer.objects.get(user=request.user)
+            form = AddReviewForm(request.POST)
+            print(form.is_valid())
+            if form.is_valid():
+                review = form.save(commit=False)
+                review.product = spaceobject
+                review.save()
+                review.customer.add(customer)
+                return render(request, 'ecommerce_app/spaceobject.html',
+                              {'spaceobject': spaceobject, 'reviews': reviews, 'form': AddReviewForm()})
+            return render(request, 'ecommerce_app/spaceobject.html', {'spaceobject': spaceobject, 'reviews': reviews})
+        else:
+            return render(request, 'ecommerce_app/spaceobject.html', {'spaceobject': spaceobject, 'reviews': reviews, 'error': 'Please sign in as a customer.'})
 
 
 def createcategory(request):
@@ -167,8 +184,9 @@ def createshipment(request):
                           {'form': ShipmentForm(), 'error': 'An error has occured. Please retry.'})
 
 
-def reviews(request):
-    reviews = Review.objects.all();
+def reviews(request, spaceobject_id):
+    spaceobject = get_object_or_404(Product, pk=spaceobject_id)
+    reviews = Review.objects.filter(product=spaceobject)
     return render(request, 'ecommerce_app/reviews.html', {'reviews': reviews})
 
 
@@ -223,23 +241,40 @@ def adminlogout(request):
 
 
 @login_required(login_url='/login/')
-def addtocart(request, spaceobject_id):
+def addreview(request, spaceobject_id):
     spaceobject = get_object_or_404(Product, pk=spaceobject_id)
-    quantity=0
-    order = Order.objects.create(
-        customer=Customer.objects.get(user=request.user),
-    )
-    order.order_manager.add(OrderManager.objects.first())
-    order.save()
-    orderdetails = OrderDetail.objects.create(
-        order=order,
-        # product=spaceobject,
-        quantity=quantity + 1
-    )
-    orderdetails.product.add(spaceobject)
-    orderdetails.save()
-    return redirect("viewcart")
+    customer = Customer.objects.get(user=request.user)
+    if request.method == 'POST':
+        form = AddReviewForm(request.POST)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.product = spaceobject
+            review.customer.add(customer)
+            return redirect('spaceobject', pk=spaceobject.id)
+        else:
+            form = AddReviewForm()
+    return render(request, 'ecommerce_app/spaceobject.html', {'form': form})
 
+
+@login_required(login_url='/login/')
+def addtocart(request, spaceobject_id):
+    if request.user.is_authenticated and request.user.is_customer:
+        spaceobject = get_object_or_404(Product, pk=spaceobject_id)
+        quantity=0
+        order = Order.objects.create(
+            customer=Customer.objects.get(user=request.user),
+        )
+        order.order_manager.add(OrderManager.objects.first())
+        order.save()
+        orderdetails = OrderDetail.objects.create(
+            order=order,
+            quantity=quantity + 1
+        )
+        orderdetails.product.add(spaceobject)
+        orderdetails.save()
+        return redirect("viewcart")
+    else:
+        return render(request, 'ecommerce_app/spaceobjects.html', {'error': 'Please sign in as a customer.'})
 
 def removefromcart(request, spaceobject_id):
     # order = Order.objects.filter(customer=Customer.objects.get(user=request.user))
