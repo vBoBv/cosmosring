@@ -62,6 +62,12 @@ class ReviewForm(ModelForm):
         fields = '__all__'
 
 
+class AddReviewForm(ModelForm):
+    class Meta:
+        model = Review
+        fields = ['description', 'rating']
+
+
 class CustomerSignUpForm(UserCreationForm):
     AUCKLAND = 'AKL'
     WELLINGTON = 'WELL'
