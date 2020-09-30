@@ -150,5 +150,5 @@ class Review(models.Model):
     description = models.TextField(blank=True)
     rating = models.IntegerField()
 
-    def __str__(self):
-        return self.customer
+    # def __str__(self):
+    #     return str(self.customer)
