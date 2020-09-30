@@ -25,4 +25,35 @@
         </a>
       </div>
     </div>
+    <h2>Reviews</h2>
+    {% for review in reviews %}
+        <div class="ui comments">
+          <div class="comment">
+              {% for customer in review.customer.all %}
+                <div class="content">
+                  <a class="author">{{ customer.first_name }} {{ customer.last_name }}</a>
+                  <div class="metadata">
+                    <div class="date">1 day ago</div>
+                  </div>
+                  <div class="text">
+                    <p>
+                        Ratings: {{ review.rating }}
+                    </p>
+                    <p>
+                        {{ review.description }}
+                    </p>
+                  </div>
+                </div>
+              {% endfor %}
+          </div>
+        </div>
+    {% endfor %}
+    {% if error %}
+        <h1>{{ error }}</h1>
+        {% else %}
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}<button type="submit">Add Review</button>
+        </form>
+    {% endif %}
 {% endblock %}
