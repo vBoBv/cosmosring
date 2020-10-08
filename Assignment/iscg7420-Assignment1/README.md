@@ -24,7 +24,7 @@ This web application will consist of common functionalities that an e-commerce w
 ## Universal Estate Entity-Relationship Diagram
 
 There will be more changes to the ERD during development.
-![Universal-Estate-ERD](Latest-ERD.PNG)
+![Universal-Estate-ERD](ReadMe-Images/Latest-ERD.PNG)
 
 ## Server-side Rendering
 
@@ -39,3 +39,57 @@ Server-side Rendering is considered to be a traditional method of serving HTML f
   - Not good for website that has a lot of interactions
   - Frequent server requests
   - Slow rendering process if the content is complex
+
+## Redis Cache + PostgreSQL Addons
+
+![RedisCache+PostgreSQL](ReadMe-Images/redis-postgresql.PNG)
+
+## Celery
+
+![Celery1](ReadMe-Images/celery1.PNG)
+![Celery2+PostgreSQL](ReadMe-Images/celery2.PNG)
+
+## Amazon S3
+
+![AmazonS3](ReadMe-Images/s3-buckets.PNG)
+
+## Sendgrid
+
+![Sendgrid](ReadMe-Images/sendgrid.PNG)
+
+## Sentry
+
+![Sentry](ReadMe-Images/sentry.PNG)
+
+## DNS
+
+![DNS](ReadMe-Images/dns.PNG)
+
+## Cloudflare
+
+![Cloudflare](ReadMe-Images/cloudflare.PNG)
+
+## PostgreSQL configuration
+
+![Postgresql-config](ReadMe-Images/postgresql-config.PNG)
+
+## Task 5 configurations
+
+![Redis-cache](ReadMe-Images/redis-cache.PNG)
+![Task5-config](ReadMe-Images/task5-config.PNG)
+
+## Email Sign up
+
+![Email-SignUp](ReadMe-Images/email-signup.PNG)
+
+## Email Forgot password
+
+![Email-ForgotPassword](ReadMe-Images/email-forgotpassword.PNG)
+
+## Django Signals
+
+![Django-Signals](ReadMe-Images/django-signal.PNG)
+
+## Django Messages
+
+![Django-Messages](ReadMe-Images/django-messages.PNG)
