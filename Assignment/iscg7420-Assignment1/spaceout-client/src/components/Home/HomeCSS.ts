@@ -56,5 +56,17 @@ export const useStyles = makeStyles((theme) => ({
 		[theme.breakpoints.down('xs')]: {
 			fontSize: '1.5rem'
 		}
+	},
+	newDawnHeading: {
+		letterSpacing: '0.2rem',
+		textTransform: 'uppercase'
+	},
+	newDawn: {
+		display: 'flex',
+		justifyContent: 'center',
+		alignContent: 'center'
+	},
+	newDawnImgItem: {
+		width: '350px'
 	}
 }));
