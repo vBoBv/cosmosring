@@ -3,18 +3,29 @@ import { Grid } from '@material-ui/core';
 import { useStyles } from './HomeCSS';
 import ReactPageScroller from 'react-page-scroller';
 import HomeLandingContent from './HomeLandingContent';
-import HomeLandingContent2 from './HomeLandingContent2';
+import HomeLandingAstronaut from './HomeLandingAstronaut';
 import StarParticles from '../StarParticles/StarParticles';
 import NavigationBar from '../NavigationBar/NavigationBar';
 
 const Home = () => {
-	const { containerBackground } = useStyles();
+	const { containerBackground, containerBackground1 } = useStyles();
 	const [currentPage, setCurrentPage] = useState<number>(0);
 
 	const handlePageChange = (pageNumber: number) => setCurrentPage(pageNumber);
 
+	const renderBackgroundImg = () => {
+		switch (currentPage) {
+			case 0:
+				return containerBackground;
+			case 1:
+				return containerBackground1;
+			default:
+				return containerBackground;
+		}
+	};
+
 	return (
-		<Grid container className={containerBackground} direction='column'>
+		<Grid container className={renderBackgroundImg()} direction='column'>
 			<NavigationBar />
 			<Grid container style={{ zIndex: 1 }}>
 				<ReactPageScroller
@@ -23,7 +34,7 @@ const Home = () => {
 					pageOnChange={handlePageChange}
 					customPageNumber={currentPage}>
 					<HomeLandingContent />
-					<HomeLandingContent2 />
+					<HomeLandingAstronaut />
 				</ReactPageScroller>
 			</Grid>
 			<StarParticles />
