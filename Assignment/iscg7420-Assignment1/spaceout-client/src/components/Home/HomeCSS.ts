@@ -1,11 +1,21 @@
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import homeBackground from '../../assets/space.jpg';
+import homeBackground1 from '../../assets/space1.jpg';
 
 export const useStyles = makeStyles((theme) => ({
 	containerBackground: {
 		position: 'relative',
 		backgroundImage: `url(${homeBackground})`,
 		backgroundPosition: 'top',
+		backgroundSize: 'cover',
+		backgroundAttachment: 'fixed',
+		backgroundRepeat: 'no-repeat',
+		height: '100vh'
+	},
+	containerBackground1: {
+		position: 'relative',
+		backgroundImage: `url(${homeBackground1})`,
+		backgroundPosition: 'center',
 		backgroundSize: 'cover',
 		backgroundAttachment: 'fixed',
 		backgroundRepeat: 'no-repeat',
