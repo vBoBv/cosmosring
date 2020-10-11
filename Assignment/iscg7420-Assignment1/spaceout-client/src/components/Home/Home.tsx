@@ -18,7 +18,8 @@ const Home = () => {
 			case 0:
 				return containerBackground;
 			case 1:
-				return containerBackground1;
+				return containerBackground;
+			// return containerBackground1;
 			default:
 				return containerBackground;
 		}
@@ -34,7 +35,7 @@ const Home = () => {
 					pageOnChange={handlePageChange}
 					customPageNumber={currentPage}>
 					<HomeLandingContent />
-					<HomeLandingAstronaut />
+					<HomeLandingAstronaut pageNumber={currentPage} />
 				</ReactPageScroller>
 			</Grid>
 			<StarParticles />
