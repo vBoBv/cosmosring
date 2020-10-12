@@ -64,9 +64,22 @@ export const useStyles = makeStyles((theme) => ({
 	newDawn: {
 		display: 'flex',
 		justifyContent: 'center',
-		alignContent: 'center'
+		alignItems: 'center',
+		flexDirection: 'column',
+
+		textAlign: 'center',
+		// color: '#008cff',
+		color: 'white',
+		// backgroundColor: 'black',
+		backgroundImage: 'linear-gradient(to right bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1))',
+		margin: '1rem',
+		paddingBottom: '2rem'
 	},
 	newDawnImgItem: {
-		width: '350px'
+		width: '350px',
+		paddingBottom: '1rem'
+	},
+	buttonStyle: {
+		fontSize: '1rem'
 	}
 }));
