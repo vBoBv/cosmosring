@@ -43,29 +43,23 @@ const HomeLandingAstronaut: React.FC<IHomeLandingAstronaut> = ({ pageNumber }) =
 		return (
 			<Grid item lg={3} className={newDawn} key={alt}>
 				<img
-					src={pageNumber === 1 ? src : ''}
-					className={`${newDawnImgItem} ${
-						pageNumber === 1
-							? `wow ${index === 0 ? 'fadeInLeft' : index === 1 ? 'rotateIn' : 'fadeInRight'} animated animated`
-							: null
-					}`}
-					alt={pageNumber === 1 ? alt : ''}
-					style={pageNumber === 1 ? { visibility: 'visible', animationDuration: '2s', animationDelay: '0.3s' } : {}}
+					src={src}
+					className={`${newDawnImgItem} wow ${
+						index === 0 ? 'fadeInLeft' : index === 1 ? 'rotateIn' : 'fadeInRight'
+					} animated animated`}
+					alt={alt}
+					style={{ visibility: 'visible', animationDuration: '2s', animationDelay: '0.3s' }}
 				/>
 				<Button
 					variant='outlined'
 					color='inherit'
 					startIcon={<FingerprintIcon style={{ fontSize: buttonIcon }} />}
-					className={`${buttonStyle} ${pageNumber === 1 ? 'wow fadeInUpBig animated animated' : null}`}
-					style={
-						pageNumber === 1
-							? {
-									visibility: 'visible',
-									animationDuration: '2s',
-									animationDelay: `${index === 0 ? '1.6s' : index === 1 ? '1.3s' : '1s'}`
-							  }
-							: {}
-					}>
+					className={`${buttonStyle} ${'wow fadeInUpBig animated animated'}`}
+					style={{
+						visibility: 'visible',
+						animationDuration: '2s',
+						animationDelay: `${index === 0 ? '1.6s' : index === 1 ? '1.3s' : '1s'}`
+					}}>
 					{buttonText}
 				</Button>
 			</Grid>
