@@ -1,5 +1,6 @@
 import React from 'react';
 import Home from './Home/Home';
+import Authentication from './Authentication/Authentication';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 const App = () => {
@@ -7,6 +8,7 @@ const App = () => {
 		<div>
 			<CssBaseline />
 			<Home />
+			<Authentication />
 		</div>
 	);
 };
