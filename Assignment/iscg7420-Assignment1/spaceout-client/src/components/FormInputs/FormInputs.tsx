@@ -20,14 +20,18 @@ export const renderTextField: React.FC<IInputProps> = ({ input, label, icon, met
 		error={error ? true : false}
 		inputProps={input}
 		InputProps={{
-			startAdornment: <InputAdornment position='start'>{icon}</InputAdornment>
+			startAdornment: <InputAdornment position='start'>{icon}</InputAdornment>,
+			style: { color: 'white' }
 		}}
+		fullWidth
+		color='secondary'
+		type={label === 'Password' || label === 'Confirm Password' ? 'password' : 'text'}
 	/>
 );
 
 export const renderSelectField: React.FC<IInputProps> = ({ input, label, meta: { touched, error } }) => (
-	<FormControl>
-		<InputLabel shrink>Country</InputLabel>
+	<FormControl style={{ width: '100%' }}>
+		<InputLabel shrink>City</InputLabel>
 		<Select label={label} inputProps={input} displayEmpty>
 			<MenuItem value=''>
 				<em>None</em>
