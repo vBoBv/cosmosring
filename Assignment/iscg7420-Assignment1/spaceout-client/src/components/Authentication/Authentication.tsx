@@ -16,9 +16,9 @@ const Authentication = () => {
 		formItem1_subtitle
 	} = useStyles();
 
-	return (
-		<Grid container className={authenticationContainer} justify='center' alignContent='center'>
-			<Grid container item className={formContainer} justify='center' alignContent='center' direction='column'>
+	const renderCustomerSignInContainer = () => {
+		return (
+			<>
 				<Grid container item className={backgroundContainer}>
 					<video className={videoContainer} autoPlay loop muted>
 						<source src={backgroundVideo} type='video/mp4' />
@@ -42,22 +42,28 @@ const Authentication = () => {
 						</Button>
 					</Grid>
 				</Grid>
-				<Grid container item className={formItem2} justify='center' alignItems='center' direction='column'>
-					<Grid item>
-						<Typography variant='h4' className={formItem1_heading} color='secondary'>
-							Create Account
-						</Typography>
-					</Grid>
-					<CustomerSignUpForm />
-					{/* <Grid item>
-						<Field name='firstName' component={renderTextField} label='First Name' icon={<AccountCircle />} />
-					</Grid>
-					<Grid item>
-						<Button variant='outlined' color='secondary'>
-							Sign Up
-						</Button>
-					</Grid> */}
+			</>
+		);
+	};
+
+	const renderCustomerSignUpContainer = () => {
+		return (
+			<Grid container item className={formItem2} justify='center' alignItems='center' direction='column'>
+				<Grid item>
+					<Typography variant='h4' className={formItem1_heading} color='secondary'>
+						Create Account
+					</Typography>
 				</Grid>
+				<CustomerSignUpForm />
+			</Grid>
+		);
+	};
+
+	return (
+		<Grid container className={authenticationContainer} justify='center' alignContent='center'>
+			<Grid container item className={formContainer} justify='center' alignContent='center' direction='column'>
+				{renderCustomerSignInContainer()}
+				{renderCustomerSignUpContainer()}
 			</Grid>
 		</Grid>
 	);
