@@ -3,10 +3,11 @@ import MenuStepper from '../../MenuStepper/MenuStepper';
 import { Grid, Button, Typography } from '@material-ui/core';
 import { Field, reduxForm } from 'redux-form';
 import { renderTextField, renderSelectField } from '../../FormInputs/FormInputs';
-import { useStyles } from '../../MenuStepper/MenuStepperCSS';
+import { useStyles } from '../AuthenticationCSS';
 import {
 	getSteps,
 	getStepContent,
+	getAccountDetailFields,
 	getPersonalDetailFields,
 	getAddressDetailFields
 } from './CustomerSignUpStaticContent';
@@ -15,7 +16,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 
 const CustomerSignUpForm = () => {
 	const [activeStep, setActiveStep] = useState<number>(0);
-	const { instructions } = useStyles();
+	const { instructions, fieldContainer, fieldItem, buttonGroup } = useStyles();
 
 	const handleNext = () => {
 		setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -30,20 +31,29 @@ const CustomerSignUpForm = () => {
 	};
 
 	const steps = getSteps();
+	const accountDetailFields = getAccountDetailFields();
 	const personalDetailFields = getPersonalDetailFields();
-	const personalAddressFields = getAddressDetailFields();
+	const addressDetailFields = getAddressDetailFields();
 
-	const renderPersonalDetailFields = personalDetailFields.map(({ name, label }) => {
+	const renderAccountDetailFields = accountDetailFields.map(({ name, label }) => {
 		return (
-			<Grid item key={name}>
+			<Grid item key={name} className={fieldItem}>
 				<Field name={name} component={renderTextField} label={label} icon={<AccountCircle />} />
 			</Grid>
 		);
 	});
 
-	const renderAddressDetailFields = personalAddressFields.map(({ name, label }) => {
+	const renderPersonalDetailFields = personalDetailFields.map(({ name, label }) => {
 		return (
-			<Grid item key={name}>
+			<Grid item key={name} className={fieldItem}>
+				<Field name={name} component={renderTextField} label={label} icon={<AccountCircle />} />
+			</Grid>
+		);
+	});
+
+	const renderAddressDetailFields = addressDetailFields.map(({ name, label }) => {
+		return (
+			<Grid item key={name} className={fieldItem}>
 				<Field
 					name={name}
 					component={name === 'city' ? renderSelectField : renderTextField}
@@ -57,7 +67,7 @@ const CustomerSignUpForm = () => {
 	const renderStepContent = (currenStep: number) => {
 		switch (currenStep) {
 			case 0:
-				return renderPersonalDetailFields;
+				return renderAccountDetailFields;
 			case 1:
 				return renderPersonalDetailFields;
 			case 2:
@@ -68,11 +78,13 @@ const CustomerSignUpForm = () => {
 	return (
 		<>
 			<MenuStepper activeStep={activeStep} getSteps={getSteps} />
-			<Grid item>
+			<Grid item className={fieldContainer}>
 				{activeStep === steps.length ? (
 					<div>
-						<Typography className={instructions}>All steps completed</Typography>
-						<Button onClick={handleReset}>Reset</Button>
+						<Typography className={instructions}>You have successfully signed up!</Typography>
+						<Button onClick={handleReset} variant='outlined' color='secondary'>
+							Create a new account?
+						</Button>
 					</div>
 				) : (
 					<div>
@@ -80,8 +92,13 @@ const CustomerSignUpForm = () => {
 							{getStepContent(activeStep)}
 						</Typography>
 						{renderStepContent(activeStep)}
-						<Grid item>
-							<Button disabled={activeStep === 0} variant='outlined' color='secondary' onClick={handleBack}>
+						<Grid item className={buttonGroup}>
+							<Button
+								disabled={activeStep === 0}
+								variant='outlined'
+								color='secondary'
+								onClick={handleBack}
+								style={activeStep === 0 ? { visibility: 'hidden' } : { visibility: 'visible' }}>
 								Back
 							</Button>
 							<Button variant='contained' color='secondary' onClick={handleNext}>
