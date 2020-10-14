@@ -12,6 +12,7 @@
 		"@types/node": "^12.12.66",
 		"@types/react": "^16.9.51",
 		"@types/react-dom": "^16.9.8",
+		"@types/react-redux": "^7.1.9",
 		"@types/react-router-dom": "^5.1.6",
 		"@types/react-wow": "^1.0.0",
 		"@types/redux-form": "^8.3.0",
