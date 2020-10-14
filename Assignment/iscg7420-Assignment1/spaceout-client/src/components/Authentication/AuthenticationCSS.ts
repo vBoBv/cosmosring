@@ -49,5 +49,20 @@ export const useStyles = makeStyles((theme) => ({
 		backgroundImage: 'linear-gradient(to right bottom, rgba(255,255,255, 0.1), rgba(0,0,0, 1))',
 		borderTopRightRadius: '2rem',
 		borderBottomRightRadius: '2rem'
+	},
+	instructions: {
+		color: 'white',
+		marginBottom: '1rem'
+	},
+	fieldContainer: {
+		textAlign: 'center',
+		width: '80%'
+	},
+	fieldItem: {
+		marginBottom: '1rem'
+	},
+	buttonGroup: {
+		display: 'flex',
+		justifyContent: 'space-between'
 	}
 }));
