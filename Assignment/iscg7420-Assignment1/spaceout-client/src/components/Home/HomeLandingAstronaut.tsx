@@ -13,7 +13,7 @@ interface IHomeLandingAstronaut {
 }
 
 const HomeLandingAstronaut: React.FC<IHomeLandingAstronaut> = ({ pageNumber }) => {
-	const { headingContainer, newDawnHeading, newDawn, newDawnImgItem, buttonStyle } = useStyles();
+	const { headingContainer, astronautContainer, newDawnHeading, newDawn, newDawnImgItem, buttonStyle } = useStyles();
 	const buttonIcon = 35;
 	const cards = [
 		{
@@ -67,7 +67,13 @@ const HomeLandingAstronaut: React.FC<IHomeLandingAstronaut> = ({ pageNumber }) =
 	});
 
 	return (
-		<Grid item container className={headingContainer} direction='row' alignItems='flex-start' justify='center'>
+		<Grid
+			item
+			container
+			className={`${headingContainer} ${astronautContainer}`}
+			direction='row'
+			alignItems='flex-start'
+			justify='center'>
 			<Grid item container lg={12} justify='center'>
 				<Typography variant='h2' className={newDawnHeading}>
 					It's a new dawn
