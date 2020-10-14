@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid, Typography, Button } from '@material-ui/core';
 import { useStyles } from './AuthenticationCSS';
 import backgroundVideo from '../../assets/earthVideo.mp4';
+import CustomerSignUpForm from './CustomerAuthentication/CustomerSignUpForm';
 
 const Authentication = () => {
 	const {
@@ -47,11 +48,15 @@ const Authentication = () => {
 							Create Account
 						</Typography>
 					</Grid>
+					<CustomerSignUpForm />
+					{/* <Grid item>
+						<Field name='firstName' component={renderTextField} label='First Name' icon={<AccountCircle />} />
+					</Grid>
 					<Grid item>
 						<Button variant='outlined' color='secondary'>
 							Sign Up
 						</Button>
-					</Grid>
+					</Grid> */}
 				</Grid>
 			</Grid>
 		</Grid>
