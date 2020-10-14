@@ -5,7 +5,6 @@ import ReactPageScroller from 'react-page-scroller';
 import HomeLandingContent from './HomeLandingContent';
 import HomeLandingAstronaut from './HomeLandingAstronaut';
 import StarParticles from '../StarParticles/StarParticles';
-import NavigationBar from '../NavigationBar/NavigationBar';
 
 const Home = () => {
 	const { containerBackground, containerBackground1 } = useStyles();
@@ -27,7 +26,6 @@ const Home = () => {
 
 	return (
 		<Grid container className={renderBackgroundImg()} direction='column'>
-			<NavigationBar />
 			<Grid container style={{ zIndex: 1 }}>
 				<ReactPageScroller
 					containerWidth='100vw'
