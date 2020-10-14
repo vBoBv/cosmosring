@@ -31,6 +31,9 @@ export const useStyles = makeStyles((theme) => ({
 		color: 'white',
 		height: '100%'
 	},
+	astronautContainer: {
+		marginTop: '7rem'
+	},
 	pageSubHeading1: {
 		fontFamily: 'Bungee Hairline, cursive',
 		fontSize: '3rem',
