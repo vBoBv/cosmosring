@@ -15,6 +15,14 @@ export const getStepContent = (stepIndex: number) => {
 	}
 };
 
+export const getAccountDetailFields = () => {
+	return [
+		{ name: 'username', label: 'Username' },
+		{ name: 'password1', label: 'Password' },
+		{ name: 'password2', label: 'Confirm Password' }
+	];
+};
+
 export const getPersonalDetailFields = () => {
 	return [
 		{ name: 'email', label: 'Email' },
