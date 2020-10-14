@@ -1,6 +1,7 @@
 import React from 'react';
 import Home from './Home/Home';
 import Authentication from './Authentication/Authentication';
+import NavigationBar from './NavigationBar/NavigationBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import history from './history';
 
@@ -11,6 +12,7 @@ const App = () => {
 		<div>
 			<CssBaseline />
 			<Router history={history}>
+				<NavigationBar />
 				<Switch>
 					<Route exact path='/' component={Home} />
 					<Route exact path='/authentication' component={Authentication} />
