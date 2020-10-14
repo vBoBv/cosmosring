@@ -6,6 +6,7 @@ export const useStyles = makeStyles((theme) => ({
 		fontFamily: 'Audiowide, cursive',
 		fontSize: '2rem',
 
+		position: 'absolute',
 		padding: '1rem',
 		zIndex: 1
 	},
