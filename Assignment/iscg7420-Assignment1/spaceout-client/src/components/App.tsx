@@ -6,10 +6,41 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import history from './history';
 
 import { Router, Switch, Route } from 'react-router-dom';
+import { ThemeProvider } from '@material-ui/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
+
+const customTheme = createMuiTheme({
+	overrides: {
+		MuiFormLabel: { root: { color: 'white', fontSize: '1.2rem' } },
+		MuiInput: {
+			input: {
+				'&::placeholder': {
+					color: 'gray'
+				},
+				color: 'white'
+			},
+			underline: {
+				'&:before': {
+					borderBottom: '1px solid white'
+				},
+				'&:hover:not($disabled):before': {
+					borderBottom: '1px solid grey'
+				}
+			}
+		}
+	},
+
+	palette: {
+		action: {
+			disabledBackground: 'white',
+			disabled: 'white'
+		}
+	}
+});
 
 const App = () => {
 	return (
-		<div>
+		<ThemeProvider theme={customTheme}>
 			<CssBaseline />
 			<Router history={history}>
 				<NavigationBar />
@@ -18,7 +49,7 @@ const App = () => {
 					<Route exact path='/authentication' component={Authentication} />
 				</Switch>
 			</Router>
-		</div>
+		</ThemeProvider>
 	);
 };
 
