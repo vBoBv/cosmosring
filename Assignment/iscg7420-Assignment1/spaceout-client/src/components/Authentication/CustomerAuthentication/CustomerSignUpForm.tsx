@@ -1,60 +1,100 @@
-import React, { useState, FormEvent } from 'react';
-import { Grid, Button, Input } from '@material-ui/core';
+import React, { useState } from 'react';
+import MenuStepper from '../../MenuStepper/MenuStepper';
+import { Grid, Button, Typography } from '@material-ui/core';
 import { Field, reduxForm } from 'redux-form';
-import { renderTextField } from '../../FormInputs/FormInputs';
+import { renderTextField, renderSelectField } from '../../FormInputs/FormInputs';
+import { useStyles } from '../../MenuStepper/MenuStepperCSS';
+import {
+	getSteps,
+	getStepContent,
+	getPersonalDetailFields,
+	getAddressDetailFields
+} from './CustomerSignUpStaticContent';
 
 import AccountCircle from '@material-ui/icons/AccountCircle';
 
-// interface ICustomerSignUpForm {
-// 	username: string;
-// 	password1: string;
-// 	password2: string;
-// 	email: string;
-// 	firstName: string;
-// 	lastName: string;
-// 	phoneNumber: string;
-// 	streetAddress: string;
-// 	suburb: string;
-// 	city: string;
-// 	country: string;
-// 	postcode: number;
-// }
-
 const CustomerSignUpForm = () => {
-	// const [formValue, setFormValue] = useState<ICustomerSignUpForm>({
-	// 	username: '',
-	// 	password1: '',
-	// 	password2: '',
-	// 	email: '',
-	// 	firstName: '',
-	// 	lastName: '',
-	// 	phoneNumber: '',
-	// 	streetAddress: '',
-	// 	suburb: '',
-	// 	city: '',
-	// 	country: '',
-	// 	postcode: 0
-	// });
+	const [activeStep, setActiveStep] = useState<number>(0);
+	const { instructions } = useStyles();
 
-	// const handleChange = (event: FormEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-	// 	setFormValue({ ...formValue, [event.currentTarget.name]: event.currentTarget.value });
-	// };
+	const handleNext = () => {
+		setActiveStep((prevActiveStep) => prevActiveStep + 1);
+	};
+
+	const handleBack = () => {
+		setActiveStep((prevActiveStep) => prevActiveStep - 1);
+	};
+
+	const handleReset = () => {
+		setActiveStep(0);
+	};
+
+	const steps = getSteps();
+	const personalDetailFields = getPersonalDetailFields();
+	const personalAddressFields = getAddressDetailFields();
+
+	const renderPersonalDetailFields = personalDetailFields.map(({ name, label }) => {
+		return (
+			<Grid item key={name}>
+				<Field name={name} component={renderTextField} label={label} icon={<AccountCircle />} />
+			</Grid>
+		);
+	});
+
+	const renderAddressDetailFields = personalAddressFields.map(({ name, label }) => {
+		return (
+			<Grid item key={name}>
+				<Field
+					name={name}
+					component={name === 'city' ? renderSelectField : renderTextField}
+					label={label}
+					icon={<AccountCircle />}
+				/>
+			</Grid>
+		);
+	});
+
+	const renderStepContent = (currenStep: number) => {
+		switch (currenStep) {
+			case 0:
+				return renderPersonalDetailFields;
+			case 1:
+				return renderPersonalDetailFields;
+			case 2:
+				return renderAddressDetailFields;
+		}
+	};
 
 	return (
 		<>
+			<MenuStepper activeStep={activeStep} getSteps={getSteps} />
 			<Grid item>
-				<Field name='firstName' component={renderTextField} label='First Name' icon={<AccountCircle />} />
-			</Grid>
-			<Grid item>
-				<Button variant='outlined' color='secondary'>
-					Sign Up
-				</Button>
+				{activeStep === steps.length ? (
+					<div>
+						<Typography className={instructions}>All steps completed</Typography>
+						<Button onClick={handleReset}>Reset</Button>
+					</div>
+				) : (
+					<div>
+						<Typography className={instructions} variant='body2'>
+							{getStepContent(activeStep)}
+						</Typography>
+						{renderStepContent(activeStep)}
+						<Grid item>
+							<Button disabled={activeStep === 0} variant='outlined' color='secondary' onClick={handleBack}>
+								Back
+							</Button>
+							<Button variant='contained' color='secondary' onClick={handleNext}>
+								{activeStep === steps.length - 1 ? 'Sign Up' : 'Next'}
+							</Button>
+						</Grid>
+					</div>
+				)}
 			</Grid>
 		</>
 	);
 };
 
-// export default CustomerSignUpForm;
 export default reduxForm({
 	form: 'customerSignUpForm',
 	destroyOnUnmount: false
