@@ -3,6 +3,7 @@ import { Grid, Typography, Button, FormControlLabel, Switch } from '@material-ui
 import { useStyles } from './AuthenticationCSS';
 import backgroundVideo from '../../assets/earthVideo.mp4';
 import SignUpForm from './SignUp/SignUpForm';
+import SignInForm from './SignIn/SignInForm';
 
 const Authentication = () => {
 	const {
@@ -61,7 +62,8 @@ const Authentication = () => {
 					</Typography>
 				</Grid>
 
-				<SignUpForm isCustomer={isCustomer} />
+				{/* <SignUpForm isCustomer={isCustomer} /> */}
+				<SignInForm />
 			</Grid>
 		);
 	};
