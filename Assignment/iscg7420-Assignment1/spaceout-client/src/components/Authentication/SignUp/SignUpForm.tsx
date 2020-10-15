@@ -66,6 +66,8 @@ const SignUpForm: React.FC<InjectedFormProps<{}, ISignUpFormProps> & ISignUpForm
 			case 'country':
 			case 'postCode':
 				return <HomeIcon />;
+			default:
+				return <AccountCircle />;
 		}
 	};
 
