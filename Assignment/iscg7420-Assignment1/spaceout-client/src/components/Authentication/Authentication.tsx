@@ -13,7 +13,8 @@ const Authentication = () => {
 		formItem1,
 		formItem2,
 		formItem1_heading,
-		formItem1_subtitle
+		formItem1_subtitle,
+		switchContainer
 	} = useStyles();
 	const [isCustomer, setIsCustomer] = useState<boolean>(true);
 
@@ -59,7 +60,18 @@ const Authentication = () => {
 						Create Account
 					</Typography>
 				</Grid>
-				<Grid item>
+
+				<SignUpForm isCustomer={isCustomer} />
+			</Grid>
+		);
+	};
+
+	return (
+		<Grid container className={authenticationContainer} justify='center' alignContent='center'>
+			<Grid container item className={formContainer} justify='center' alignContent='center' direction='column'>
+				{renderCustomerSignInContainer()}
+				{renderCustomerSignUpContainer()}
+				<Grid item className={switchContainer}>
 					<FormControlLabel
 						control={
 							<Switch
@@ -72,16 +84,6 @@ const Authentication = () => {
 						label='Customer'
 					/>
 				</Grid>
-				<SignUpForm isCustomer={isCustomer} />
-			</Grid>
-		);
-	};
-
-	return (
-		<Grid container className={authenticationContainer} justify='center' alignContent='center'>
-			<Grid container item className={formContainer} justify='center' alignContent='center' direction='column'>
-				{renderCustomerSignInContainer()}
-				{renderCustomerSignUpContainer()}
 			</Grid>
 		</Grid>
 	);
