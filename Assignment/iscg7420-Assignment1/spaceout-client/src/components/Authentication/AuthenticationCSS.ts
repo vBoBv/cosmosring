@@ -65,5 +65,10 @@ export const useStyles = makeStyles((theme) => ({
 	buttonGroup: {
 		display: 'flex',
 		justifyContent: 'space-between'
+	},
+	switchContainer: {
+		position: 'absolute',
+		top: '10px',
+		right: '10px'
 	}
 }));
