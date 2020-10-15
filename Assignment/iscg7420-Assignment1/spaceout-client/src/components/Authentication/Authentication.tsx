@@ -1,5 +1,5 @@
-import React from 'react';
-import { Grid, Typography, Button } from '@material-ui/core';
+import React, { useState } from 'react';
+import { Grid, Typography, Button, FormControlLabel, Switch } from '@material-ui/core';
 import { useStyles } from './AuthenticationCSS';
 import backgroundVideo from '../../assets/earthVideo.mp4';
 import SignUpForm from './SignUp/SignUpForm';
@@ -15,6 +15,11 @@ const Authentication = () => {
 		formItem1_heading,
 		formItem1_subtitle
 	} = useStyles();
+	const [isCustomer, setIsCustomer] = useState<boolean>(true);
+
+	const handleChange = (isCustomer: boolean) => {
+		setIsCustomer(!isCustomer);
+	};
 
 	const renderCustomerSignInContainer = () => {
 		return (
@@ -54,7 +59,20 @@ const Authentication = () => {
 						Create Account
 					</Typography>
 				</Grid>
-				<SignUpForm isCustomer={true} />
+				<Grid item>
+					<FormControlLabel
+						control={
+							<Switch
+								checked={isCustomer}
+								onChange={() => handleChange(isCustomer)}
+								name='authenticationSwitch'
+								color='primary'
+							/>
+						}
+						label='Customer'
+					/>
+				</Grid>
+				<SignUpForm isCustomer={isCustomer} />
 			</Grid>
 		);
 	};
