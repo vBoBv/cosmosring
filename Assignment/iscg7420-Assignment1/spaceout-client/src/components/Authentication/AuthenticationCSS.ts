@@ -52,6 +52,7 @@ export const useStyles = makeStyles((theme) => ({
 	},
 	instructions: {
 		color: 'white',
+		marginTop: '1rem',
 		marginBottom: '1rem'
 	},
 	fieldContainer: {
