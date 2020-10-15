@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Typography, Button } from '@material-ui/core';
 import { useStyles } from './AuthenticationCSS';
 import backgroundVideo from '../../assets/earthVideo.mp4';
-import CustomerSignUpForm from './CustomerAuthentication/CustomerSignUpForm';
+import SignUpForm from './SignUp/SignUpForm';
 
 const Authentication = () => {
 	const {
@@ -54,7 +54,7 @@ const Authentication = () => {
 						Create Account
 					</Typography>
 				</Grid>
-				<CustomerSignUpForm />
+				<SignUpForm isCustomer={true} />
 			</Grid>
 		);
 	};
