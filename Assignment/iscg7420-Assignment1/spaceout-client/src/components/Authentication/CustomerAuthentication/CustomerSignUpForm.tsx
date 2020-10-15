@@ -13,6 +13,11 @@ import {
 } from './CustomerSignUpStaticContent';
 
 import AccountCircle from '@material-ui/icons/AccountCircle';
+import LockIcon from '@material-ui/icons/Lock';
+import EmailIcon from '@material-ui/icons/Email';
+import PhoneIcon from '@material-ui/icons/Phone';
+import HomeIcon from '@material-ui/icons/Home';
+import PersonIcon from '@material-ui/icons/Person';
 
 const CustomerSignUpForm = () => {
 	const [activeStep, setActiveStep] = useState<number>(0);
@@ -35,10 +40,33 @@ const CustomerSignUpForm = () => {
 	const personalDetailFields = getPersonalDetailFields();
 	const addressDetailFields = getAddressDetailFields();
 
+	const renderInputIcon = (name: string) => {
+		switch (name) {
+			case 'username':
+				return <AccountCircle />;
+			case 'password1':
+			case 'password2':
+				return <LockIcon />;
+			case 'email':
+				return <EmailIcon />;
+			case 'firstName':
+			case 'lastName':
+				return <PersonIcon />;
+			case 'phoneNumber':
+				return <PhoneIcon />;
+			case 'streetAddress':
+			case 'suburb':
+			case 'city':
+			case 'country':
+			case 'postCode':
+				return <HomeIcon />;
+		}
+	};
+
 	const renderAccountDetailFields = accountDetailFields.map(({ name, label }) => {
 		return (
 			<Grid item key={name} className={fieldItem}>
-				<Field name={name} component={renderTextField} label={label} icon={<AccountCircle />} />
+				<Field name={name} component={renderTextField} label={label} icon={renderInputIcon(name)} />
 			</Grid>
 		);
 	});
@@ -46,7 +74,7 @@ const CustomerSignUpForm = () => {
 	const renderPersonalDetailFields = personalDetailFields.map(({ name, label }) => {
 		return (
 			<Grid item key={name} className={fieldItem}>
-				<Field name={name} component={renderTextField} label={label} icon={<AccountCircle />} />
+				<Field name={name} component={renderTextField} label={label} icon={renderInputIcon(name)} />
 			</Grid>
 		);
 	});
@@ -58,7 +86,7 @@ const CustomerSignUpForm = () => {
 					name={name}
 					component={name === 'city' ? renderSelectField : renderTextField}
 					label={label}
-					icon={<AccountCircle />}
+					icon={renderInputIcon(name)}
 				/>
 			</Grid>
 		);
