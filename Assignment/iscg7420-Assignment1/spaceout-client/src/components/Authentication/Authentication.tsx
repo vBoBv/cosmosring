@@ -18,7 +18,7 @@ const Authentication = () => {
 	} = useStyles();
 	const [isCustomer, setIsCustomer] = useState<boolean>(true);
 
-	const handleChange = (isCustomer: boolean) => {
+	const handleChange = () => {
 		setIsCustomer(!isCustomer);
 	};
 
@@ -74,12 +74,7 @@ const Authentication = () => {
 				<Grid item className={switchContainer}>
 					<FormControlLabel
 						control={
-							<Switch
-								checked={isCustomer}
-								onChange={() => handleChange(isCustomer)}
-								name='authenticationSwitch'
-								color='primary'
-							/>
+							<Switch checked={isCustomer} onChange={handleChange} name='authenticationSwitch' color='primary' />
 						}
 						label='Customer'
 					/>
