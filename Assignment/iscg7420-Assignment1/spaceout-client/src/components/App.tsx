@@ -12,6 +12,11 @@ import { createMuiTheme } from '@material-ui/core/styles';
 const customTheme = createMuiTheme({
 	overrides: {
 		MuiFormLabel: { root: { color: 'white', fontSize: '1.2rem' } },
+		MuiFormControlLabel: {
+			root: {
+				color: 'white'
+			}
+		},
 		MuiInput: {
 			input: {
 				'&::placeholder': {
