@@ -3,6 +3,7 @@ import { useStyles } from './NavigationBarCSS';
 import { Grid } from '@material-ui/core';
 import Typed from 'react-typed';
 import WOW from 'wowjs';
+import ShoppingDrawer from '../ShoppingDrawer/ShoppingDrawer';
 
 import logoImg from '../../assets/logo.png';
 
@@ -31,7 +32,9 @@ const NavigationBar = () => {
 					<Typed strings={['Above']} typeSpeed={150} backSpeed={100} backDelay={10} smartBackspace />
 				</Grid>
 			</Grid>
-			<Grid item>Links</Grid>
+			<Grid item>
+				<ShoppingDrawer />
+			</Grid>
 		</Grid>
 	);
 };
