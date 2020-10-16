@@ -1,10 +1,13 @@
 import React from 'react';
-import { Grid, Typography } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+import { Grid, Typography, Button } from '@material-ui/core';
 import { useStyles } from './HomeCSS';
 import Typed from 'react-typed';
 
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+
 const HomeLandingContent = () => {
-	const { headingContainer, pageHeading, pageSubHeading1 } = useStyles();
+	const { headingContainer, pageHeading, pageSubHeading1, getStartedButton, link } = useStyles();
 
 	return (
 		<Grid item container className={headingContainer} direction='column' alignItems='center' justify='center'>
@@ -14,6 +17,17 @@ const HomeLandingContent = () => {
 			<Grid item className={pageSubHeading1}>
 				--
 				<Typed strings={['Browse - Buy - Auction--']} typeSpeed={60} startDelay={3500} showCursor={false} />
+			</Grid>
+			<Grid item>
+				<Link to='/authentication' className={link}>
+					<Button
+						variant='contained'
+						color='secondary'
+						className={`${getStartedButton} wow fadeIn`}
+						endIcon={<ChevronRightIcon />}>
+						Get Started
+					</Button>
+				</Link>
 			</Grid>
 		</Grid>
 	);
