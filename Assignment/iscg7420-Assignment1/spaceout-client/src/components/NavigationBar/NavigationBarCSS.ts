@@ -8,7 +8,7 @@ export const useStyles = makeStyles((theme) => ({
 
 		position: 'absolute',
 		padding: '1rem',
-		zIndex: 1
+		zIndex: 2
 	},
 	logoContainer: {
 		display: 'flex',
