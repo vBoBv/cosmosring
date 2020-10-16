@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Button, Typography } from '@material-ui/core';
-import { Field, reduxForm, InjectedFormProps } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 import { renderTextField } from '../../FormInputs/FormInputs';
 import { useStyles } from '../AuthenticationCSS';
 import { getSignInAccountDetailFields } from './SignInStaticContent';
