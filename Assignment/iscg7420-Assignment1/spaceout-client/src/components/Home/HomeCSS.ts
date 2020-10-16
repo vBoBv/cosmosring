@@ -84,5 +84,13 @@ export const useStyles = makeStyles((theme) => ({
 	},
 	buttonStyle: {
 		fontSize: '1rem'
+	},
+	getStartedButton: {
+		borderRadius: '1rem',
+		marginTop: '1rem',
+		padding: '0.5rem 2rem 0.5rem 2rem'
+	},
+	link: {
+		textDecoration: 'none'
 	}
 }));
