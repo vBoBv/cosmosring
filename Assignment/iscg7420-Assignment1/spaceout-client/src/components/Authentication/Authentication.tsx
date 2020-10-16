@@ -17,9 +17,14 @@ const Authentication = () => {
 		formItem1_subtitle,
 		switchContainer
 	} = useStyles();
+	const [isSignInView, setIsSignInView] = useState<boolean>(false);
 	const [isCustomer, setIsCustomer] = useState<boolean>(true);
 
-	const handleChange = () => {
+	const handleSignInView = () => {
+		setIsSignInView(!isSignInView);
+	};
+
+	const handleSignUpView = () => {
 		setIsCustomer(!isCustomer);
 	};
 
@@ -35,7 +40,7 @@ const Authentication = () => {
 				<Grid container item className={formItem1} justify='center' alignItems='center' direction='column'>
 					<Grid item>
 						<Typography variant='h4' className={formItem1_heading}>
-							Welcome Back!
+							{isSignInView ? 'Create Account' : 'Welcome Back!'}
 						</Typography>
 					</Grid>
 					<Grid item>
@@ -44,8 +49,8 @@ const Authentication = () => {
 						</Typography>
 					</Grid>
 					<Grid item>
-						<Button variant='contained' color='secondary'>
-							Sign In
+						<Button variant='contained' color='secondary' onClick={handleSignInView}>
+							{isSignInView ? 'Sign Up' : 'Sign In'}
 						</Button>
 					</Grid>
 				</Grid>
@@ -58,12 +63,14 @@ const Authentication = () => {
 			<Grid container item className={formItem2} justify='center' alignItems='center' direction='column'>
 				<Grid item>
 					<Typography variant='h4' className={formItem1_heading} color='secondary'>
-						Create Account
+						{isSignInView
+							? 'Welcome Back!'
+							: !isSignInView && isCustomer
+							? 'Create Customer Account'
+							: 'Create Admin Account'}
 					</Typography>
 				</Grid>
-
-				{/* <SignUpForm isCustomer={isCustomer} /> */}
-				<SignInForm />
+				{isSignInView ? <SignInForm /> : <SignUpForm isCustomer={isCustomer} />}
 			</Grid>
 		);
 	};
@@ -73,14 +80,16 @@ const Authentication = () => {
 			<Grid container item className={formContainer} justify='center' alignContent='center' direction='column'>
 				{renderCustomerSignInContainer()}
 				{renderCustomerSignUpContainer()}
-				<Grid item className={switchContainer}>
-					<FormControlLabel
-						control={
-							<Switch checked={isCustomer} onChange={handleChange} name='authenticationSwitch' color='primary' />
-						}
-						label='Customer'
-					/>
-				</Grid>
+				{isSignInView ? null : (
+					<Grid item className={switchContainer}>
+						<FormControlLabel
+							control={
+								<Switch checked={isCustomer} onChange={handleSignUpView} name='authenticationSwitch' color='primary' />
+							}
+							label='Customer'
+						/>
+					</Grid>
+				)}
 			</Grid>
 		</Grid>
 	);
