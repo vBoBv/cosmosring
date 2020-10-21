@@ -56,5 +56,12 @@ export const useStyles = makeStyles((theme) => ({
 	},
 	shoppingCategoryContainer: {
 		paddingRight: '2rem'
+	},
+	cardImageContainer: {
+		width: '300px'
+	},
+	productCategoryHeading: {
+		fontSize: '2rem',
+		borderBottom: '1px solid red'
 	}
 }));

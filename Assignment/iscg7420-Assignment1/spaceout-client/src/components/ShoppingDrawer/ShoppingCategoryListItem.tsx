@@ -3,7 +3,7 @@ import { useStyles } from './ShoppingCSS';
 import { List, ListItem, ListItemSecondaryAction, ListItemText, ListSubheader, Switch } from '@material-ui/core';
 
 const ShoppingCategoryListItem = () => {
-	const { productCategory } = useStyles();
+	const { productCategory, productCategoryHeading } = useStyles();
 	const [checked, setChecked] = React.useState(['planet']);
 
 	const handleToggle = (value: string) => () => {
@@ -23,7 +23,7 @@ const ShoppingCategoryListItem = () => {
 	return (
 		<List
 			subheader={
-				<ListSubheader color='primary' style={{ fontSize: '2rem', borderBottom: '1px solid red' }}>
+				<ListSubheader color='primary' className={productCategoryHeading}>
 					Product Category
 				</ListSubheader>
 			}

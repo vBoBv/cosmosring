@@ -8,7 +8,7 @@ import StarsIcon from '@material-ui/icons/Stars';
 import pluto from '../../assets/pluto.png';
 
 const ShoppingCards = () => {
-	const { infoContainer, iconContainer, cardContainer, restaurantName } = useStyles();
+	const { infoContainer, iconContainer, cardContainer, restaurantName, cardImageContainer } = useStyles();
 	const arrays = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
 
 	const renderItemCards = arrays.map((item) => {
@@ -16,7 +16,7 @@ const ShoppingCards = () => {
 			<Grid item key={item}>
 				<Card className={cardContainer}>
 					<CardActionArea>
-						<CardMedia component='img' image={pluto} title='' style={{ width: '300px' }} />
+						<CardMedia component='img' image={pluto} title='' className={cardImageContainer} />
 						<CardContent>
 							<Typography gutterBottom noWrap variant='h5' component='h2' className={restaurantName}>
 								Name
