@@ -1,19 +1,9 @@
 import React from 'react';
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import { useStyles } from './ShoppingCSS';
 import { List, ListItem, ListItemSecondaryAction, ListItemText, ListSubheader, Switch } from '@material-ui/core';
 
-const useStyles = makeStyles((theme: Theme) =>
-	createStyles({
-		root: {
-			width: '100%',
-			maxWidth: 300,
-			backgroundColor: 'theme.palette.background.paper'
-		}
-	})
-);
-
 const ShoppingCategoryListItem = () => {
-	const classes = useStyles();
+	const { productCategory } = useStyles();
 	const [checked, setChecked] = React.useState(['planet']);
 
 	const handleToggle = (value: string) => () => {
@@ -37,7 +27,7 @@ const ShoppingCategoryListItem = () => {
 					Product Category
 				</ListSubheader>
 			}
-			className={classes.root}>
+			className={productCategory}>
 			<ListItem>
 				<ListItemText id='switch-list-label-planet' primary='Planet' />
 				<ListItemSecondaryAction>

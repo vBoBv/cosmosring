@@ -24,5 +24,31 @@ export const useStyles = makeStyles((theme) => ({
 	},
 	logoText: {
 		paddingLeft: '0.5rem'
+	},
+	infoContainer: {
+		display: 'flex',
+		alignItems: 'center'
+	},
+	iconContainer: {
+		marginRight: '0.5rem'
+	},
+	cardContainer: {
+		maxWidth: 400
+	},
+	restaurantName: {
+		[theme.breakpoints.down('md')]: {
+			fontSize: '1.5rem'
+		},
+		[theme.breakpoints.down('xs')]: {
+			fontSize: '1.2rem'
+		}
+	},
+	productCategory: {
+		width: '100%',
+		maxWidth: 300,
+		backgroundColor: theme.palette.background.paper
+	},
+	drawer: {
+		width: '100%'
 	}
 }));

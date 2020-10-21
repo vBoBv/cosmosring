@@ -1,8 +1,10 @@
 import React from 'react';
 import { SwipeableDrawer, Button } from '@material-ui/core';
+import { useStyles } from './ShoppingCSS';
 import Shopping from './Shopping';
 
 const ShoppingDrawer = () => {
+	const { drawer } = useStyles();
 	const [open, setOpen] = React.useState(false);
 
 	const handleDrawerOpen = () => {
@@ -23,7 +25,7 @@ const ShoppingDrawer = () => {
 				open={open}
 				onClose={handleDrawerClose}
 				onOpen={handleDrawerOpen}
-				style={{ width: '100%' }}>
+				className={drawer}>
 				<Shopping />
 			</SwipeableDrawer>
 		</>
