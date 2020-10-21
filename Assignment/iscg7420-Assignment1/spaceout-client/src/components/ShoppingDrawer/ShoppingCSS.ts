@@ -50,5 +50,11 @@ export const useStyles = makeStyles((theme) => ({
 	},
 	drawer: {
 		width: '100%'
+	},
+	iconSize: {
+		fontSize: '4rem'
+	},
+	shoppingCategoryContainer: {
+		paddingRight: '2rem'
 	}
 }));

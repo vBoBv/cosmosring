@@ -12,7 +12,7 @@ interface IShoppingProps {
 }
 
 const Shopping: React.FC<IShoppingProps> = ({ handleDrawerClose }) => {
-	const { navigationBarContainer, logoContainer, logo, logoText } = useStyles();
+	const { navigationBarContainer, logoContainer, logo, logoText, iconSize, shoppingCategoryContainer } = useStyles();
 
 	return (
 		<>
@@ -32,7 +32,7 @@ const Shopping: React.FC<IShoppingProps> = ({ handleDrawerClose }) => {
 					</Grid>
 				</Grid>
 				<IconButton color='secondary' onClick={handleDrawerClose}>
-					<CloseIcon style={{ fontSize: '4rem' }} />
+					<CloseIcon className={iconSize} />
 				</IconButton>
 			</Grid>
 			<Grid container justify='center' alignContent='center' direction='row'>
@@ -43,7 +43,7 @@ const Shopping: React.FC<IShoppingProps> = ({ handleDrawerClose }) => {
 					justify='flex-start'
 					alignContent='flex-end'
 					direction='column'
-					style={{ paddingRight: '2rem' }}>
+					className={shoppingCategoryContainer}>
 					<ShoppingCategoryListItem />
 				</Grid>
 				<ShoppingCards />
