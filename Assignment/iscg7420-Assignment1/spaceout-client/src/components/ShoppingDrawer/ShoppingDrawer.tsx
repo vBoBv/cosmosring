@@ -26,7 +26,7 @@ const ShoppingDrawer = () => {
 				onClose={handleDrawerClose}
 				onOpen={handleDrawerOpen}
 				className={drawer}>
-				<Shopping />
+				<Shopping handleDrawerClose={handleDrawerClose} />
 			</SwipeableDrawer>
 		</>
 	);
