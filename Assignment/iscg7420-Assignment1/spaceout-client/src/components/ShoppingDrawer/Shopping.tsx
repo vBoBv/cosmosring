@@ -7,7 +7,11 @@ import CloseIcon from '@material-ui/icons/Close';
 
 import logoImg from '../../assets/logo.png';
 
-const Shopping = () => {
+interface IShoppingProps {
+	handleDrawerClose: () => void;
+}
+
+const Shopping: React.FC<IShoppingProps> = ({ handleDrawerClose }) => {
 	const { navigationBarContainer, logoContainer, logo, logoText } = useStyles();
 
 	return (
@@ -27,7 +31,7 @@ const Shopping = () => {
 						Above
 					</Grid>
 				</Grid>
-				<IconButton color='secondary'>
+				<IconButton color='secondary' onClick={handleDrawerClose}>
 					<CloseIcon style={{ fontSize: '4rem' }} />
 				</IconButton>
 			</Grid>
