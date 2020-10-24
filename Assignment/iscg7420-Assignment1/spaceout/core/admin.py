@@ -8,7 +8,8 @@ class UserAdmin(BaseUserAdmin):
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
         ('Personal info', {'fields': ('username',)}),
-        ('Permissions', {'fields': ('is_staff', 'is_active', 'is_superuser', 'is_customer', 'is_order_manager',)}),
+        # ('Permissions', {'fields': ('is_staff', 'is_active', 'is_superuser', 'is_customer', 'is_order_manager',)}),
+        ('Permissions', {'fields': ('is_staff', 'is_active', 'is_superuser',)}),
         ('Important', {'fields': ('last_login',)})
     )
     add_fieldsets = (
@@ -19,7 +20,7 @@ class UserAdmin(BaseUserAdmin):
     )
     ordering = ['id']
     search_fields = ('email',)
-    list_filter = ('is_customer', 'is_order_manager', 'is_superuser',)
+    # list_filter = ('is_customer', 'is_order_manager', 'is_superuser',)
 
 
 # ecommerce_app_models = [
