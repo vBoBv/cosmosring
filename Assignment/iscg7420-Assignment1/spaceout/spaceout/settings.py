@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ecommerce_app.apps.EcommerceAppConfig',
+    # 'ecommerce_app.apps.EcommerceAppConfig',
     'storages',
     'core.apps.CoreConfig',
 ]
@@ -147,7 +147,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-AUTH_USER_MODEL = 'ecommerce_app.User'
+AUTH_USER_MODEL = 'core.User'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
