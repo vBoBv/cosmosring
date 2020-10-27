@@ -41,3 +41,35 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+
+
+class Customer(models.Model):
+    AUCKLAND = 'AKL'
+    WELLINGTON = 'WELL'
+    CHRISTCHURCH = 'CHC'
+
+    CITY_IN_NZ = [
+        (AUCKLAND, 'Auckland'),
+        (WELLINGTON, 'Wellington'),
+        (CHRISTCHURCH, 'Christchurch'),
+    ]
+
+    user = models.OneToOneField('User', on_delete=models.CASCADE, primary_key=True)
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
+    phone_number = models.CharField(max_length=50)
+    street_address = models.CharField(max_length=255)
+    suburb = models.CharField(max_length=100)
+    city = models.CharField(max_length=4, choices=CITY_IN_NZ, default=AUCKLAND)
+    country = models.CharField(max_length=100, default="New Zealand")
+    postcode = models.IntegerField()
+
+    def __str__(self):
+        return f'{self.first_name} {self.last_name}'
+
+
+class OrderManager(models.Model):
+    user = models.OneToOneField('User', on_delete=models.CASCADE, primary_key=True)
+
+    def __str__(self):
+        return self.user.email
