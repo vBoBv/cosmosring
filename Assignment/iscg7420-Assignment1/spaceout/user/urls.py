@@ -10,6 +10,8 @@ urlpatterns = [
     path('create/', views.CreateUserView.as_view(), name='create'),
     path('token/', views.CreateTokenView.as_view(), name='token'),
     path('profile/', views.ManageUserView.as_view(), name='profile'),
+    path('create_customer/', views.CreateCustomerView.as_view(), name='create_customer'),
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
