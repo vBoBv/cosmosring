@@ -27,7 +27,7 @@ class ShipmentViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.Cre
     serializer_class = serializers.ShipmentSerializer
 
     def get_queryset(self):
-        return self.queryset.filter(payment__customer__user=self.request.user)
+        return self.queryset.filter(payment__customer__user=self.request.user).order_by('-payment__payment_date')
 
     def perform_create(self, serializer):
         serializer.save()
