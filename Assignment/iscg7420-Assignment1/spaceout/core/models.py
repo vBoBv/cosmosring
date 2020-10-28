@@ -82,3 +82,10 @@ class Payment(models.Model):
 
     def __str__(self):
         return f'Customer: {self.customer.first_name} {self.customer.last_name}'
+
+
+class Shipment(models.Model):
+    payment = models.OneToOneField('Payment', on_delete=models.CASCADE, primary_key=True)
+
+    def __str__(self):
+        return f'Address: {self.payment.customer.street_address}, {self.payment.customer.suburb}, {self.payment.customer.city}, {self.payment.customer.country}'
