@@ -7,9 +7,12 @@ from core.models import Payment, Shipment
 from ecommerce import serializers
 
 
-class PaymentViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.CreateModelMixin):
+class BaseEcommerceViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.CreateModelMixin):
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated,)
+
+
+class PaymentViewSet(BaseEcommerceViewSet):
     queryset = Payment.objects.all()
     serializer_class = serializers.PaymentSerializer
 
@@ -20,9 +23,7 @@ class PaymentViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.Crea
         serializer.save(customer=self.request.user.customer)
 
 
-class ShipmentViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.CreateModelMixin):
-    authentication_classes = (TokenAuthentication,)
-    permission_classes = (IsAuthenticated,)
+class ShipmentViewSet(BaseEcommerceViewSet):
     queryset = Shipment.objects.all()
     serializer_class = serializers.ShipmentSerializer
 
