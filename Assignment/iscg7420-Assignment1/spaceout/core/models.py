@@ -73,3 +73,12 @@ class OrderManager(models.Model):
 
     def __str__(self):
         return self.user.email
+
+
+class Payment(models.Model):
+    amount = models.FloatField()
+    payment_date = models.DateTimeField(auto_now_add=True)
+    customer = models.ForeignKey('Customer', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'Customer: {self.customer.first_name} {self.customer.last_name}'

@@ -26,7 +26,7 @@ ecommerce_app_models = [
     models.User,
     models.Customer,
     models.OrderManager,
-    #     models.Payment,
+    models.Payment,
     #     models.Shipment,
     #     models.Order,
     #     models.OrderDetail,
