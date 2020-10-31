@@ -33,7 +33,7 @@ ecommerce_app_models = [
     #     models.Product,
     #     models.Review,
     models.Discount,
-    #     models.Category,
+    models.Category,
 ]
 
 # admin.site.register(models.User, UserAdmin)

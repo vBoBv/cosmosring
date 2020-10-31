@@ -10,6 +10,7 @@ router.register('payments', views.PaymentViewSet)
 router.register('shipments', views.ShipmentViewSet)
 router.register('orders', views.OrderViewSet)
 router.register('discounts', views.DiscountViewSet)
+router.register('categories', views.CategoryViewSet)
 
 app_name = 'ecommerce'
 

@@ -106,3 +106,15 @@ class Discount(models.Model):
 
     def __str__(self):
         return self.discount_code
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=255)
+    description = models.TextField(blank=True)
+    image = models.ImageField(null=True, blank=True)
+
+    class Meta:
+        verbose_name_plural = 'Categories'
+
+    def __str__(self):
+        return self.name
