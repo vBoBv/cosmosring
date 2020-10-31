@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from core.models import Payment, Shipment, Order, Discount, Category
+from core.models import Payment, Shipment, Order, Discount, Category, Product
 
 
 class PaymentSerializer(serializers.ModelSerializer):
@@ -34,4 +34,11 @@ class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = ('id', 'name', 'description', 'image',)
+        read_only_fields = ('id',)
+
+
+class ProductSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        fields = ('id', 'name', 'price', 'image', 'description', 'category', 'discount',)
         read_only_fields = ('id',)

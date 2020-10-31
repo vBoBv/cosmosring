@@ -30,7 +30,7 @@ ecommerce_app_models = [
     models.Shipment,
     models.Order,
     #     models.OrderDetail,
-    #     models.Product,
+    models.Product,
     #     models.Review,
     models.Discount,
     models.Category,

@@ -11,6 +11,8 @@ router.register('shipments', views.ShipmentViewSet)
 router.register('orders', views.OrderViewSet)
 router.register('discounts', views.DiscountViewSet)
 router.register('categories', views.CategoryViewSet)
+router.register('products', views.ProductViewSet)
+
 
 app_name = 'ecommerce'
 
