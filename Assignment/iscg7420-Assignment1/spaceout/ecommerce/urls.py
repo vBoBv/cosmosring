@@ -8,6 +8,7 @@ from django.conf import settings
 router = DefaultRouter()
 router.register('payments', views.PaymentViewSet)
 router.register('shipments', views.ShipmentViewSet)
+router.register('orders', views.OrderViewSet)
 
 app_name = 'ecommerce'
 
