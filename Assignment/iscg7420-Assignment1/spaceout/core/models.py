@@ -89,3 +89,12 @@ class Shipment(models.Model):
 
     def __str__(self):
         return f'Address: {self.payment.customer.street_address}, {self.payment.customer.suburb}, {self.payment.customer.city}, {self.payment.customer.country}'
+
+
+class Order(models.Model):
+    customer = models.ForeignKey('Customer', on_delete=models.CASCADE)
+    order_manager = models.ManyToManyField('OrderManager')
+    order_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return str(self.customer)
