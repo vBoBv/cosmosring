@@ -9,6 +9,7 @@ router = DefaultRouter()
 router.register('payments', views.PaymentViewSet)
 router.register('shipments', views.ShipmentViewSet)
 router.register('orders', views.OrderViewSet)
+router.register('discounts', views.DiscountViewSet)
 
 app_name = 'ecommerce'
 

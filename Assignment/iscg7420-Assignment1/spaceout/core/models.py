@@ -98,3 +98,11 @@ class Order(models.Model):
 
     def __str__(self):
         return str(self.customer)
+
+
+class Discount(models.Model):
+    discount_code = models.CharField(max_length=100)
+    is_expired = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.discount_code

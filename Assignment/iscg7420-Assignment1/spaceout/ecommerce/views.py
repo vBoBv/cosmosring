@@ -2,7 +2,7 @@ from rest_framework import viewsets, mixins
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 
-from core.models import Payment, Shipment, Order, OrderManager
+from core.models import Payment, Shipment, Order, OrderManager, Discount
 
 from ecommerce import serializers
 
@@ -34,6 +34,7 @@ class ShipmentViewSet(BaseEcommerceViewSet):
         serializer.save()
 
 
+# TODO: Assign OrderManager to each Order
 class OrderViewSet(BaseEcommerceViewSet):
     queryset = Order.objects.all()
     serializer_class = serializers.OrderSerializer
@@ -43,3 +44,14 @@ class OrderViewSet(BaseEcommerceViewSet):
 
     def perform_create(self, serializer):
         serializer.save(customer=self.request.user.customer)
+
+
+class DiscountViewSet(viewsets.ModelViewSet):
+    queryset = Discount.objects.all()
+    serializer_class = serializers.DiscountSerializer
+
+    # def get_queryset(self):
+    #     return self.queryset.filter(customer__user=self.request.user)
+
+    def perform_create(self, serializer):
+        serializer.save()
