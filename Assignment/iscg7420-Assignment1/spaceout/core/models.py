@@ -130,3 +130,12 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class OrderDetail(models.Model):
+    order = models.OneToOneField('Order', on_delete=models.CASCADE, primary_key=True)
+    product = models.ManyToManyField('Product')
+    quantity = models.IntegerField()
+
+    def __str__(self):
+        return f'Product: {self.product.first()} - Quantity: {self.quantity}'

@@ -2,7 +2,7 @@ from rest_framework import viewsets, mixins
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 
-from core.models import Payment, Shipment, Order, Discount, Category, Product
+from core.models import Payment, Shipment, Order, Discount, Category, Product, OrderDetail
 
 from ecommerce import serializers
 
@@ -74,6 +74,17 @@ class ProductViewSet(viewsets.ModelViewSet):
 
     # def get_queryset(self):
     #     return self.queryset.filter(customer__user=self.request.user)
+
+    def perform_create(self, serializer):
+        serializer.save()
+
+
+class OrderDetailViewSet(viewsets.ModelViewSet):
+    queryset = OrderDetail.objects.all()
+    serializer_class = serializers.OrderDetailSerializer
+
+    # def get_queryset(self):
+    #     return self.queryset.filter(order__customer__user=self.request.user)
 
     def perform_create(self, serializer):
         serializer.save()

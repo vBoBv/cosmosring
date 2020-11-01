@@ -29,7 +29,7 @@ ecommerce_app_models = [
     models.Payment,
     models.Shipment,
     models.Order,
-    #     models.OrderDetail,
+    models.OrderDetail,
     models.Product,
     #     models.Review,
     models.Discount,
