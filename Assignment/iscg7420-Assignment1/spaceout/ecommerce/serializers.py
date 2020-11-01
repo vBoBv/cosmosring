@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from core.models import Payment, Shipment, Order, Discount, Category, Product, OrderDetail
+from core.models import Payment, Shipment, Order, Discount, Category, Product, OrderDetail, Review
 
 
 class PaymentSerializer(serializers.ModelSerializer):
@@ -49,3 +49,10 @@ class OrderDetailSerializer(serializers.ModelSerializer):
         model = OrderDetail
         fields = ('order', 'product', 'quantity',)
         # read_only_fields = ('order',)
+
+
+class ReviewSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Review
+        fields = ('id', 'customer', 'product', 'description', 'rating',)
+        read_only_fields = ('id',)

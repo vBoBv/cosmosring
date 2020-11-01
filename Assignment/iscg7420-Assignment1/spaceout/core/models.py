@@ -139,3 +139,13 @@ class OrderDetail(models.Model):
 
     def __str__(self):
         return f'Product: {self.product.first()} - Quantity: {self.quantity}'
+
+
+class Review(models.Model):
+    customer = models.ManyToManyField('Customer')
+    product = models.ForeignKey('Product', on_delete=models.CASCADE)
+    description = models.TextField(blank=True)
+    rating = models.IntegerField()
+
+    # def __str__(self):
+    #     return str(self.customer)

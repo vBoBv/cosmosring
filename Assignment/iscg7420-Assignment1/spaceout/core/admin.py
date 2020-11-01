@@ -31,7 +31,7 @@ ecommerce_app_models = [
     models.Order,
     models.OrderDetail,
     models.Product,
-    #     models.Review,
+    models.Review,
     models.Discount,
     models.Category,
 ]
