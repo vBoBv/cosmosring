@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from core.models import Payment, Shipment, Order, Discount, Category, Product, OrderDetail, Review
+from core.models import Payment, Shipment, Order, Discount, Category, Product, OrderDetail, Review, Customer, OrderManager
 
 
 class PaymentSerializer(serializers.ModelSerializer):
@@ -13,14 +13,23 @@ class PaymentSerializer(serializers.ModelSerializer):
 class ShipmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Shipment
-        fields = ('payment',)
-        # read_only_fields = ('payment',)
+        fields = '__all__'
 
 
 class OrderSerializer(serializers.ModelSerializer):
+    customer = serializers.PrimaryKeyRelatedField(
+        many=False,
+        queryset=Customer.objects.all()
+    )
+    order_manager = serializers.PrimaryKeyRelatedField(
+        many=True,
+        queryset=OrderManager.objects.all()
+    )
+
     class Meta:
         model = Order
-        fields = '__all__'
+        fields = ('id', 'customer', 'order_manager', 'order_date',)
+        read_only_fields = ('id',)
 
 
 class DiscountSerializer(serializers.ModelSerializer):
@@ -38,6 +47,15 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class ProductSerializer(serializers.ModelSerializer):
+    category = serializers.PrimaryKeyRelatedField(
+        many=True,
+        queryset=OrderManager.objects.all()
+    )
+    discount = serializers.PrimaryKeyRelatedField(
+        many=True,
+        queryset=Discount.objects.all()
+    )
+
     class Meta:
         model = Product
         fields = ('id', 'name', 'price', 'image', 'description', 'category', 'discount',)
@@ -45,6 +63,11 @@ class ProductSerializer(serializers.ModelSerializer):
 
 
 class OrderDetailSerializer(serializers.ModelSerializer):
+    product = serializers.PrimaryKeyRelatedField(
+        many=True,
+        queryset=Product.objects.all()
+    )
+
     class Meta:
         model = OrderDetail
         fields = ('order', 'product', 'quantity',)
@@ -52,6 +75,11 @@ class OrderDetailSerializer(serializers.ModelSerializer):
 
 
 class ReviewSerializer(serializers.ModelSerializer):
+    customer = serializers.PrimaryKeyRelatedField(
+        many=True,
+        queryset=Customer.objects.all()
+    )
+
     class Meta:
         model = Review
         fields = ('id', 'customer', 'product', 'description', 'rating',)
