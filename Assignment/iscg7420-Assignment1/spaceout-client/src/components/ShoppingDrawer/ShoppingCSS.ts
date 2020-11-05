@@ -35,7 +35,7 @@ export const useStyles = makeStyles((theme) => ({
 	cardContainer: {
 		maxWidth: 400
 	},
-	restaurantName: {
+	productName: {
 		[theme.breakpoints.down('md')]: {
 			fontSize: '1.5rem'
 		},
