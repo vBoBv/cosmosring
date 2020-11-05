@@ -15,5 +15,5 @@ const requests = {
 };
 
 export const Products = {
-	list: () => requests.getAll('/products')
+	list: () => requests.getAll('/products/')
 };
