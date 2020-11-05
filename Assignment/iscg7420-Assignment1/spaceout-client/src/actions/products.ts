@@ -9,7 +9,7 @@ export interface IProduct {
 	image?: string;
 	description: string;
 	category: number[];
-	discount: string[];
+	discount: number[];
 }
 
 export interface IFetchProducts {
