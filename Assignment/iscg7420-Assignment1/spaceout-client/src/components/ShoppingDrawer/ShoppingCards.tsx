@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import { useStyles } from './ShoppingCSS';
 import { Grid, Card, CardActionArea, CardMedia, Typography, CardContent } from '@material-ui/core';
+import { StoreState } from '../../reducers';
+import { IProduct, fetchProducts } from '../../actions';
 
 import PinDropIcon from '@material-ui/icons/PinDrop';
 import StarsIcon from '@material-ui/icons/Stars';
@@ -8,18 +11,24 @@ import StarsIcon from '@material-ui/icons/Stars';
 import pluto from '../../assets/pluto.png';
 
 const ShoppingCards = () => {
-	const { infoContainer, iconContainer, cardContainer, restaurantName, cardImageContainer } = useStyles();
-	const arrays = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+	const products: IProduct[] = useSelector(({ products }: StoreState) => products, shallowEqual);
+	const dispatch = useDispatch();
 
-	const renderItemCards = arrays.map((item) => {
+	const { infoContainer, iconContainer, cardContainer, productName, cardImageContainer } = useStyles();
+
+	useEffect(() => {
+		dispatch(fetchProducts());
+	}, []);
+
+	const renderItemCards = products.map((product) => {
 		return (
-			<Grid item key={item}>
+			<Grid item key={product.id}>
 				<Card className={cardContainer}>
 					<CardActionArea>
 						<CardMedia component='img' image={pluto} title='' className={cardImageContainer} />
 						<CardContent>
-							<Typography gutterBottom noWrap variant='h5' component='h2' className={restaurantName}>
-								Name
+							<Typography gutterBottom noWrap variant='h5' component='h2' className={productName}>
+								{product.name}
 							</Typography>
 							<Typography
 								gutterBottom
@@ -29,19 +38,14 @@ const ShoppingCards = () => {
 								component='p'
 								className={infoContainer}>
 								<PinDropIcon className={iconContainer} />
-								'Description'
+								{product.description}
 							</Typography>
 							<Typography gutterBottom variant='body2' color='textSecondary' component='p' className={infoContainer}>
 								<StarsIcon className={iconContainer} />
-								'Price'
+								{product.price}
 							</Typography>
 						</CardContent>
 					</CardActionArea>
-					{/* <CardActions>
-						<Button size='small' color='secondary' startIcon={<DynamicFeedIcon />} href=''>
-							More Info
-						</Button>
-					</CardActions> */}
 				</Card>
 			</Grid>
 		);
