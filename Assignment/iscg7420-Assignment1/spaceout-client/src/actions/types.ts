@@ -1,7 +1,11 @@
-import { IFetchProducts } from './products';
+import { IFetchProducts, IFetchProduct, ICreateProduct, IEditProduct, IDeleteProduct } from './products';
 
 export enum ActionTypes {
-	fetchProducts
+	fetchProducts,
+	fetchProduct,
+	createProduct,
+	editProduct,
+	deleteProduct
 }
 
-export type Action = IFetchProducts;
+export type Action = IFetchProducts | IFetchProduct | ICreateProduct | IEditProduct | IDeleteProduct;
