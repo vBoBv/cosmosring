@@ -11,7 +11,7 @@ import StarsIcon from '@material-ui/icons/Stars';
 import pluto from '../../assets/pluto.png';
 
 const ShoppingCards = () => {
-	const products: IProduct[] = useSelector(({ products }: StoreState) => products, shallowEqual);
+	const products: IProduct[] = useSelector(({ products }: StoreState) => Object.values(products), shallowEqual);
 	const dispatch = useDispatch();
 
 	const { infoContainer, iconContainer, cardContainer, productName, cardImageContainer } = useStyles();
@@ -52,9 +52,12 @@ const ShoppingCards = () => {
 	});
 
 	return (
-		<Grid container item justify='flex-start' lg={8} spacing={3}>
-			{renderItemCards}
-		</Grid>
+		<>
+			{console.log(products)}
+			<Grid container item justify='flex-start' lg={8} spacing={3}>
+				{renderItemCards}
+			</Grid>
+		</>
 	);
 };
 
