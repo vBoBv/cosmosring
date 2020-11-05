@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 'ecommerce_app.apps.EcommerceAppConfig',
     'storages',
+    'corsheaders',
     'rest_framework',
     'rest_framework.authtoken',
     'core.apps.CoreConfig',
@@ -51,6 +52,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -209,3 +211,9 @@ sentry_sdk.init(
     # django.contrib.auth) you may enable sending PII data.
     send_default_pii=True
 )
+
+# Cors
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]
+CORS_ORIGIN_ALLOW_ALL = True
