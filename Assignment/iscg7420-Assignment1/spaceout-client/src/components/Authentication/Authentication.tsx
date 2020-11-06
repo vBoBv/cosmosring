@@ -75,7 +75,7 @@ const Authentication = () => {
 		})
 			.then((response) => response.json())
 			.then((response) => {
-				console.log(response.token);
+				window.localStorage.setItem('auth-token', response.token);
 			})
 			.catch((error) => console.error(error));
 	};
