@@ -1,6 +1,5 @@
 import { IProduct, ActionTypes, Action } from '../actions';
 import _ from 'lodash';
-import { actionTypes } from 'redux-form';
 
 // Object-based approach
 export const productsReducer = (state: IProduct = {} as IProduct, action: Action) => {
