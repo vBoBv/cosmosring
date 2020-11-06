@@ -25,8 +25,8 @@ const Authentication = () => {
 	const [isSignInView, setIsSignInView] = useState<boolean>(false);
 	const [isCustomer, setIsCustomer] = useState<boolean>(true);
 
-	const dispatch = useDispatch();
-	const users: ILoginForm = useSelector(({ users }: StoreState) => users, shallowEqual);
+	// const dispatch = useDispatch();
+	// const users: ILoginForm = useSelector(({ users }: StoreState) => users, shallowEqual);
 
 	const handleSignInView = () => {
 		setIsSignInView(!isSignInView);
@@ -76,6 +76,17 @@ const Authentication = () => {
 			.then((response) => response.json())
 			.then((response) => {
 				window.localStorage.setItem('auth-token', response.token);
+				fetch('http://localhost:8000/api/user/profile/', {
+					method: 'GET',
+					headers: {
+						'Content-Type': 'application/json',
+						Authorization: `Token ${window.localStorage.getItem('auth-token')}`
+					}
+				})
+					.then((response) => response.json())
+					.then((response) => {
+						console.log(response);
+					});
 			})
 			.catch((error) => console.error(error));
 	};
