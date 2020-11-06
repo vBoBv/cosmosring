@@ -52,12 +52,9 @@ const ShoppingCards = () => {
 	});
 
 	return (
-		<>
-			{console.log(products)}
-			<Grid container item justify='flex-start' lg={8} spacing={3}>
-				{renderItemCards}
-			</Grid>
-		</>
+		<Grid container item justify='flex-start' lg={8} spacing={3}>
+			{renderItemCards}
+		</Grid>
 	);
 };
 
