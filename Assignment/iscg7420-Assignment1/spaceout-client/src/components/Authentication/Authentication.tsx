@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Grid, Typography, Button, FormControlLabel, Switch } from '@material-ui/core';
 import { useStyles } from './AuthenticationCSS';
-import { useSelector, useDispatch, shallowEqual } from 'react-redux';
+// import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import { ILoginForm, loginUser } from '../../actions';
-import { StoreState } from '../../reducers';
+// import { StoreState } from '../../reducers';
+import history from '../history';
 
 import backgroundVideo from '../../assets/earthVideo.mp4';
 import SignUpForm from './SignUp/SignUpForm';
@@ -86,6 +87,7 @@ const Authentication = () => {
 					.then((response) => response.json())
 					.then((response) => {
 						console.log(response);
+						history.push('/');
 					});
 			})
 			.catch((error) => console.error(error));
