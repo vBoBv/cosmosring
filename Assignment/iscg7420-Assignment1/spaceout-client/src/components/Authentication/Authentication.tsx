@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Grid, Typography, Button, FormControlLabel, Switch } from '@material-ui/core';
 import { useStyles } from './AuthenticationCSS';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import { ILoginForm, loginUser } from '../../actions';
+import { StoreState } from '../../reducers';
 
 import backgroundVideo from '../../assets/earthVideo.mp4';
 import SignUpForm from './SignUp/SignUpForm';
@@ -20,9 +21,12 @@ const Authentication = () => {
 		formItem1_subtitle,
 		switchContainer
 	} = useStyles();
+
 	const [isSignInView, setIsSignInView] = useState<boolean>(false);
 	const [isCustomer, setIsCustomer] = useState<boolean>(true);
+
 	const dispatch = useDispatch();
+	const users: ILoginForm = useSelector(({ users }: StoreState) => users, shallowEqual);
 
 	const handleSignInView = () => {
 		setIsSignInView(!isSignInView);
@@ -62,8 +66,18 @@ const Authentication = () => {
 		);
 	};
 
-	const onSignIn = (formValues: ILoginForm) => {
-		dispatch(loginUser(formValues));
+	const onSignIn = async (formValues: ILoginForm) => {
+		// dispatch(loginUser(formValues));
+		fetch('http://localhost:8000/api/user/token/', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(formValues)
+		})
+			.then((response) => response.json())
+			.then((response) => {
+				console.log(response.token);
+			})
+			.catch((error) => console.error(error));
 	};
 
 	const renderCustomerSignUpContainer = () => {
