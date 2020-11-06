@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Grid, Typography, Button, FormControlLabel, Switch } from '@material-ui/core';
 import { useStyles } from './AuthenticationCSS';
+import { useDispatch } from 'react-redux';
+import { ILoginForm, loginUser } from '../../actions';
+
 import backgroundVideo from '../../assets/earthVideo.mp4';
 import SignUpForm from './SignUp/SignUpForm';
 import SignInForm from './SignIn/SignInForm';
@@ -19,6 +22,7 @@ const Authentication = () => {
 	} = useStyles();
 	const [isSignInView, setIsSignInView] = useState<boolean>(false);
 	const [isCustomer, setIsCustomer] = useState<boolean>(true);
+	const dispatch = useDispatch();
 
 	const handleSignInView = () => {
 		setIsSignInView(!isSignInView);
@@ -58,6 +62,10 @@ const Authentication = () => {
 		);
 	};
 
+	const onSignIn = (formValues: ILoginForm) => {
+		dispatch(loginUser(formValues));
+	};
+
 	const renderCustomerSignUpContainer = () => {
 		return (
 			<Grid container item className={formItem2} justify='center' alignItems='center' direction='column'>
@@ -70,7 +78,7 @@ const Authentication = () => {
 							: 'Create Admin Account'}
 					</Typography>
 				</Grid>
-				{isSignInView ? <SignInForm /> : <SignUpForm isCustomer={isCustomer} />}
+				{isSignInView ? <SignInForm onSignIn={onSignIn} /> : <SignUpForm isCustomer={isCustomer} />}
 			</Grid>
 		);
 	};
