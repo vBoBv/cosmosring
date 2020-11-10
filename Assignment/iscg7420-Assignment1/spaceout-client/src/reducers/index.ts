@@ -1,13 +1,13 @@
 import { combineReducers } from 'redux';
 import { reducer as reduxForm, FormStateMap } from 'redux-form';
-import { ILoginForm, IProduct } from '../actions';
+import { IUser, IProduct } from '../actions';
 import { productsReducer } from './products';
 import { usersReducer } from './users';
 
 export interface StoreState {
 	form: FormStateMap;
 	products: IProduct;
-	users: ILoginForm;
+	users: IUser;
 }
 
 export const reducers = combineReducers<StoreState>({
