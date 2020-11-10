@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { Grid, Typography, Button, FormControlLabel, Switch } from '@material-ui/core';
 import { useStyles } from './AuthenticationCSS';
-// import { useSelector, useDispatch, shallowEqual } from 'react-redux';
-import { ILoginForm, loginUser } from '../../actions';
-// import { StoreState } from '../../reducers';
-import history from '../history';
+import { useSelector, useDispatch, shallowEqual } from 'react-redux';
+import { IUser, loginUser, ILoginForm } from '../../actions';
+import { StoreState } from '../../reducers';
 
 import backgroundVideo from '../../assets/earthVideo.mp4';
 import SignUpForm from './SignUp/SignUpForm';
@@ -26,8 +25,8 @@ const Authentication = () => {
 	const [isSignInView, setIsSignInView] = useState<boolean>(false);
 	const [isCustomer, setIsCustomer] = useState<boolean>(true);
 
-	// const dispatch = useDispatch();
-	// const users: ILoginForm = useSelector(({ users }: StoreState) => users, shallowEqual);
+	const dispatch = useDispatch();
+	const users: IUser = useSelector(({ users }: StoreState) => users, shallowEqual);
 
 	const handleSignInView = () => {
 		setIsSignInView(!isSignInView);
@@ -68,29 +67,29 @@ const Authentication = () => {
 	};
 
 	const onSignIn = async (formValues: ILoginForm) => {
-		// dispatch(loginUser(formValues));
-		fetch('http://localhost:8000/api/user/token/', {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify(formValues)
-		})
-			.then((response) => response.json())
-			.then((response) => {
-				window.localStorage.setItem('auth-token', response.token);
-				fetch('http://localhost:8000/api/user/profile/', {
-					method: 'GET',
-					headers: {
-						'Content-Type': 'application/json',
-						Authorization: `Token ${window.localStorage.getItem('auth-token')}`
-					}
-				})
-					.then((response) => response.json())
-					.then((response) => {
-						console.log(response);
-						history.push('/');
-					});
-			})
-			.catch((error) => console.error(error));
+		dispatch(loginUser(formValues));
+		// fetch('http://localhost:8000/api/user/token/', {
+		// 	method: 'POST',
+		// 	headers: { 'Content-Type': 'application/json' },
+		// 	body: JSON.stringify(formValues)
+		// })
+		// 	.then((response) => response.json())
+		// 	.then((response) => {
+		// 		window.localStorage.setItem('authToken', response.token);
+		// 		fetch('http://localhost:8000/api/user/profile/', {
+		// 			method: 'GET',
+		// 			headers: {
+		// 				'Content-Type': 'application/json',
+		// 				Authorization: `Token ${window.localStorage.getItem('authToken')}`
+		// 			}
+		// 		})
+		// 			.then((response) => response.json())
+		// 			.then((response) => {
+		// 				console.log(response);
+		//
+		// 			});
+		// 	})
+		// 	.catch((error) => console.error(error));
 	};
 
 	const renderCustomerSignUpContainer = () => {
