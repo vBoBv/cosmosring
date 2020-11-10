@@ -1,6 +1,7 @@
 import { Users } from '../apis/users';
 import { Dispatch } from 'redux';
 import { ActionTypes } from './types';
+import history from '../components/history';
 
 export interface ILoginForm {
 	email: string;
@@ -34,5 +35,7 @@ export const loginUser = (formValue: ILoginForm) => {
 			type: ActionTypes.loginUser,
 			payload: data
 		});
+
+		history.push('/');
 	};
 };
