@@ -36,9 +36,9 @@ export const renderSelectField: React.FC<IInputProps> = ({ input, label, meta: {
 			<MenuItem value=''>
 				<em>None</em>
 			</MenuItem>
-			<MenuItem value='Auckland'>Auckland</MenuItem>
-			<MenuItem value='Christchurch'>Christchurch</MenuItem>
-			<MenuItem value='Wellington'>Wellington</MenuItem>
+			<MenuItem value='AKL'>Auckland</MenuItem>
+			<MenuItem value='CHC'>Christchurch</MenuItem>
+			<MenuItem value='WELL'>Wellington</MenuItem>
 		</Select>
 		<FormHelperText>{touched && error}</FormHelperText>
 	</FormControl>
