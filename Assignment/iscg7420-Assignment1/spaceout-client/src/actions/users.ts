@@ -163,5 +163,7 @@ export const signUpOrderManager = ({ email, password, username }: IOrderManagerF
 			type: ActionTypes.signUpOrderManager,
 			payload: data
 		});
+
+		history.push('/');
 	};
 };
