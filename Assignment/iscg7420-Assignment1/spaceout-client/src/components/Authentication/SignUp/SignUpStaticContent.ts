@@ -17,19 +17,18 @@ export const getCustomerStepContent = (stepIndex: number) => {
 
 export const getAccountDetailFields = () => {
 	return [
+		{ name: 'email', label: 'Email' },
 		{ name: 'username', label: 'Username' },
-		{ name: 'password1', label: 'Password' },
-		{ name: 'password2', label: 'Confirm Password' }
+		{ name: 'password', label: 'Password' }
 	];
 };
 
 export const getCustomerPersonalDetailFields = () => {
 	return [
-		{ name: 'email', label: 'Email' },
-		{ name: 'lastName', label: 'Last Name' },
-		{ name: 'firstName', label: 'First Name' },
-		{ name: 'phoneNumber', label: 'Phone Number' },
-		{ name: 'streetAddress', label: 'Street Address' }
+		{ name: 'last_name', label: 'Last Name' },
+		{ name: 'first_name', label: 'First Name' },
+		{ name: 'phone_number', label: 'Phone Number' },
+		{ name: 'street_address', label: 'Street Address' }
 	];
 };
 
@@ -38,7 +37,7 @@ export const getCustomerAddressDetailFields = () => {
 		{ name: 'suburb', label: 'Suburb' },
 		{ name: 'city', label: 'City' },
 		{ name: 'country', label: 'Country' },
-		{ name: 'postCode', label: 'Post Code' }
+		{ name: 'postcode', label: 'Post Code' }
 	];
 };
 
@@ -46,8 +45,7 @@ export const getAdminAccountDetailFields = () => {
 	return [
 		{ name: 'username', label: 'Username' },
 		{ name: 'email', label: 'Email' },
-		{ name: 'password1', label: 'Password' },
-		{ name: 'password2', label: 'Confirm Password' }
+		{ name: 'password', label: 'Password' }
 	];
 };
 
