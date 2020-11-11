@@ -128,6 +128,6 @@ export const signUpCustomer = ({
 			payload: data
 		});
 
-		history.push('/');
+		// history.push('/');
 	};
 };
