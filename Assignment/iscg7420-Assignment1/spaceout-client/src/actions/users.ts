@@ -23,11 +23,9 @@ export interface ICustomerForm {
 }
 
 export interface IOrderManagerForm {
-	user: {
-		email: string;
-		password: string;
-		username: string;
-	};
+	email: string;
+	password: string;
+	username: string;
 }
 
 export interface IToken {
@@ -55,6 +53,14 @@ export interface ICustomer {
 	postcode: number;
 }
 
+export interface IOrderManager {
+	user: {
+		email: string;
+		password: string;
+		username: string;
+	};
+}
+
 export interface ILoginUser {
 	type: ActionTypes.loginUser;
 	payload: IUser;
@@ -65,11 +71,15 @@ export interface ISignUpCustomer {
 	payload: IUser;
 }
 
+export interface ISignUpOrderManager {
+	type: ActionTypes.signUpOrderManager;
+	payload: IUser;
+}
+
 export const loginUser = (formValues: ILoginForm) => {
 	return async (dispatch: Dispatch) => {
 		const { data: responseToken } = await Users.retrieveToken(formValues);
 		const authToken = responseToken.token;
-
 		window.localStorage.setItem('authToken', authToken);
 
 		const { data } = await Users.login();
@@ -96,7 +106,7 @@ export const signUpCustomer = ({
 	country,
 	postcode
 }: ICustomerForm) => {
-	const submittedFormValue = {
+	const submittedFormValues = {
 		user: {
 			email: email,
 			password: password,
@@ -113,7 +123,7 @@ export const signUpCustomer = ({
 	};
 
 	return async (dispatch: Dispatch) => {
-		const { data: customerInfo } = await Users.signUpCustomer(submittedFormValue);
+		const { data: customerInfo } = await Users.signUpCustomer(submittedFormValues);
 		const { data: responseToken } = await Users.retrieveToken({
 			email: customerInfo.user.email,
 			password: password
@@ -127,7 +137,31 @@ export const signUpCustomer = ({
 			type: ActionTypes.signUpCustomer,
 			payload: data
 		});
+	};
+};
 
-		// history.push('/');
+export const signUpOrderManager = ({ email, password, username }: IOrderManagerForm) => {
+	const submittedFormValues = {
+		user: {
+			email: email,
+			password: password,
+			username: username
+		}
+	};
+	return async (dispatch: Dispatch) => {
+		const { data: orderManagerInfo } = await Users.signUpOrderManager(submittedFormValues);
+		const { data: responseToken } = await Users.retrieveToken({
+			email: orderManagerInfo.user.email,
+			password: password
+		});
+		const authToken = responseToken.token;
+		window.localStorage.setItem('authToken', authToken);
+
+		const { data } = await Users.login();
+
+		dispatch<ISignUpOrderManager>({
+			type: ActionTypes.signUpOrderManager,
+			payload: data
+		});
 	};
 };
