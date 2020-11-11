@@ -1,5 +1,5 @@
 import { IFetchProducts, IFetchProduct, ICreateProduct, IEditProduct, IDeleteProduct } from './products';
-import { ILoginUser } from './users';
+import { ILoginUser, ISignUpCustomer } from './users';
 
 export enum ActionTypes {
 	fetchProducts,
@@ -7,7 +7,15 @@ export enum ActionTypes {
 	createProduct,
 	editProduct,
 	deleteProduct,
-	loginUser
+	loginUser,
+	signUpCustomer
 }
 
-export type Action = IFetchProducts | IFetchProduct | ICreateProduct | IEditProduct | IDeleteProduct | ILoginUser;
+export type Action =
+	| IFetchProducts
+	| IFetchProduct
+	| ICreateProduct
+	| IEditProduct
+	| IDeleteProduct
+	| ILoginUser
+	| ISignUpCustomer;
