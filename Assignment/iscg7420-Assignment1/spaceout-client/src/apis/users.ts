@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ILoginForm, IToken, IUser } from '../actions/users';
+import { ILoginForm, IOrderManagerForm, IToken, IUser, ICustomer } from '../actions/users';
 
 const users = axios.create({
 	baseURL:
@@ -19,10 +19,15 @@ users.interceptors.request.use(
 
 const requests = {
 	createToken: (url: string, formValues: ILoginForm) => users.post<IToken>(url, formValues),
-	signIn: (url: string) => users.get<IUser>(url)
+	signIn: (url: string) => users.get<IUser>(url),
+	signUpCustomer: (url: string, formValues: ICustomer) => users.post<ICustomer>(url, { ...formValues }),
+	signUpOrderManager: (url: string, formValues: IOrderManagerForm) => users.post<IUser>(url, { ...formValues })
 };
 
 export const Users = {
 	retrieveToken: (formValues: ILoginForm) => requests.createToken('/token/', { ...formValues }),
-	login: () => requests.signIn('/profile/')
+	login: () => requests.signIn('/profile/'),
+	signUpCustomer: (formValues: ICustomer) => requests.signUpCustomer('/create_customer/', { ...formValues }),
+	signUpOrderManager: (formValues: IOrderManagerForm) =>
+		requests.signUpOrderManager('/create_order_manager/', { ...formValues })
 };
