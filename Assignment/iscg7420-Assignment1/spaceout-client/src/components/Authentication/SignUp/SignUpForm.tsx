@@ -131,7 +131,6 @@ const SignUpForm: React.FC<InjectedFormProps<{}, ISignUpFormProps> & ISignUpForm
 	};
 
 	const renderSignUpForm = (isCustomer: boolean) => {
-		console.log(activeStep, customerSteps.length - 1);
 		if (isCustomer) {
 			return (
 				<form>
