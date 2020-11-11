@@ -19,12 +19,18 @@ import EmailIcon from '@material-ui/icons/Email';
 import PhoneIcon from '@material-ui/icons/Phone';
 import HomeIcon from '@material-ui/icons/Home';
 import PersonIcon from '@material-ui/icons/Person';
+import { ICustomerForm } from '../../../actions';
 
 interface ISignUpFormProps {
 	isCustomer: boolean;
+	onSignUp: (formValues: ICustomerForm) => void;
 }
 
-const SignUpForm: React.FC<InjectedFormProps<{}, ISignUpFormProps> & ISignUpFormProps> = ({ isCustomer }) => {
+const SignUpForm: React.FC<InjectedFormProps<{}, ISignUpFormProps> & ISignUpFormProps> = ({
+	isCustomer,
+	handleSubmit,
+	onSignUp
+}) => {
 	const [activeStep, setActiveStep] = useState<number>(0);
 	const { instructions, fieldContainer, fieldItem, buttonGroup } = useStyles();
 
@@ -119,10 +125,16 @@ const SignUpForm: React.FC<InjectedFormProps<{}, ISignUpFormProps> & ISignUpForm
 		}
 	};
 
+	const onSubmit = (formValues: any) => {
+		onSignUp(formValues);
+		handleNext();
+	};
+
 	const renderSignUpForm = (isCustomer: boolean) => {
+		console.log(activeStep, customerSteps.length - 1);
 		if (isCustomer) {
 			return (
-				<div>
+				<form>
 					<Typography className={instructions} variant='body2'>
 						{getCustomerStepContent(activeStep)}
 					</Typography>
@@ -136,18 +148,24 @@ const SignUpForm: React.FC<InjectedFormProps<{}, ISignUpFormProps> & ISignUpForm
 							style={activeStep === 0 ? { visibility: 'hidden' } : { visibility: 'visible' }}>
 							Back
 						</Button>
-						<Button variant='contained' color='secondary' onClick={handleNext}>
-							{activeStep === customerSteps.length - 1 ? 'Sign Up' : 'Next'}
-						</Button>
+						{activeStep === customerSteps.length - 1 ? (
+							<Button variant='contained' color='secondary' onClick={handleSubmit(onSubmit)}>
+								Sign Up
+							</Button>
+						) : (
+							<Button variant='contained' color='secondary' onClick={handleNext}>
+								Next
+							</Button>
+						)}
 					</Grid>
-				</div>
+				</form>
 			);
 		} else {
 			return (
 				<div>
 					{renderAdminAccountDetailFields}
 					<Grid item>
-						<Button variant='contained' color='secondary'>
+						<Button variant='contained' color='secondary' type='submit'>
 							Sign Up
 						</Button>
 					</Grid>
