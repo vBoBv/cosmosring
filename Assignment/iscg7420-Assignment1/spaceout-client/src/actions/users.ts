@@ -93,40 +93,21 @@ export const loginUser = (formValues: ILoginForm) => {
 	};
 };
 
-export const signUpCustomer = ({
-	email,
-	password,
-	username,
-	first_name,
-	last_name,
-	phone_number,
-	street_address,
-	suburb,
-	city,
-	country,
-	postcode
-}: ICustomerForm) => {
+export const signUpCustomer = ({ email, password, username, ...rest }: ICustomerForm) => {
 	const submittedFormValues = {
 		user: {
-			email: email,
-			password: password,
-			username: username
+			email,
+			password,
+			username
 		},
-		first_name: first_name,
-		last_name: last_name,
-		phone_number: phone_number,
-		street_address: street_address,
-		suburb: suburb,
-		city: city,
-		country: country,
-		postcode: postcode
+		...rest
 	};
 
 	return async (dispatch: Dispatch) => {
 		const { data: customerInfo } = await Users.signUpCustomer(submittedFormValues);
 		const { data: responseToken } = await Users.retrieveToken({
 			email: customerInfo.user.email,
-			password: password
+			password
 		});
 		const authToken = responseToken.token;
 		window.localStorage.setItem('authToken', authToken);
@@ -143,16 +124,16 @@ export const signUpCustomer = ({
 export const signUpOrderManager = ({ email, password, username }: IOrderManagerForm) => {
 	const submittedFormValues = {
 		user: {
-			email: email,
-			password: password,
-			username: username
+			email,
+			password,
+			username
 		}
 	};
 	return async (dispatch: Dispatch) => {
 		const { data: orderManagerInfo } = await Users.signUpOrderManager(submittedFormValues);
 		const { data: responseToken } = await Users.retrieveToken({
 			email: orderManagerInfo.user.email,
-			password: password
+			password
 		});
 		const authToken = responseToken.token;
 		window.localStorage.setItem('authToken', authToken);
