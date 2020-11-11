@@ -19,11 +19,10 @@ import EmailIcon from '@material-ui/icons/Email';
 import PhoneIcon from '@material-ui/icons/Phone';
 import HomeIcon from '@material-ui/icons/Home';
 import PersonIcon from '@material-ui/icons/Person';
-import { ICustomerForm } from '../../../actions';
 
 interface ISignUpFormProps {
 	isCustomer: boolean;
-	onSignUp: (formValues: ICustomerForm) => void;
+	onSignUp: (formValues: any) => void;
 }
 
 const SignUpForm: React.FC<InjectedFormProps<{}, ISignUpFormProps> & ISignUpFormProps> = ({
@@ -126,8 +125,12 @@ const SignUpForm: React.FC<InjectedFormProps<{}, ISignUpFormProps> & ISignUpForm
 	};
 
 	const onSubmit = (formValues: any) => {
-		onSignUp(formValues);
-		handleNext();
+		if (isCustomer) {
+			onSignUp(formValues);
+			handleNext();
+		} else {
+			onSignUp(formValues);
+		}
 	};
 
 	const renderSignUpForm = (isCustomer: boolean) => {
@@ -161,14 +164,14 @@ const SignUpForm: React.FC<InjectedFormProps<{}, ISignUpFormProps> & ISignUpForm
 			);
 		} else {
 			return (
-				<div>
+				<form>
 					{renderAdminAccountDetailFields}
 					<Grid item>
-						<Button variant='contained' color='secondary' type='submit'>
+						<Button variant='contained' color='secondary' onClick={handleSubmit(onSubmit)}>
 							Sign Up
 						</Button>
 					</Grid>
-				</div>
+				</form>
 			);
 		}
 	};
@@ -189,7 +192,7 @@ const SignUpForm: React.FC<InjectedFormProps<{}, ISignUpFormProps> & ISignUpForm
 		<>
 			{renderMenuStepper(isCustomer)}
 			<Grid item className={fieldContainer}>
-				{activeStep === customerSteps.length ? (
+				{activeStep === customerSteps.length && isCustomer ? (
 					<div>
 						<Typography className={instructions}>You have successfully signed up!</Typography>
 						<Button onClick={handleReset} variant='outlined' color='secondary'>
