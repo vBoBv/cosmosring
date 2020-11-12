@@ -8,6 +8,17 @@ const discounts = axios.create({
 			: 'http://localhost:8000/api/ecommerce/'
 });
 
+discounts.interceptors.request.use(
+	(config) => {
+		const authToken = window.localStorage.getItem('authToken');
+		if (authToken) config.headers.Authorization = `Token ${authToken}`;
+		return config;
+	},
+	(error) => {
+		return Promise.reject(error);
+	}
+);
+
 const requests = {
 	getAll: (url: string) => discounts.get<IDiscount[]>(url),
 	get: (url: string) => discounts.get<IDiscount>(url),
