@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { IDiscount } from '../actions/discounts';
+import { IDiscount, IDiscountForm } from '../actions/discounts';
 
 const discounts = axios.create({
 	baseURL:
@@ -11,15 +11,15 @@ const discounts = axios.create({
 const requests = {
 	getAll: (url: string) => discounts.get<IDiscount[]>(url),
 	get: (url: string) => discounts.get<IDiscount>(url),
-	create: (url: string, formValues: IDiscount) => discounts.post<IDiscount>(url, formValues),
-	edit: (url: string, formValues: IDiscount) => discounts.patch<IDiscount>(url, formValues),
+	create: (url: string, formValues: IDiscountForm) => discounts.post<IDiscount>(url, formValues),
+	edit: (url: string, formValues: IDiscountForm) => discounts.patch<IDiscount>(url, formValues),
 	delete: (url: string) => discounts.delete<number>(url)
 };
 
 export const Discounts = {
 	list: () => requests.getAll('/discounts/'),
 	details: (id: number) => requests.get(`/discounts/${id}/`),
-	create: (formValues: IDiscount) => requests.create('/discounts/', { ...formValues }),
-	edit: (id: number, formValues: IDiscount) => requests.edit(`/discounts/${id}/`, formValues),
+	create: (formValues: IDiscountForm) => requests.create('/discounts/', { ...formValues }),
+	edit: (id: number, formValues: IDiscountForm) => requests.edit(`/discounts/${id}/`, formValues),
 	delete: (id: number) => requests.delete(`/discounts/${id}/`)
 };
