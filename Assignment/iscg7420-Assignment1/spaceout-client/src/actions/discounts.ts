@@ -3,6 +3,11 @@ import { Dispatch } from 'redux';
 import { ActionTypes } from './types';
 import history from '../components/history';
 
+export interface IDiscountForm {
+	discount_code: string;
+	is_expired?: boolean;
+}
+
 export interface IDiscount {
 	id: number;
 	discount_code: string;
@@ -51,6 +56,17 @@ export const fetchDiscount = (id: number) => {
 
 		dispatch<IFetchDiscount>({
 			type: ActionTypes.fetchDiscount,
+			payload: data
+		});
+	};
+};
+
+export const createDiscount = (formValue: IDiscountForm) => {
+	return async (dispatch: Dispatch) => {
+		const { data } = await Discounts.create(formValue);
+
+		dispatch<ICreateDiscount>({
+			type: ActionTypes.createDiscount,
 			payload: data
 		});
 	};
