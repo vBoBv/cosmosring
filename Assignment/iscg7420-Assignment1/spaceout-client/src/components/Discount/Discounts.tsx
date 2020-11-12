@@ -6,12 +6,12 @@ import { StoreState } from '../../reducers';
 import { IDiscount } from '../../actions';
 import { fetchDiscounts } from '../../actions/discounts';
 
-interface DiscountsProps {
+interface IDiscountsProps {
 	discounts: IDiscount[];
 	fetchDiscounts: Function;
 }
 
-class Discounts extends Component<DiscountsProps> {
+class Discounts extends Component<IDiscountsProps> {
 	componentDidMount() {
 		this.props.fetchDiscounts();
 	}
