@@ -18,8 +18,8 @@ const requests = {
 
 export const Discounts = {
 	list: () => requests.getAll('/discounts/'),
-	details: (id: number) => requests.get(`/discounts/${id}`),
+	details: (id: number) => requests.get(`/discounts/${id}/`),
 	create: (formValues: IDiscount) => requests.create('/discounts/', { ...formValues }),
-	edit: (id: number, formValues: IDiscount) => requests.edit(`/discounts/${id}`, formValues),
-	delete: (id: number) => requests.delete(`/discounts/${id}`)
+	edit: (id: number, formValues: IDiscount) => requests.edit(`/discounts/${id}/`, formValues),
+	delete: (id: number) => requests.delete(`/discounts/${id}/`)
 };
