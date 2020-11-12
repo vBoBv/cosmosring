@@ -14,12 +14,19 @@ import ConfirmationNumberIcon from '@material-ui/icons/ConfirmationNumber';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { deleteDiscount } from '../../actions/discounts';
 
 interface IDiscountListProps {
 	discounts: IDiscount[];
+	deleteDiscount: (id: number) => void;
 }
 
 class DiscountList extends Component<IDiscountListProps> {
+	onDelete = (id: number) => {
+		this.props.deleteDiscount(id);
+	};
+
 	renderDiscounts() {
 		return this.props.discounts.map(({ id, discount_code }) => {
 			return (
@@ -38,7 +45,8 @@ class DiscountList extends Component<IDiscountListProps> {
 								<EditIcon />
 							</IconButton>
 						</Link>
-						<IconButton edge='end' color='secondary'>
+
+						<IconButton edge='end' color='secondary' onClick={() => this.onDelete(id)}>
 							<DeleteIcon />
 						</IconButton>
 					</ListItemSecondaryAction>
@@ -58,4 +66,4 @@ class DiscountList extends Component<IDiscountListProps> {
 	}
 }
 
-export default DiscountList;
+export default connect(null, { deleteDiscount })(DiscountList);
