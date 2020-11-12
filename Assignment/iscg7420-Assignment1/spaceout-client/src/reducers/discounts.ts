@@ -9,6 +9,8 @@ export const discountsReducer = (state: IDiscount = {} as IDiscount, action: Act
 			return { ...state, [action.payload.id]: action.payload };
 		case ActionTypes.createDiscount:
 			return { ...state, [action.payload.id]: action.payload };
+		case ActionTypes.editDiscount:
+			return { ...state, [action.payload.id]: action.payload };
 		default:
 			return state;
 	}
