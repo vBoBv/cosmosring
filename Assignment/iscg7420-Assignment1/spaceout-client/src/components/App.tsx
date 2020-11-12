@@ -15,6 +15,7 @@ import DiscountEdit from './Discount/DiscountEdit';
 
 import ProductShow from './ShoppingDrawer/Product/ProductShow';
 import ProductCreate from './ShoppingDrawer/Product/ProductCreate';
+import ProductEdit from './ShoppingDrawer/Product/ProductEdit';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import history from './history';
@@ -34,6 +35,7 @@ const App = () => {
 					<Route exact path='/authentication' component={Authentication} />
 
 					<Route exact path='/products/new' component={ProductCreate} />
+					<Route exact path='/products/edit/:id' component={ProductEdit} />
 					<Route exact path='/products/:id' component={ProductShow} />
 
 					<Route exact path='/categories' component={Categories} />
