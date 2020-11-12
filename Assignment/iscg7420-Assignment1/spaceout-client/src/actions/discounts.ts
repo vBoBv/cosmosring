@@ -86,3 +86,14 @@ export const editDiscount = (id: number, formValue: IDiscountForm) => {
 		history.push(`/discounts/${id}`);
 	};
 };
+
+export const deleteDiscount = (id: number) => {
+	return async (dispatch: Dispatch) => {
+		await Discounts.delete(id);
+
+		dispatch<IDeleteDiscount>({
+			type: ActionTypes.deleteDiscount,
+			payload: id
+		});
+	};
+};
