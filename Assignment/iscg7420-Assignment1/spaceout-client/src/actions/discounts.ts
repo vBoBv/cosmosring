@@ -4,7 +4,7 @@ import { ActionTypes } from './types';
 import history from '../components/history';
 
 export interface IDiscount {
-	id?: number;
+	id: number;
 	discount_code: string;
 	is_expired: boolean;
 }
@@ -40,6 +40,17 @@ export const fetchDiscounts = () => {
 
 		dispatch<IFetchDiscounts>({
 			type: ActionTypes.fetchDiscounts,
+			payload: data
+		});
+	};
+};
+
+export const fetchDiscount = (id: number) => {
+	return async (dispatch: Dispatch) => {
+		const { data } = await Discounts.details(id);
+
+		dispatch<IFetchDiscount>({
+			type: ActionTypes.fetchDiscount,
 			payload: data
 		});
 	};
