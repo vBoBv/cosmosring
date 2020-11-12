@@ -125,8 +125,8 @@ class Product(models.Model):
     price = models.FloatField()
     image = models.ImageField(null=True, blank=True)
     description = models.TextField(blank=True)
-    category = models.ManyToManyField('Category')
-    discount = models.ManyToManyField('Discount', blank=True)
+    category = models.ManyToManyField('Category', null=True, blank=True)
+    discount = models.ManyToManyField('Discount', null=True, blank=True)
 
     def __str__(self):
         return self.name
