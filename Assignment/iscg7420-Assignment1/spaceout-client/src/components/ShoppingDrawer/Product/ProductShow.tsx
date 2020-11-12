@@ -74,12 +74,7 @@ const ProductShow: React.FC<RouteComponentProps<IRouteComponentMatchParamProps>>
 			);
 	};
 
-	return (
-		<>
-			{renderProduct()}
-			<div>Hi</div>
-		</>
-	);
+	return <>{renderProduct()}</>;
 };
 
 export default ProductShow;
