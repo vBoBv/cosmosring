@@ -2,14 +2,23 @@ import { Products } from '../apis/products';
 import { Dispatch } from 'redux';
 import { ActionTypes } from './types';
 
+export interface IProductForm {
+	name: string;
+	price: number;
+	image?: string;
+	description: string;
+	category?: number[];
+	discount?: number[];
+}
+
 export interface IProduct {
 	id: number;
 	name: string;
 	price: number;
 	image?: string;
 	description: string;
-	category: number[];
-	discount: number[];
+	category?: number[];
+	discount?: number[];
 }
 
 export interface IFetchProducts {
@@ -59,9 +68,9 @@ export const fetchProduct = (id: number) => {
 	};
 };
 
-export const createProduct = (formValue: any) => {
+export const createProduct = (formValues: IProductForm) => {
 	return async (dispatch: Dispatch) => {
-		const { data } = await Products.create(formValue);
+		const { data } = await Products.create(formValues);
 
 		dispatch<ICreateProduct>({
 			type: ActionTypes.createProduct,
@@ -70,9 +79,9 @@ export const createProduct = (formValue: any) => {
 	};
 };
 
-export const editProduct = (id: number, formValue: any) => {
+export const editProduct = (id: number, formValues: IProductForm) => {
 	return async (dispatch: Dispatch) => {
-		const { data } = await Products.edit(id, formValue);
+		const { data } = await Products.edit(id, formValues);
 
 		dispatch<IEditProduct>({
 			type: ActionTypes.editProduct,
