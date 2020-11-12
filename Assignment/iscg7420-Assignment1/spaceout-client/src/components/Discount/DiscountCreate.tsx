@@ -1,9 +1,25 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { createDiscount } from '../../actions';
+import DiscountForm from './DiscountForm';
 
-class DiscountCreate extends Component {
+interface IDiscountCreateProps {
+	createDiscount: (formValues: any) => void;
+}
+
+class DiscountCreate extends Component<IDiscountCreateProps> {
+	onSubmit = (formValues: any) => {
+		this.props.createDiscount(formValues);
+	};
+
 	render() {
-		return <div>DiscountCreate</div>;
+		return (
+			<div style={{ backgroundColor: 'black', paddingTop: '5rem' }}>
+				<h1>Create Discount</h1>
+				<DiscountForm onSubmit={this.onSubmit} />
+			</div>
+		);
 	}
 }
 
-export default DiscountCreate;
+export default connect(null, { createDiscount })(DiscountCreate);
