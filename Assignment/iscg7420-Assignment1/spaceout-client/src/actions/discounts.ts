@@ -69,5 +69,7 @@ export const createDiscount = (formValue: IDiscountForm) => {
 			type: ActionTypes.createDiscount,
 			payload: data
 		});
+
+		history.push('/discounts');
 	};
 };
