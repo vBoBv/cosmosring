@@ -2,12 +2,15 @@ import React from 'react';
 import Home from './Home/Home';
 import Authentication from './Authentication/Authentication';
 import NavigationBar from './NavigationBar/NavigationBar';
+
 import Categories from './Category/Categories';
 import CategoryShow from './Category/CategoryShow';
 import CategoryCreate from './Category/CategoryCreate';
 import CategoryEdit from './Category/CategoryEdit';
+
 import Discount from './Discount/Discounts';
 import DiscountShow from './Discount/DiscountShow';
+import DiscountCreate from './Discount/DiscountCreate';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import history from './history';
@@ -30,6 +33,7 @@ const App = () => {
 					<Route exact path='/categories/edit/:id' component={CategoryEdit} />
 					<Route exact path='/categories/:id' component={CategoryShow} />
 					<Route exact path='/discounts' component={Discount} />
+					<Route exact path='/discounts/new' component={DiscountCreate} />
 					<Route exact path='/discounts/:id' component={DiscountShow} />
 				</Switch>
 			</Router>
