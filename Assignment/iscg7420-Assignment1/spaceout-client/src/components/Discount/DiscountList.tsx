@@ -12,6 +12,8 @@ import {
 } from '@material-ui/core';
 import ConfirmationNumberIcon from '@material-ui/icons/ConfirmationNumber';
 import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
+import { Link } from 'react-router-dom';
 
 interface IDiscountListProps {
 	discounts: IDiscount[];
@@ -27,9 +29,14 @@ class DiscountList extends Component<IDiscountListProps> {
 							<ConfirmationNumberIcon />
 						</Avatar>
 					</ListItemAvatar>
-					<ListItemText primary={discount_code} />
+					<Link to={`/discounts/${id}`} style={{ textDecoration: 'none', color: 'white' }}>
+						<ListItemText primary={discount_code} />
+					</Link>
 					<ListItemSecondaryAction>
-						<IconButton edge='end' aria-label='delete'>
+						<IconButton edge='start' color='primary'>
+							<EditIcon />
+						</IconButton>
+						<IconButton edge='end' color='secondary'>
 							<DeleteIcon />
 						</IconButton>
 					</ListItemSecondaryAction>
