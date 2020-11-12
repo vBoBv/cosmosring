@@ -41,36 +41,56 @@ export interface IDeleteDiscount {
 
 export const fetchDiscounts = () => {
 	return async (dispatch: Dispatch) => {
-		const { data } = await Discounts.list();
-
-		dispatch<IFetchDiscounts>({
-			type: ActionTypes.fetchDiscounts,
-			payload: data
-		});
+		try {
+			const { data } = await Discounts.list();
+			dispatch<IFetchDiscounts>({
+				type: ActionTypes.fetchDiscounts,
+				payload: data
+			});
+		} catch (error) {
+			if (error.response.status === 401) {
+				history.push('/authentication');
+				alert('Please sign in to access Discount information!');
+			}
+		}
 	};
 };
 
 export const fetchDiscount = (id: number) => {
 	return async (dispatch: Dispatch) => {
-		const { data } = await Discounts.details(id);
+		try {
+			const { data } = await Discounts.details(id);
 
-		dispatch<IFetchDiscount>({
-			type: ActionTypes.fetchDiscount,
-			payload: data
-		});
+			dispatch<IFetchDiscount>({
+				type: ActionTypes.fetchDiscount,
+				payload: data
+			});
+		} catch (error) {
+			if (error.response.status === 401) {
+				history.push('/authentication');
+				alert('Please sign in to access Discount information!');
+			}
+		}
 	};
 };
 
 export const createDiscount = (formValue: IDiscountForm) => {
 	return async (dispatch: Dispatch) => {
-		const { data } = await Discounts.create(formValue);
+		try {
+			const { data } = await Discounts.create(formValue);
 
-		dispatch<ICreateDiscount>({
-			type: ActionTypes.createDiscount,
-			payload: data
-		});
+			dispatch<ICreateDiscount>({
+				type: ActionTypes.createDiscount,
+				payload: data
+			});
 
-		history.push('/discounts');
+			history.push('/discounts');
+		} catch (error) {
+			if (error.response.status === 401) {
+				history.push('/authentication');
+				alert('Please sign in to access Discount information!');
+			}
+		}
 	};
 };
 
