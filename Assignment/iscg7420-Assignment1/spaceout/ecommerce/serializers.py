@@ -49,7 +49,7 @@ class CategorySerializer(serializers.ModelSerializer):
 class ProductSerializer(serializers.ModelSerializer):
     category = serializers.PrimaryKeyRelatedField(
         many=True,
-        queryset=OrderManager.objects.all()
+        queryset=Category.objects.all()
     )
     discount = serializers.PrimaryKeyRelatedField(
         many=True,
