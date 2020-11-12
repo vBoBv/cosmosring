@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { IProduct } from '../actions/products';
+import { IProductForm, IProduct } from '../actions/products';
 
 const products = axios.create({
 	baseURL:
@@ -11,15 +11,15 @@ const products = axios.create({
 const requests = {
 	getAll: (url: string) => products.get<IProduct[]>(url),
 	get: (url: string) => products.get<IProduct>(url),
-	create: (url: string, formValues: any) => products.post<IProduct>(url, formValues),
-	edit: (url: string, formValues: any) => products.patch<IProduct>(url, formValues),
+	create: (url: string, formValues: IProductForm) => products.post<IProduct>(url, formValues),
+	edit: (url: string, formValues: IProductForm) => products.patch<IProduct>(url, formValues),
 	delete: (url: string) => products.delete<number>(url)
 };
 
 export const Products = {
 	list: () => requests.getAll('/products/'),
-	details: (id: number) => requests.get(`/products/${id}`),
-	create: (formValues: any) => requests.create('/products/', { ...formValues }),
-	edit: (id: number, formValues: any) => requests.edit(`/products/${id}`, formValues),
-	delete: (id: number) => requests.delete(`/products/${id}`)
+	details: (id: number) => requests.get(`/products/${id}/`),
+	create: (formValues: IProductForm) => requests.create('/products/', { ...formValues }),
+	edit: (id: number, formValues: IProductForm) => requests.edit(`/products/${id}/`, formValues),
+	delete: (id: number) => requests.delete(`/products/${id}/`)
 };
