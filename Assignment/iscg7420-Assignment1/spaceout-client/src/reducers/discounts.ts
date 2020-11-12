@@ -11,6 +11,8 @@ export const discountsReducer = (state: IDiscount = {} as IDiscount, action: Act
 			return { ...state, [action.payload.id]: action.payload };
 		case ActionTypes.editDiscount:
 			return { ...state, [action.payload.id]: action.payload };
+		case ActionTypes.deleteDiscount:
+			return _.omit(state, action.payload);
 		default:
 			return state;
 	}
