@@ -11,6 +11,7 @@ import CategoryEdit from './Category/CategoryEdit';
 import Discount from './Discount/Discounts';
 import DiscountShow from './Discount/DiscountShow';
 import DiscountCreate from './Discount/DiscountCreate';
+import DiscountEdit from './Discount/DiscountEdit';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import history from './history';
@@ -28,12 +29,15 @@ const App = () => {
 				<Switch>
 					<Route exact path='/' component={Home} />
 					<Route exact path='/authentication' component={Authentication} />
+
 					<Route exact path='/categories' component={Categories} />
 					<Route exact path='/categories/new' component={CategoryCreate} />
 					<Route exact path='/categories/edit/:id' component={CategoryEdit} />
 					<Route exact path='/categories/:id' component={CategoryShow} />
+
 					<Route exact path='/discounts' component={Discount} />
 					<Route exact path='/discounts/new' component={DiscountCreate} />
+					<Route exact path='/discounts/edit/:id' component={DiscountEdit} />
 					<Route exact path='/discounts/:id' component={DiscountShow} />
 				</Switch>
 			</Router>
