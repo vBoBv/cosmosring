@@ -49,6 +49,8 @@ class OrderViewSet(BaseEcommerceViewSet):
 class DiscountViewSet(viewsets.ModelViewSet):
     queryset = Discount.objects.all()
     serializer_class = serializers.DiscountSerializer
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
 
     # def get_queryset(self):
     #     return self.queryset.filter(customer__user=self.request.user)
