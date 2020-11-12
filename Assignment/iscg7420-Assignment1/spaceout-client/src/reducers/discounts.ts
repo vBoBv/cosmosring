@@ -7,6 +7,8 @@ export const discountsReducer = (state: IDiscount = {} as IDiscount, action: Act
 			return { ...state, ..._.mapKeys(action.payload, 'id') };
 		case ActionTypes.fetchDiscount:
 			return { ...state, [action.payload.id]: action.payload };
+		case ActionTypes.createDiscount:
+			return { ...state, [action.payload.id]: action.payload };
 		default:
 			return state;
 	}
