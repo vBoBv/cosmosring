@@ -18,7 +18,7 @@ const ShoppingCards = () => {
 
 	useEffect(() => {
 		dispatch(fetchProducts());
-	}, []);
+	}, [dispatch]);
 
 	const renderItemCards = products.map((product) => {
 		return (
