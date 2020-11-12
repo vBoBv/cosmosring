@@ -50,6 +50,7 @@ export interface IDeleteProduct {
 export const fetchProducts = () => {
 	return async (dispatch: Dispatch) => {
 		const { data } = await Products.list();
+		sessionStorage.setItem('products', JSON.stringify(data));
 
 		dispatch<IFetchProducts>({
 			type: ActionTypes.fetchProducts,
