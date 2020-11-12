@@ -82,5 +82,7 @@ export const editDiscount = (id: number, formValue: IDiscountForm) => {
 			type: ActionTypes.editDiscount,
 			payload: data
 		});
+
+		history.push(`/discounts/${id}`);
 	};
 };
