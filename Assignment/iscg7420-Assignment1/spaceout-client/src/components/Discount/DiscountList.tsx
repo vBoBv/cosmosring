@@ -33,9 +33,11 @@ class DiscountList extends Component<IDiscountListProps> {
 						<ListItemText primary={discount_code} />
 					</Link>
 					<ListItemSecondaryAction>
-						<IconButton edge='start' color='primary'>
-							<EditIcon />
-						</IconButton>
+						<Link to={`/discounts/edit/${id}`} style={{ textDecoration: 'none' }}>
+							<IconButton edge='start' color='primary'>
+								<EditIcon />
+							</IconButton>
+						</Link>
 						<IconButton edge='end' color='secondary'>
 							<DeleteIcon />
 						</IconButton>
