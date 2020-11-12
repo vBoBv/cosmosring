@@ -8,7 +8,7 @@ import { fetchDiscounts } from '../../actions/discounts';
 
 interface IDiscountsProps {
 	discounts: IDiscount[];
-	fetchDiscounts: Function;
+	fetchDiscounts: () => void;
 }
 
 class Discounts extends Component<IDiscountsProps> {
