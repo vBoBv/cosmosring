@@ -61,6 +61,9 @@ const ProductShow: React.FC<RouteComponentProps<IRouteComponentMatchParamProps>>
 						<h1>{product.name}</h1>
 					</Grid>
 					<Grid item>
+						<h2>{product.description}</h2>
+					</Grid>
+					<Grid item>
 						<h3>${product.price}</h3>
 					</Grid>
 					<Grid item>
