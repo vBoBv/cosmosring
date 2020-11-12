@@ -1,6 +1,7 @@
 import { Products } from '../apis/products';
 import { Dispatch } from 'redux';
 import { ActionTypes } from './types';
+import history from '../components/history';
 
 export interface IProductForm {
 	name: string;
@@ -76,6 +77,8 @@ export const createProduct = (formValues: IProductForm) => {
 			type: ActionTypes.createProduct,
 			payload: data
 		});
+
+		history.push('/products');
 	};
 };
 
@@ -87,6 +90,8 @@ export const editProduct = (id: number, formValues: IProductForm) => {
 			type: ActionTypes.editProduct,
 			payload: data
 		});
+
+		history.push(`/products/${id}`);
 	};
 };
 
