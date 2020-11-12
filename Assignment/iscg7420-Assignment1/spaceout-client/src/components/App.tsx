@@ -13,6 +13,8 @@ import DiscountShow from './Discount/DiscountShow';
 import DiscountCreate from './Discount/DiscountCreate';
 import DiscountEdit from './Discount/DiscountEdit';
 
+import ProductShow from './ShoppingDrawer/Product/ProductShow';
+
 import CssBaseline from '@material-ui/core/CssBaseline';
 import history from './history';
 
@@ -29,6 +31,8 @@ const App = () => {
 				<Switch>
 					<Route exact path='/' component={Home} />
 					<Route exact path='/authentication' component={Authentication} />
+
+					<Route exact path='/products/:id' component={ProductShow} />
 
 					<Route exact path='/categories' component={Categories} />
 					<Route exact path='/categories/new' component={CategoryCreate} />
