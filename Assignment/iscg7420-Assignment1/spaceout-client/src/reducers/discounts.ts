@@ -5,6 +5,8 @@ export const discountsReducer = (state: IDiscount = {} as IDiscount, action: Act
 	switch (action.type) {
 		case ActionTypes.fetchDiscounts:
 			return { ...state, ..._.mapKeys(action.payload, 'id') };
+		case ActionTypes.fetchDiscount:
+			return { ...state, [action.payload.id]: action.payload };
 		default:
 			return state;
 	}
