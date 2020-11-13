@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Grid, Button } from '@material-ui/core';
 import { Field, reduxForm, InjectedFormProps } from 'redux-form';
 import { getProductFields } from './ProductFormStaticContent';

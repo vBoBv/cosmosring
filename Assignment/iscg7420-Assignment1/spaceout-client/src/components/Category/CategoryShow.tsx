@@ -37,7 +37,7 @@ class CategoryShow extends Component<RouteComponentProps<IRouteComponentMatchPar
 		return (
 			<div>
 				<h1>{this.state.category.name}</h1>
-				<img src={pluto} />
+				<img src={pluto} alt={this.state.category.name} />
 				<p>{this.state.category.description}</p>
 			</div>
 		);

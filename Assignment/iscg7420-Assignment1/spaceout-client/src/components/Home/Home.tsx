@@ -7,7 +7,7 @@ import HomeLandingAstronaut from './HomeLandingAstronaut';
 import StarParticles from '../StarParticles/StarParticles';
 
 const Home = () => {
-	const { containerBackground, containerBackground1 } = useStyles();
+	const { containerBackground } = useStyles();
 	const [currentPage, setCurrentPage] = useState<number>(0);
 
 	const handlePageChange = (pageNumber: number) => setCurrentPage(pageNumber);

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Grid, Card, CardActionArea, CardMedia, Typography, CardContent, Button } from '@material-ui/core';
 import { ICategory } from './Categories';
 import { Link } from 'react-router-dom';
-import history from '../history';
 
 import pluto from '../../assets/pluto.png';
 

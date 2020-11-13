@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import { RouteComponentProps } from 'react-router-dom';
 import { IProduct, fetchProduct } from '../../../actions';
