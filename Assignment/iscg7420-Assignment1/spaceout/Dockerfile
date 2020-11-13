@@ -27,10 +27,11 @@ EXPOSE 8000
 # Make docker-entrypoint.sh to be executable
 RUN chmod +x ./docker-entrypoint.sh
 
-# ENTRYPOINT ["sh", "docker-entrypoint.sh"] or Use CMD
+# Container starts, EntryPoint tells the container to run a shell script
+ENTRYPOINT ["sh"]
 
-# Execute docker-entrypoint script
-CMD ["./docker-entrypoint.sh"]
+# Default argument provided to EntryPoint
+CMD ["docker-entrypoint.sh"]
 
 # Override default command
 # CMD ["gunicorn", "--bind", ":8000", "--workers", "3", "spaceout.wsgi:application"]
