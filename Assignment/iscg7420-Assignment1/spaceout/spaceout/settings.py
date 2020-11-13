@@ -28,7 +28,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'glacial-thicket-14145.herokuapp.com', 'www.cosmosring.me', 'cosmosring.me']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '192.168.99.100', 'glacial-thicket-14145.herokuapp.com', 'www.cosmosring.me', 'cosmosring.me']
 
 # Application definition
 
