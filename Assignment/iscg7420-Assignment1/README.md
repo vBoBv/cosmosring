@@ -2,6 +2,17 @@
 
 Web App: https://www.cosmosring.me/
 
+## Assignment 2 - Documentation
+
+### Building and Running Dockerfile
+
+Inside the root directory of Django Project:
+
+1. Build Docker Image: `docker build -t spaceoutbackend .`
+2. Run Docker Image: `docker run -p 8000:8000 -it spaceoutbackend`
+
+## Assignment 1 - Documentation
+
 Travelling and sending rockets to space nowadays has become very convenient for human-beings. For instance, SpaceX has recently produced a resauble spacecraft, where rocket boosters can automatically land back on the ground and can be reused for the next launch. Hopefully, this means space trips will be availble to humans in the coming decades.
 
 Universal Estate is an online market where space objects can be sold, trade and bid. This will include planets, asteroids, solar system, stars and many other things that orbit the Earth.
