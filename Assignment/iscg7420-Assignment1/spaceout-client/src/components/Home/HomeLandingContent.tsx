@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Grid, Typography, Button } from '@material-ui/core';
+import { Grid, Button } from '@material-ui/core';
 import { useStyles } from './HomeCSS';
 import Typed from 'react-typed';
 
@@ -12,7 +12,7 @@ const HomeLandingContent = () => {
 	return (
 		<Grid item container className={headingContainer} direction='column' alignItems='center' justify='center'>
 			<Grid item>
-				<Typography className={`${pageHeading} wow fadeIn`}>All in one dimension</Typography>
+				<div className={`${pageHeading} wow fadeIn`}>All in one dimension</div>
 			</Grid>
 			<Grid item className={pageSubHeading1}>
 				--
