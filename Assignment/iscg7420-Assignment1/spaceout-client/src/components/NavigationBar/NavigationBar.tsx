@@ -6,6 +6,7 @@ import WOW from 'wowjs';
 import ShoppingDrawer from '../ShoppingDrawer/ShoppingDrawer';
 
 import logoImg from '../../assets/logo.png';
+import { Link } from 'react-router-dom';
 
 const NavigationBar = () => {
 	useEffect(() => {
@@ -20,16 +21,20 @@ const NavigationBar = () => {
 		<Grid container className={navigationBarContainer} direction='row' justify='space-between' alignItems='center'>
 			<Grid item className={logoContainer}>
 				<Grid item>
-					<img
-						className={`${logo} wow rollIn rotatingAnimation`}
-						src={logoImg}
-						alt='Logo'
-						data-wow-duration='2s'
-						data-wow-delay='1.5s'
-					/>
+					<Link to='/'>
+						<img
+							className={`${logo} wow rollIn rotatingAnimation`}
+							src={logoImg}
+							alt='Logo'
+							data-wow-duration='2s'
+							data-wow-delay='1.5s'
+						/>
+					</Link>
 				</Grid>
 				<Grid item className={logoText}>
-					<Typed strings={['Above']} typeSpeed={150} backSpeed={100} backDelay={10} smartBackspace />
+					<Link to='/' style={{ textDecoration: 'none', color: 'inherit' }}>
+						<Typed strings={['Above']} typeSpeed={150} backSpeed={100} backDelay={10} smartBackspace />
+					</Link>
 				</Grid>
 			</Grid>
 			<Grid item>
