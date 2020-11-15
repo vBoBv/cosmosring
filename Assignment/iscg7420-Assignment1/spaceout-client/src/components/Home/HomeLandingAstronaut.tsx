@@ -7,6 +7,7 @@ import FingerprintIcon from '@material-ui/icons/Fingerprint';
 import astronaut from '../../assets/astronaut.png';
 import pluto from '../../assets/pluto.png';
 import spaceShuttle from '../../assets/space-shuttle.png';
+import { Link } from 'react-router-dom';
 
 interface IHomeLandingAstronaut {
 	pageNumber: number;
@@ -50,18 +51,28 @@ const HomeLandingAstronaut: React.FC<IHomeLandingAstronaut> = ({ pageNumber }) =
 					alt={alt}
 					style={{ visibility: 'visible', animationDuration: '2s', animationDelay: '0.3s' }}
 				/>
-				<Button
-					variant='outlined'
-					color='inherit'
-					startIcon={<FingerprintIcon style={{ fontSize: buttonIcon }} />}
-					className={`${buttonStyle} ${'wow fadeInUpBig animated animated'}`}
-					style={{
-						visibility: 'visible',
-						animationDuration: '2s',
-						animationDelay: `${index === 0 ? '1.6s' : index === 1 ? '1.3s' : '1s'}`
-					}}>
-					{buttonText}
-				</Button>
+				<Link
+					to={
+						buttonText === 'Become a Seller'
+							? '/authentication'
+							: buttonText === 'Get to know us'
+							? '/aboutus'
+							: '/products'
+					}
+					style={{ textDecoration: 'none', color: 'inherit' }}>
+					<Button
+						variant='outlined'
+						color='inherit'
+						startIcon={<FingerprintIcon style={{ fontSize: buttonIcon }} />}
+						className={`${buttonStyle} ${'wow fadeInUpBig animated animated'}`}
+						style={{
+							visibility: 'visible',
+							animationDuration: '2s',
+							animationDelay: `${index === 0 ? '1.6s' : index === 1 ? '1.3s' : '1s'}`
+						}}>
+						{buttonText}
+					</Button>
+				</Link>
 			</Grid>
 		);
 	});
