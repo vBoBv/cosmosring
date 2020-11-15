@@ -5,8 +5,14 @@ import ReactPageScroller from 'react-page-scroller';
 import HomeLandingContent from './HomeLandingContent';
 import HomeLandingAstronaut from './HomeLandingAstronaut';
 import StarParticles from '../StarParticles/StarParticles';
+import { IUser } from '../../actions';
 
-const Home = () => {
+interface IHomeProps {
+	account: IUser | null;
+	setAccount: (account: IUser | null) => void;
+}
+
+const Home: React.FC<IHomeProps> = ({ account, setAccount }) => {
 	const { containerBackground } = useStyles();
 	const [currentPage, setCurrentPage] = useState<number>(0);
 
@@ -32,7 +38,7 @@ const Home = () => {
 					containerHeight='90vh'
 					pageOnChange={handlePageChange}
 					customPageNumber={currentPage}>
-					<HomeLandingContent />
+					<HomeLandingContent account={account} setAccount={setAccount} />
 					<HomeLandingAstronaut pageNumber={currentPage} />
 				</ReactPageScroller>
 			</Grid>
