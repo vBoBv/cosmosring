@@ -16,7 +16,11 @@ const MenuStepper: React.FC<IMenuStepperProps> = ({ activeStep, getSteps }) => {
 
 	return (
 		<div className={root}>
-			<Stepper activeStep={activeStep} alternativeLabel className={stepperContainer}>
+			<Stepper
+				activeStep={activeStep}
+				alternativeLabel
+				className={stepperContainer}
+				style={{ backgroundColor: 'transparent' }}>
 				{steps.map((label) => (
 					<Step key={label}>
 						<StepLabel>
