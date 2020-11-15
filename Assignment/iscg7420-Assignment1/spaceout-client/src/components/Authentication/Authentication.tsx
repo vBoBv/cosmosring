@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { Grid, Typography, Button, FormControlLabel, Switch } from '@material-ui/core';
+import { useDispatch } from 'react-redux';
 import { useStyles } from './AuthenticationCSS';
-import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import {
-	IUser,
 	ILoginForm,
 	ICustomerForm,
 	IOrderManagerForm,
@@ -11,7 +10,6 @@ import {
 	signUpCustomer,
 	signUpOrderManager
 } from '../../actions';
-import { StoreState } from '../../reducers';
 
 import backgroundVideo from '../../assets/earthVideo.mp4';
 import SignUpForm from './SignUp/SignUpForm';
@@ -34,7 +32,6 @@ const Authentication = () => {
 	const [isCustomer, setIsCustomer] = useState<boolean>(true);
 
 	const dispatch = useDispatch();
-	const users: IUser = useSelector(({ users }: StoreState) => users, shallowEqual);
 
 	const handleSignInView = () => {
 		setIsSignInView(!isSignInView);
