@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Home from './Home/Home';
 import Authentication from './Authentication/Authentication';
 import NavigationBar from './NavigationBar/NavigationBar';
@@ -24,31 +24,40 @@ import history from './history';
 import { Router, Switch, Route } from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/styles';
 import { customTheme } from './AppCSS';
-import { IUser, getCurrentUser } from '../actions';
-import { useSelector, useDispatch, shallowEqual } from 'react-redux';
+import { IUser } from '../actions';
+
+import { useSelector, shallowEqual } from 'react-redux';
 import { StoreState } from '../reducers';
 
 const App = () => {
-	const dispatch = useDispatch();
-	const user: IUser[] = useSelector(({ users }: StoreState) => Object.values(users), shallowEqual)[0];
-
+	const [account, setAccount] = useState<IUser | null>(null);
+	const [authToken] = useState<String | null>(window.localStorage.getItem('authToken'));
+	const user: IUser = useSelector(({ users }: StoreState) => Object.values(users), shallowEqual)[0];
 	useEffect(() => {
-		const token = window.localStorage.getItem('authToken');
-		if (token) {
-			dispatch(getCurrentUser());
+		if (authToken) {
+			fetch('http://localhost:8000/api/user/profile/', {
+				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: `Token ${window.localStorage.getItem('authToken')}`
+				}
+			})
+				.then((response) => response.json())
+				.then((response) => {
+					setAccount(response);
+				});
 		} else {
 			return;
 		}
-	}, [dispatch]);
+	}, [authToken, user]);
 
 	return (
 		<ThemeProvider theme={customTheme}>
 			<CssBaseline />
 			<Router history={history}>
-				{console.log(user)}
 				<NavigationBar />
 				<Switch>
-					<Route exact path='/' component={Home} />
+					<Route exact path='/' render={(props) => <Home {...props} account={account} setAccount={setAccount} />} />
 					<Route exact path='/authentication' component={Authentication} />
 
 					<Route exact path='/products' component={Products} />
