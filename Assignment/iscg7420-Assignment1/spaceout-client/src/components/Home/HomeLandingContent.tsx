@@ -25,7 +25,7 @@ const HomeLandingContent = () => {
 						color='secondary'
 						className={`${getStartedButton} wow fadeIn`}
 						endIcon={<ChevronRightIcon />}>
-						Get Started
+						Sign In
 					</Button>
 				</Link>
 			</Grid>
