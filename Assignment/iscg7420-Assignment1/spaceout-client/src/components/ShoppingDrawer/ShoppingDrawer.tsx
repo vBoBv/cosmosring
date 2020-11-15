@@ -17,7 +17,7 @@ const ShoppingDrawer = () => {
 
 	return (
 		<>
-			<Button onClick={handleDrawerOpen} color='primary'>
+			<Button onClick={handleDrawerOpen} color='secondary' variant='outlined'>
 				Shop Now
 			</Button>
 			<SwipeableDrawer
