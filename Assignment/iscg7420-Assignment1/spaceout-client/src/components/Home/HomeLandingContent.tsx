@@ -5,29 +5,53 @@ import { useStyles } from './HomeCSS';
 import Typed from 'react-typed';
 
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import { IUser } from '../../actions';
 
-const HomeLandingContent = () => {
+interface IHomeLandingContentProps {
+	account: IUser | null;
+	setAccount: (account: IUser | null) => void;
+}
+
+const HomeLandingContent: React.FC<IHomeLandingContentProps> = ({ account, setAccount }) => {
 	const { headingContainer, pageHeading, pageSubHeading1, getStartedButton, link } = useStyles();
+
+	const onSignOut = () => {
+		setAccount(null);
+		window.localStorage.setItem('authToken', '');
+	};
 
 	return (
 		<Grid item container className={headingContainer} direction='column' alignItems='center' justify='center'>
 			<Grid item>
-				<div className={`${pageHeading} wow fadeIn`}>All in one dimension</div>
+				<div className={`${pageHeading} wow fadeIn`}>
+					{account ? `Welcome back ${account.username}!` : 'All in one dimension'}
+				</div>
 			</Grid>
 			<Grid item className={pageSubHeading1}>
 				--
 				<Typed strings={['Browse - Buy - Auction--']} typeSpeed={60} startDelay={3500} showCursor={false} />
 			</Grid>
 			<Grid item>
-				<Link to='/authentication' className={link}>
+				{account ? (
 					<Button
 						variant='contained'
 						color='secondary'
 						className={`${getStartedButton} wow fadeIn`}
-						endIcon={<ChevronRightIcon />}>
-						Sign In
+						endIcon={<ChevronRightIcon />}
+						onClick={onSignOut}>
+						Sign Out
 					</Button>
-				</Link>
+				) : (
+					<Link to='/authentication' className={link}>
+						<Button
+							variant='contained'
+							color='secondary'
+							className={`${getStartedButton} wow fadeIn`}
+							endIcon={<ChevronRightIcon />}>
+							Sign In
+						</Button>
+					</Link>
+				)}
 			</Grid>
 		</Grid>
 	);
