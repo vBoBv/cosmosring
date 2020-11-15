@@ -93,6 +93,17 @@ export const loginUser = (formValues: ILoginForm) => {
 	};
 };
 
+export const getCurrentUser = () => {
+	return async (dispatch: Dispatch) => {
+		const { data } = await Users.login();
+
+		dispatch<ILoginUser>({
+			type: ActionTypes.loginUser,
+			payload: data
+		});
+	};
+};
+
 export const signUpCustomer = ({ email, password, username, ...rest }: ICustomerForm) => {
 	const submittedFormValues = {
 		user: {
