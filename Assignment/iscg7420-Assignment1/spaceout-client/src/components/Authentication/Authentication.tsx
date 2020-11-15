@@ -61,7 +61,7 @@ const Authentication = () => {
 					</Grid>
 					<Grid item>
 						<Typography className={formItem1_subtitle}>
-							Contrary to popular belief, Lorem Ipsum is not simply random text.
+							Acquiring space objects has never been this easy before, Glad to have you back!
 						</Typography>
 					</Grid>
 					<Grid item>
