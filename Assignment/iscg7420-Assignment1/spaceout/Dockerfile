@@ -1,8 +1,13 @@
 # Base image
 FROM python:3.9
 
-# For ECS Logs
+# Environment Variables
 ENV PYTHONBUFFERED 1
+ENV DATABASE_NAME=spaceoutpostgresql
+ENV DATABASE_USER=postgres
+ENV DATABASE_PASSWORD=whatisthepassword
+ENV DATABASE_HOST=spaceoutpostgresql.cihirmmlh8mt.ap-southeast-2.rds.amazonaws.com
+ENV DATABASE_PORT=5432
 
 # Work directory for the container
 WORKDIR '/app'
