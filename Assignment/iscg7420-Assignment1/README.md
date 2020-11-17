@@ -1,7 +1,7 @@
 # Universal Estate
 
-Web App: https://www.cosmosring.me/
-BackEnd App: http://ec2-3-25-136-35.ap-southeast-2.compute.amazonaws.com/
+- Web App: https://www.cosmosring.me/
+- BackEnd App: http://ec2-3-25-136-35.ap-southeast-2.compute.amazonaws.com/
 
 ## Assignment 2 - Documentation
 
