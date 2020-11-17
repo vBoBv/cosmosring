@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import { ICategory } from './Categories';
+import { API_URL } from './apiUrl';
 
 import pluto from '../../assets/pluto.png';
 
@@ -22,7 +23,7 @@ class CategoryShow extends Component<RouteComponentProps<IRouteComponentMatchPar
 	componentDidMount() {
 		const { id } = this.props.match.params;
 
-		fetch(`http://localhost:8000/api/ecommerce/categories/${id}/`, {
+		fetch(`${API_URL}${id}/`, {
 			method: 'GET',
 			headers: { 'Content-Type': 'application/json' }
 		})

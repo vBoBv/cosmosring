@@ -4,6 +4,7 @@ import { ICategory } from './Categories';
 import CategoryForm from './CategoryForm';
 import _ from 'lodash';
 import history from '../history';
+import { API_URL } from './apiUrl';
 
 interface IRouteComponentMatchParamProps {
 	id: string;
@@ -23,7 +24,7 @@ class CategoryEdit extends Component<RouteComponentProps<IRouteComponentMatchPar
 	componentDidMount() {
 		const { id } = this.props.match.params;
 
-		fetch(`http://localhost:8000/api/ecommerce/categories/${id}/`, {
+		fetch(`${API_URL}${id}/`, {
 			method: 'GET',
 			headers: { 'Content-Type': 'application/json' }
 		})
@@ -37,7 +38,7 @@ class CategoryEdit extends Component<RouteComponentProps<IRouteComponentMatchPar
 	onSubmit = (formValues: any) => {
 		const { id } = this.props.match.params;
 
-		fetch(`http://localhost:8000/api/ecommerce/categories/${id}/`, {
+		fetch(`${API_URL}${id}/`, {
 			method: 'PATCH',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(formValues)

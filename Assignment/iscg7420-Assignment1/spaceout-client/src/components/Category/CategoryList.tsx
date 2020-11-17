@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Grid, Card, CardActionArea, CardMedia, Typography, CardContent, Button } from '@material-ui/core';
 import { ICategory } from './Categories';
 import { Link } from 'react-router-dom';
+import { API_URL } from './apiUrl';
 
 import pluto from '../../assets/pluto.png';
 
@@ -11,7 +12,7 @@ interface ICategoryListProps {
 
 class CategoryList extends Component<ICategoryListProps> {
 	onDelete = (id: number) => {
-		fetch(`http://localhost:8000/api/ecommerce/categories/${id}/`, {
+		fetch(`${API_URL}${id}/`, {
 			method: 'DELETE',
 			headers: { 'Content-Type': 'application/json' }
 		});

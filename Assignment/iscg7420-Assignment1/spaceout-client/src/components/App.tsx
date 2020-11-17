@@ -33,9 +33,14 @@ const App = () => {
 	const [account, setAccount] = useState<IUser | null>(null);
 	const [authToken] = useState<String | null>(window.localStorage.getItem('authToken'));
 	const user: IUser = useSelector(({ users }: StoreState) => Object.values(users), shallowEqual)[0];
+	const API_URL =
+		process.env.NODE_ENV === 'development'
+			? 'http://localhost:8000/api/user/profile/'
+			: 'http://ec2-3-25-136-35.ap-southeast-2.compute.amazonaws.com/api/user/profile/';
+
 	useEffect(() => {
 		if (authToken) {
-			fetch('http://localhost:8000/api/user/profile/', {
+			fetch(API_URL, {
 				method: 'GET',
 				headers: {
 					'Content-Type': 'application/json',

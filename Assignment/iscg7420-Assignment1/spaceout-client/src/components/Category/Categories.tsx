@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Grid, Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import CategoryList from './CategoryList';
+import { API_URL } from './apiUrl';
 
 export interface ICategory {
 	id?: number;
@@ -24,7 +25,7 @@ class Categories extends Component<ICategoriesProps, ICategoriesState> {
 	}
 
 	componentDidMount() {
-		fetch('http://localhost:8000/api/ecommerce/categories/', {
+		fetch(API_URL, {
 			method: 'GET',
 			headers: { 'Content-Type': 'application/json' }
 		})

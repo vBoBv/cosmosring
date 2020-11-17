@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import CategoryForm from './CategoryForm';
 import history from '../history';
+import { API_URL } from './apiUrl';
 
 class CategoryCreate extends Component {
 	onSubmit = (formValues: any) => {
-		fetch('http://localhost:8000/api/ecommerce/categories/', {
+		fetch(API_URL, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(formValues)
