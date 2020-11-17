@@ -3,7 +3,9 @@ import { ILoginForm, IToken, IUser, ICustomer, IOrderManager } from '../actions/
 
 const users = axios.create({
 	baseURL:
-		process.env.NODE_ENV === 'development' ? 'http://localhost:8000/api/user/' : 'http://localhost:8000/api/user/'
+		process.env.NODE_ENV === 'development'
+			? 'http://localhost:8000/api/user/'
+			: 'http://ec2-3-25-136-35.ap-southeast-2.compute.amazonaws.com/api/user/'
 });
 
 users.interceptors.request.use(
