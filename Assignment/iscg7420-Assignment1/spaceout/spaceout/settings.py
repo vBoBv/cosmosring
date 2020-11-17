@@ -205,5 +205,11 @@ sentry_sdk.init(
 # Cors
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
+    "https://www.cosmosring.me",
+    "http://www.cosmosring.me",
+    "https://cosmosring.me",
+    "http://cosmosring.me",
+    "www.cosmosring.me",
+    "cosmosring.me",
 ]
 CORS_ORIGIN_ALLOW_ALL = True
