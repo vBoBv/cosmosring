@@ -23,9 +23,6 @@ RUN apt-get update -y \
 # Copy the remaining files to 'app' directory
 COPY ./ ./
 
-# Collect static files
-RUN python manage.py collectstatic --noinput
-
 # Port intended to be exposed to the outside world and Docker conatiners
 EXPOSE 8000
 
