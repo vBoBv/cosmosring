@@ -91,7 +91,7 @@ CACHES = {
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-if os.environ.get('DATABASE_URL'):
+if os.environ.get('DATABASE_HOST'):
     print('Using Postgresql AWS RDS')
     DATABASES = {
         'default': {
