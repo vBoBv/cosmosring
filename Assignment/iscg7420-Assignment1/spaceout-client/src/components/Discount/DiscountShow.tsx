@@ -24,16 +24,14 @@ class DiscountShow extends Component<RouteComponentProps<IRouteComponentMatchPar
 
 	renderDiscounts() {
 		const { id } = this.props.match.params;
-		const discount = this.props.discounts.filter((discount) => discount.id === parseInt(id));
+		const { discount_code, is_expired } = this.props.discounts.filter((discount) => discount.id === parseInt(id))[0];
 
-		return discount.map(({ id, discount_code, is_expired }) => {
-			return (
-				<Grid item key={id}>
-					<Typography>Discount code: {discount_code}</Typography>
-					<Typography>Is expired: {is_expired ? 'Yes' : 'No'}</Typography>
-				</Grid>
-			);
-		});
+		return (
+			<Grid item key={id}>
+				<Typography>Discount code: {discount_code}</Typography>
+				<Typography>Is expired: {is_expired ? 'Yes' : 'No'}</Typography>
+			</Grid>
+		);
 	}
 
 	render() {
