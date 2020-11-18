@@ -2,7 +2,9 @@ import React from 'react';
 import ShoppingCards from './ShoppingCards';
 import ShoppingCategoryListItem from './ShoppingCategoryListItem';
 import { useStyles } from './ShoppingCSS';
-import { IconButton, Grid } from '@material-ui/core';
+import { IconButton, Grid, useMediaQuery } from '@material-ui/core';
+import { useTheme } from '@material-ui/core/styles';
+
 import CloseIcon from '@material-ui/icons/Close';
 
 import logoImg from '../../assets/logo.png';
@@ -13,6 +15,9 @@ interface IShoppingProps {
 
 const Shopping: React.FC<IShoppingProps> = ({ handleDrawerClose }) => {
 	const { navigationBarContainer, logoContainer, logo, logoText, iconSize, shoppingCategoryContainer } = useStyles();
+	const theme = useTheme();
+
+	const isScreenMedium = useMediaQuery(theme.breakpoints.down('md'));
 
 	return (
 		<>
@@ -40,8 +45,9 @@ const Shopping: React.FC<IShoppingProps> = ({ handleDrawerClose }) => {
 					container
 					item
 					lg={4}
-					justify='flex-start'
-					alignContent='flex-end'
+					md={12}
+					justify={isScreenMedium ? 'center' : 'flex-start'}
+					alignContent={isScreenMedium ? 'center' : 'flex-end'}
 					direction='column'
 					className={shoppingCategoryContainer}>
 					<ShoppingCategoryListItem />

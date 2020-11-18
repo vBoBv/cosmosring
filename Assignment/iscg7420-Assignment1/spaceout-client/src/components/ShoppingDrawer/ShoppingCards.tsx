@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import { useStyles } from './ShoppingCSS';
-import { Grid, Card, CardActionArea, CardMedia, Typography, CardContent } from '@material-ui/core';
+import { Grid, Card, CardActionArea, CardMedia, Typography, CardContent, useMediaQuery } from '@material-ui/core';
+import { useTheme } from '@material-ui/core/styles';
 import { StoreState } from '../../reducers';
 import { IProduct, fetchProducts } from '../../actions';
-
 import BlurLinearIcon from '@material-ui/icons/BlurLinear';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 
@@ -18,8 +18,11 @@ interface IShoppingCardsProps {
 const ShoppingCards: React.FC<IShoppingCardsProps> = ({ handleDrawerClose }) => {
 	const products: IProduct[] = useSelector(({ products }: StoreState) => Object.values(products), shallowEqual);
 	const dispatch = useDispatch();
+	const theme = useTheme();
 
 	const { infoContainer, iconContainer, cardContainer, productName, cardImageContainer } = useStyles();
+
+	const isScreenMedium = useMediaQuery(theme.breakpoints.down('md'));
 
 	useEffect(() => {
 		dispatch(fetchProducts());
@@ -62,7 +65,7 @@ const ShoppingCards: React.FC<IShoppingCardsProps> = ({ handleDrawerClose }) => 
 	});
 
 	return (
-		<Grid container item justify='flex-start' lg={8} spacing={3}>
+		<Grid container item justify={isScreenMedium ? 'center' : 'flex-start'} lg={8} md={12} spacing={3}>
 			{renderItemCards}
 		</Grid>
 	);
