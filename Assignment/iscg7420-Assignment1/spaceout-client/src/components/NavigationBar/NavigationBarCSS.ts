@@ -6,9 +6,11 @@ export const useStyles = makeStyles((theme) => ({
 		fontFamily: 'Audiowide, cursive',
 		fontSize: '2rem',
 
-		position: 'absolute',
+		backgroundColor: 'black',
+		// position: 'absolute',
 		padding: '1rem',
-		zIndex: 2
+		zIndex: 2,
+		textAlign: 'center'
 	},
 	logoContainer: {
 		display: 'flex',
