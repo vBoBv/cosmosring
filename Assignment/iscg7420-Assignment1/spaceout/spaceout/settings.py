@@ -91,7 +91,8 @@ CACHES = {
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-if os.environ.get('DATABASE_HOST'):
+# if os.environ.get('DATABASE_HOST'):
+if config('DATABASE_HOST'):
     print('Using Postgresql AWS RDS')
     DATABASES = {
         'default': {
@@ -209,7 +210,5 @@ CORS_ALLOWED_ORIGINS = [
     "http://www.cosmosring.me",
     "https://cosmosring.me",
     "http://cosmosring.me",
-    "www.cosmosring.me",
-    "cosmosring.me",
 ]
 CORS_ORIGIN_ALLOW_ALL = True
