@@ -5,12 +5,17 @@ import { Grid, Card, CardActionArea, CardMedia, Typography, CardContent } from '
 import { StoreState } from '../../reducers';
 import { IProduct, fetchProducts } from '../../actions';
 
-import PinDropIcon from '@material-ui/icons/PinDrop';
-import StarsIcon from '@material-ui/icons/Stars';
+import BlurLinearIcon from '@material-ui/icons/BlurLinear';
+import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 
 import pluto from '../../assets/pluto.png';
+import history from '../history';
 
-const ShoppingCards = () => {
+interface IShoppingCardsProps {
+	handleDrawerClose: () => void;
+}
+
+const ShoppingCards: React.FC<IShoppingCardsProps> = ({ handleDrawerClose }) => {
 	const products: IProduct[] = useSelector(({ products }: StoreState) => Object.values(products), shallowEqual);
 	const dispatch = useDispatch();
 
@@ -20,10 +25,15 @@ const ShoppingCards = () => {
 		dispatch(fetchProducts());
 	}, [dispatch]);
 
+	const onViewProduct = (id: number) => {
+		handleDrawerClose();
+		history.push(`/products/${id}`);
+	};
+
 	const renderItemCards = products.map((product) => {
 		return (
 			<Grid item key={product.id}>
-				<Card className={cardContainer}>
+				<Card className={cardContainer} onClick={() => onViewProduct(product.id)}>
 					<CardActionArea>
 						<CardMedia component='img' image={pluto} title='' className={cardImageContainer} />
 						<CardContent>
@@ -37,11 +47,11 @@ const ShoppingCards = () => {
 								color='textSecondary'
 								component='p'
 								className={infoContainer}>
-								<PinDropIcon className={iconContainer} />
+								<BlurLinearIcon className={iconContainer} />
 								{product.description}
 							</Typography>
 							<Typography gutterBottom variant='body2' color='textSecondary' component='p' className={infoContainer}>
-								<StarsIcon className={iconContainer} />
+								<AttachMoneyIcon className={iconContainer} />
 								{product.price}
 							</Typography>
 						</CardContent>
