@@ -48,7 +48,7 @@ export const fetchDiscounts = () => {
 				payload: data
 			});
 		} catch (error) {
-			if (error.response.status === 401) {
+			if (error.response && error.response.status === 401) {
 				history.push('/authentication');
 				alert('Please sign in to access Discount information!');
 			}
@@ -66,7 +66,7 @@ export const fetchDiscount = (id: number) => {
 				payload: data
 			});
 		} catch (error) {
-			if (error.response.status === 401) {
+			if (error.response && error.response.status === 401) {
 				history.push('/authentication');
 				alert('Please sign in to access Discount information!');
 			}
@@ -86,7 +86,7 @@ export const createDiscount = (formValue: IDiscountForm) => {
 
 			history.push('/discounts');
 		} catch (error) {
-			if (error.response.status === 401) {
+			if (error.response && error.response.status === 401) {
 				history.push('/authentication');
 				alert('Please sign in to access Discount information!');
 			}
