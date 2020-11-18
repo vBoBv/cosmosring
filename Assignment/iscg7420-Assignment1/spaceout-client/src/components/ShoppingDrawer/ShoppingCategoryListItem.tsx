@@ -17,7 +17,7 @@ const ShoppingCategoryListItem = () => {
 		}
 
 		setChecked(newChecked);
-		console.log(newChecked);
+		// console.log(newChecked);
 	};
 
 	return (
