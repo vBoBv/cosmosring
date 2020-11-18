@@ -46,7 +46,7 @@ const Shopping: React.FC<IShoppingProps> = ({ handleDrawerClose }) => {
 					className={shoppingCategoryContainer}>
 					<ShoppingCategoryListItem />
 				</Grid>
-				<ShoppingCards />
+				<ShoppingCards handleDrawerClose={handleDrawerClose} />
 			</Grid>
 		</>
 	);
