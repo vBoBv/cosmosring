@@ -27,13 +27,15 @@ export const useStyles = makeStyles((theme) => ({
 	},
 	infoContainer: {
 		display: 'flex',
-		alignItems: 'center'
+		alignItems: 'center',
+		maxWidth: '250px'
 	},
 	iconContainer: {
 		marginRight: '0.5rem'
 	},
 	cardContainer: {
-		maxWidth: 400
+		maxWidth: 400,
+		textAlign: 'center'
 	},
 	productName: {
 		[theme.breakpoints.down('md')]: {
