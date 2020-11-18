@@ -2,6 +2,7 @@ import React from 'react';
 import Home from './Home/Home';
 import Authentication from './Authentication/Authentication';
 import NavigationBar from './NavigationBar/NavigationBar';
+import AboutUs from './AboutUs/AboutUs';
 
 import Categories from './Category/Categories';
 import CategoryShow from './Category/CategoryShow';
@@ -33,6 +34,7 @@ const App = () => {
 				<NavigationBar />
 				<Switch>
 					<Route exact path='/' component={Home} />
+					<Route exact path='/aboutus' component={AboutUs} />
 					<Route exact path='/authentication' component={Authentication} />
 
 					<Route exact path='/products' component={Products} />
