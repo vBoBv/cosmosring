@@ -104,5 +104,7 @@ export const deleteProduct = (id: number) => {
 			type: ActionTypes.deleteProduct,
 			payload: id
 		});
+
+		window.location.reload();
 	};
 };

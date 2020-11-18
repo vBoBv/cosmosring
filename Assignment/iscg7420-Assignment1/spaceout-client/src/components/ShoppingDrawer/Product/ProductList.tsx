@@ -25,7 +25,7 @@ const ProductList: React.FC<IProductListProps> = ({ products }) => {
 
 	const onDelete = (id: number) => {
 		dispatch(deleteProduct(id));
-		window.location.reload();
+		// window.location.reload();
 	};
 
 	const renderProductList = (productList: IProduct[]) => {
