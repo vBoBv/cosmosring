@@ -1,6 +1,9 @@
 # Universal Estate
 
-- Web App: https://www.cosmosring.me/
+~ Please use the link without SSL in order to make request to the BackEnd! ~
+
+- Web App (Without SSL): http://www.cosmosring.me/
+- Web App (With SSL): https://www.cosmosring.me/
 - BackEnd App: http://ec2-3-25-136-35.ap-southeast-2.compute.amazonaws.com/
 
 ## Assignment 2 - Documentation
