@@ -136,6 +136,7 @@
 ## Redux:
 
 - What is redux used for?
+  - Redux can be considered as a single state of truth where it stores and deal with states that belong to different components.
 - What are actions?
 - What are reducers?
 - What is the store?
