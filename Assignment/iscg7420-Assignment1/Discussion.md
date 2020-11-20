@@ -101,11 +101,20 @@
 ## HTTP & REST:
 
 - Which four HTTP methods does REST use for performing CRUD operations?
+  - GET
+  - POST
+  - PUT / PATCH
+  - DELETE
 - What is Django REST Framework used for?
+  - DRF is used to create a RESTful Web Api. It also comes with a prebuild Authentication packages.
 - What is serialization and why do we use it?
+  - Serialization is a mechanism to convert Django models into other format. We used Serializers in Django to convert querysets and model instances into native Python datatypes. As a result, we can easily render the converted datatypes into JSON.
 - Which type of object serialization notation is most commonly used on the web?
+  - In the past, it used to be XML. Nowadays, JSON (JavaScript Object Notation) is the most commonly used.
 - What is Postman and what is it used for?
+  - Postman is a tool for the developers to test their API end points, create simple or complex HTTP/s requests, read the request body, save and document their API.
 - What are websockets and what are they used for?
+  - WebSocket is a computer communications protocol, providing full-duplex communication channels over a single TCP connection. Websockets are mostly popular for making a real-time application. This is because it does not require the HTTP request/response overhead for each message sent and received compare to REST.
 
 ## React:
 
