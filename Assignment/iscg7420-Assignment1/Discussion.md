@@ -119,12 +119,17 @@
 ## React:
 
 - What is the virtual DOM?
-  - The virtual DOM (VDOM) is a programming concept where an ideal, or “virtual”, representation of a UI is kept in memory and synced with the “real” DOM by a library such as ReactDOM. This process is called reconciliation.
+  - The virtual DOM (VDOM) is a programming concept where an ideal, or “virtual”, representation of a UI is kept in memory and synced with the “real” DOM by a library such as ReactDOM. This process is called reconciliation. This is
 - What is JSX?
+  - JSX is a syntax extension to JavaScript. JSX enables the user to be able to render HTML and Javascript at the same time.
 - What are props used for?
+  - Props are properties that are used to pass data from one component to the other component. 
 - When and why would you use setState()?
+  - setState is used to change the state inside a React component including all of the children components that are using this state. We need to use setState() because we should not directly change or mutate the state directly.
 - When would you use hooks?
+  - Hooks can be used when the user needs to implement LifeCycle methods or using State inside a Function-based component.
 - What is react-router used for?
+  - React Router allows the user to create a single-page web application with navigation without the page refreshing as the user navigates.
 - What is react-native used for?
 
 ## Redux:
