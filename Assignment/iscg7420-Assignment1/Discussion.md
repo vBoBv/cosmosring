@@ -119,7 +119,7 @@
 ## React:
 
 - What is the virtual DOM?
-  - The virtual DOM (VDOM) is a programming concept where an ideal, or “virtual”, representation of a UI is kept in memory and synced with the “real” DOM by a library such as ReactDOM. This process is called reconciliation. This is
+  - The virtual DOM (VDOM) is a programming concept where an ideal, or “virtual”, representation of a UI is kept in memory and synced with the “real” DOM by a library such as ReactDOM. This process is called reconciliation. This also increases the efficiency of rendering React components.
 - What is JSX?
   - JSX is a syntax extension to JavaScript. JSX enables the user to be able to render HTML and Javascript at the same time.
 - What are props used for?
@@ -160,8 +160,13 @@
   - Angular JS
   - Vue JS
 - What is the DOM? What is a virtual DOM?
+  - DOM stands for Document Objecct Model. It is a cross-platform and language-independent interface that treats an XML or HTML document as a tree structure where in each node is an object representing a part of the document.
+   - The virtual DOM (VDOM) is a programming concept where an ideal, or “virtual”, representation of a UI is kept in memory and synced with the “real” DOM by a library such as ReactDOM. This process is called reconciliation. This also increases the efficiency of rendering React components.
 - What is the difference between sessionStorage and localStorage?
+  - Session Storage is cleared when the browser is closed.
+  - Local Storage stores data with no expiration date.
 - What is a library like Material-UI used for?
+  - It is a React UI components that come with prebuild material designs made by Google.
 
 ## Docker:
 
