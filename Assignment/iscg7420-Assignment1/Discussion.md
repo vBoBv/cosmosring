@@ -138,9 +138,13 @@
 - What is redux used for?
   - Redux can be considered as a single state of truth where it stores and deal with states that belong to different components.
 - What are actions?
+  - Actions in redux must have a type attribute to identify the type of action to be performed. Actions can carry payload which are the data that we want to pass to and from the store.
 - What are reducers?
+  - Reducers are functions that take the current state and an action as arguments, and return a new state result.
 - What is the store?
+  - Store contains all of the state inside React application.
 - What is redux-thunk used for?
+  - Redux-thunk can be seen as a middleware where the user wants to call action creators that return a function instead of an object. Example: Making an asynchrounous request with action creators can be done by using redux thunk.
 
 ## Javascript:
 
