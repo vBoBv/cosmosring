@@ -188,10 +188,20 @@
 ## Deployment:
 
 - What is Amazon S3 used for?
+  - Amazon S3 or Amazon Simple Storage Service is a service offered by Amazon Web Services that provides object storage through a web service interface.
 - What is Amazon ECS?
+  - Amazon Elastic Container Service (Amazon ECS) is a fully managed container orchestration service.
 - What is the difference between ECS Fargate and EC2?
+  - The traditional EC2 launch type utilizes your own EC2 instances. Fargate removes the responsibility of provisioning, configuring and managing the EC2 instances by allowing AWS to manage the EC2 instances.
 - Name 3 other cloud providers.
+  - Microsoft Azure
+  - Google Cloud
+  - IBM Cloud
 - What is Sentry and what is it used for?
+  - Sentry is a PaaS. It allows the developers to diagnose, fix and optimize the performance of any crashes or errors in real time.
 - What is Cloudflare and what is it used for?
+  - Cloudflare is a PaaS. It is a free CDN type product that protects against threats such as SQL injection and identity theft.
 - What is SendGrid and what is it used for?
+  - SendGrid is a PaaS. SendGrid is a cloud-based SMTP provider that allows the user to send email without having to maintain email servers
 - What is the difference between a DNS A record and a CNAME record?
+  -  The A record maps a name to one or more IP addresses when the IP are known and stable. The CNAME record maps a name to another name. It should only be used when there are no other records on that name.
