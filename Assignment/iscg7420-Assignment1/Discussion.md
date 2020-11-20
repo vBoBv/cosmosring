@@ -149,10 +149,16 @@
 ## Javascript:
 
 - What is NodeJS and how is it different from in-browser Javascript?
+  - Node. js is an open source, cross-platform runtime environment for developing server-side and networking applications. NodeJS can be run outside the browser using JavaScript runtime environment.
 - What is npm and what is it used for?
+  - npm stands for Node JavaScript platform. It is used to publish, discover, install, develop, manages module dependencies for the application.
 - What is ES6? List the names of 3 features that ES6 provides.
+  - ES6 stands for ECMAScript 6 which is a new version of JavaScript, published in 2015. The features of ES6 are: let keyword, arrow functions and template strings.
 - What is ReactJS and what is it used for?
+  - React JS is a one of the JavaScript libraries developed by Facebook. It is used to develop a single page frontend application.
 - List two popular alternative Javascript libraries to ReactJS.
+  - Angular JS
+  - Vue JS
 - What is the DOM? What is a virtual DOM?
 - What is the difference between sessionStorage and localStorage?
 - What is a library like Material-UI used for?
