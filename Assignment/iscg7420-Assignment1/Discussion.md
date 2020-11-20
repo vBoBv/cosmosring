@@ -131,6 +131,7 @@
 - What is react-router used for?
   - React Router allows the user to create a single-page web application with navigation without the page refreshing as the user navigates.
 - What is react-native used for?
+  - React Native is a cross-platform framework which is used to create mobile applications. All the syntaxs that are being used inside React-Native are very closed for React. 
 
 ## Redux:
 
