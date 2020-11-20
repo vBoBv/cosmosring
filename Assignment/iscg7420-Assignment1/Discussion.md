@@ -172,10 +172,18 @@
 
 - Why do we run apt-get update && apt-get install -y in one command when using
   Docker?
+  - As these 2 operations are used to update and install all the new packages, it is better to use just one command since any changes to Dockerfile can make the build operation to restart the build process without using cache. 
 - What are Docker containers and what are the pros and cons of using them?
+  - A Docker container is used to package applications in containers, allowing them to be portable to any system running a Linux or Windows operating system (OS).
+  - Pros: Users are able to run and work with Doocker Image regardless of their server or OS. There is no breaking changes even if there are frequent update to Docker itself.
+  - Cons: There is a huge learning curve even if users are familar with VM infrastructure. Documentations can sometimes be outdated as Docker is improving incrementally.
 - What is the difference between ADD and COPY with Docker?
+  - COPY takes in a src and destination
+  - ADD allows a URL instead of a local file / directory. User can also extract a tar file from the source directly into the destination.
 - What is a .dockerignore file used for?
+  - The .dockerignore file allows you to exclude files from the context like a . gitignore file allow you to exclude files from your git repository.
 - What is Kubernetes and why didn’t we use it for this assignment?
+  - Kubernetes is an open-source container-orchestration system for automating computer application deployment, scaling, and management. We didn't use Kubernetes for this assignment because we only need to run a single container. Kubernetes is used to coordinate clusters of nodes at scale in production in an efficient manner.
 
 ## Deployment:
 
