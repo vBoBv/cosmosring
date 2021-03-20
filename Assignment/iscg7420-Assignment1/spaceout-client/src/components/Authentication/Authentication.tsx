@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Grid, Typography, Button, FormControlLabel, Switch } from '@material-ui/core';
+import { Grid, Typography, Button, FormControlLabel, Switch, useTheme, useMediaQuery } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import { useStyles } from './AuthenticationCSS';
 import {
@@ -27,9 +27,10 @@ const Authentication = () => {
 		formItem1_subtitle,
 		switchContainer
 	} = useStyles();
-
+	const theme = useTheme();
 	const [isSignInView, setIsSignInView] = useState<boolean>(false);
 	const [isCustomer, setIsCustomer] = useState<boolean>(true);
+	const isScreenMedium = useMediaQuery(theme.breakpoints.down('md'));
 
 	const dispatch = useDispatch();
 
@@ -126,23 +127,57 @@ const Authentication = () => {
 		);
 	};
 
-	return (
-		<Grid container className={authenticationContainer} justify='center' alignContent='center'>
-			<Grid container item className={formContainer} justify='center' alignContent='center' direction='column'>
-				{renderCustomerSignInContainer()}
-				{renderCustomerSignUpContainer()}
-				{isSignInView ? null : (
-					<Grid item className={switchContainer}>
-						<FormControlLabel
-							control={
-								<Switch checked={isCustomer} onChange={handleSignUpView} name='authenticationSwitch' color='primary' />
-							}
-							label='Customer'
-						/>
-					</Grid>
-				)}
+	const renderAuthenticationForSmallScreen = () => {
+		return (
+			<Grid container justify='center' style={{ minHeight: '100vh', backgroundColor: 'black', color: 'white' }}>
+				<Grid item md={12} sm={12} xs={12} style={{ textAlign: 'center' }}>
+					<h1>Sign In</h1>
+				</Grid>
+				<SignInForm onSignIn={onSignIn} />
+				<Grid item md={12} sm={12} xs={12}>
+					<hr style={{ width: '50%' }} />
+				</Grid>
+
+				<Grid item md={12} sm={12} xs={12} style={{ textAlign: 'center' }}>
+					<h1>Sign Up</h1>
+				</Grid>
+				<SignUpForm isCustomer={isCustomer} onSignUp={isCustomer ? onSignUpCustomer : onSignUpOrderManager} />
+
+				{/* <Grid item>
+					<SignInForm onSignIn={onSignIn} />
+				</Grid> */}
 			</Grid>
-		</Grid>
+		);
+	};
+
+	return (
+		<>
+			{isScreenMedium ? (
+				renderAuthenticationForSmallScreen()
+			) : (
+				<Grid container className={authenticationContainer} justify='center' alignContent='center'>
+					<Grid container item className={formContainer} justify='center' alignContent='center' direction='column'>
+						{renderCustomerSignInContainer()}
+						{renderCustomerSignUpContainer()}
+						{isSignInView ? null : (
+							<Grid item className={switchContainer}>
+								<FormControlLabel
+									control={
+										<Switch
+											checked={isCustomer}
+											onChange={handleSignUpView}
+											name='authenticationSwitch'
+											color='primary'
+										/>
+									}
+									label='Customer'
+								/>
+							</Grid>
+						)}
+					</Grid>
+				</Grid>
+			)}
+		</>
 	);
 };
 
