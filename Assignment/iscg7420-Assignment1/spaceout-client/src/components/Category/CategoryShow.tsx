@@ -3,8 +3,7 @@ import { RouteComponentProps } from 'react-router-dom';
 import { ICategory } from './Categories';
 import { API_URL } from './apiUrl';
 import { Grid } from '@material-ui/core';
-
-import pluto from '../../assets/pluto.png';
+import getRandomImage from '../../utils/getRandomImage';
 
 interface IRouteComponentMatchParamProps {
 	id: string;
@@ -21,6 +20,8 @@ class CategoryShow extends Component<RouteComponentProps<IRouteComponentMatchPar
 		this.state = { category: {} as ICategory };
 	}
 
+	image: string = '';
+
 	componentDidMount() {
 		const { id } = this.props.match.params;
 
@@ -33,6 +34,7 @@ class CategoryShow extends Component<RouteComponentProps<IRouteComponentMatchPar
 				this.setState({ category: response });
 			})
 			.catch((error) => console.error(error));
+		this.image = getRandomImage();
 	}
 
 	render() {
@@ -48,7 +50,7 @@ class CategoryShow extends Component<RouteComponentProps<IRouteComponentMatchPar
 				direction='column'
 				style={{ padding: '5rem', backgroundColor: 'black', color: 'white', minHeight: '100vh' }}>
 				<Grid item>
-					<img src={pluto} alt={this.state.category.name} />
+					<img src={this.image} alt={this.state.category.name} />
 				</Grid>
 
 				<Grid item>

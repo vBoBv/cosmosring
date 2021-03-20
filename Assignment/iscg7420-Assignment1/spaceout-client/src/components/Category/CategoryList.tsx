@@ -3,8 +3,7 @@ import { Grid, Card, CardActionArea, CardMedia, Typography, CardContent, Button 
 import { ICategory } from './Categories';
 import { Link } from 'react-router-dom';
 import { API_URL } from './apiUrl';
-
-import pluto from '../../assets/pluto.png';
+import getRandomImage from '../../utils/getRandomImage';
 
 interface ICategoryListProps {
 	categories: ICategory[];
@@ -25,7 +24,7 @@ class CategoryList extends Component<ICategoryListProps> {
 				<Grid item key={id}>
 					<Card style={{ backgroundColor: 'black' }}>
 						<CardActionArea>
-							<CardMedia component='img' image={pluto} title='' style={{ width: '200px' }} />
+							<CardMedia component='img' image={getRandomImage()} title='' style={{ width: '200px' }} />
 							<CardContent>
 								<Typography
 									gutterBottom

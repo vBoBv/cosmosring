@@ -3,6 +3,7 @@ import Home from './Home/Home';
 import Authentication from './Authentication/Authentication';
 import NavigationBar from './NavigationBar/NavigationBar';
 import AboutUs from './AboutUs/AboutUs';
+import Footer from './Footer/Footer';
 
 import Categories from './Category/Categories';
 import CategoryShow from './Category/CategoryShow';
@@ -52,6 +53,7 @@ const App = () => {
 					<Route exact path='/discounts/edit/:id' component={DiscountEdit} />
 					<Route exact path='/discounts/:id' component={DiscountShow} />
 				</Switch>
+				<Footer />
 			</Router>
 		</ThemeProvider>
 	);

@@ -7,8 +7,7 @@ import { StoreState } from '../../reducers';
 import { IProduct, fetchProducts } from '../../actions';
 import BlurLinearIcon from '@material-ui/icons/BlurLinear';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
-
-import pluto from '../../assets/pluto.png';
+import getRandomImage from '../../utils/getRandomImage';
 import history from '../history';
 
 interface IShoppingCardsProps {
@@ -38,7 +37,7 @@ const ShoppingCards: React.FC<IShoppingCardsProps> = ({ handleDrawerClose }) => 
 			<Grid item key={product.id}>
 				<Card className={cardContainer} onClick={() => onViewProduct(product.id)}>
 					<CardActionArea>
-						<CardMedia component='img' image={pluto} title='' className={cardImageContainer} />
+						<CardMedia component='img' image={getRandomImage()} title='' className={cardImageContainer} />
 						<CardContent>
 							<Typography gutterBottom noWrap variant='h5' component='h2' className={productName}>
 								{product.name}

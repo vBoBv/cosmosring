@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import { RouteComponentProps } from 'react-router-dom';
 import { IProduct, fetchProduct } from '../../../actions';
 import { StoreState } from '../../../reducers';
 import { Grid } from '@material-ui/core';
-
-import pluto from '../../../assets/pluto.png';
+import getRandomImage from '../../../utils/getRandomImage';
 
 interface IRouteComponentMatchParamProps {
 	id: string;
@@ -26,6 +25,7 @@ const ProductShow: React.FC<RouteComponentProps<IRouteComponentMatchParamProps>>
 
 	// const [categories, setCategories] = useState<ICategory[]>([]);
 	const dispatch = useDispatch();
+	const [image, setImage] = useState<string>('');
 
 	// const renderProductCategory = () => {
 	// 	if (product)
@@ -44,6 +44,7 @@ const ProductShow: React.FC<RouteComponentProps<IRouteComponentMatchParamProps>>
 
 	useEffect(() => {
 		dispatch(fetchProduct(parseInt(routeId)));
+		setImage(getRandomImage());
 	}, [dispatch, routeId]);
 
 	const renderProduct = () => {
@@ -55,7 +56,7 @@ const ProductShow: React.FC<RouteComponentProps<IRouteComponentMatchParamProps>>
 					direction='column'
 					style={{ padding: '5rem', backgroundColor: 'black', color: 'white', minHeight: '100vh' }}>
 					<Grid item>
-						<img src={pluto} alt={product.name} />
+						<img src={image} alt={product.name} />
 					</Grid>
 					<Grid container item alignItems='center' justify='space-between'>
 						<Grid item>

@@ -4,7 +4,7 @@ import { RouteComponentProps } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchDiscount } from '../../actions/discounts';
 import { StoreState } from '../../reducers';
-import { Typography, Grid } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 
 interface IDiscountShowProps {
 	discounts: IDiscount[];

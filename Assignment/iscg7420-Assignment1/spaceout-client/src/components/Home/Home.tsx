@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Grid } from '@material-ui/core';
+import { Grid, useTheme, useMediaQuery } from '@material-ui/core';
 import { useStyles } from './HomeCSS';
 import ReactPageScroller from 'react-page-scroller';
 import HomeLandingContent from './HomeLandingContent';
@@ -21,6 +21,9 @@ const Home = () => {
 		process.env.NODE_ENV === 'development'
 			? 'http://localhost:8000/api/user/profile/'
 			: 'http://ec2-3-25-136-35.ap-southeast-2.compute.amazonaws.com/api/user/profile/';
+
+	const theme = useTheme();
+	const isScreenMedium = useMediaQuery(theme.breakpoints.down('md'));
 
 	useEffect(() => {
 		if (authToken) {
@@ -63,7 +66,7 @@ const Home = () => {
 					pageOnChange={handlePageChange}
 					customPageNumber={currentPage}>
 					<HomeLandingContent account={account} setAccount={setAccount} />
-					<HomeLandingAstronaut pageNumber={currentPage} />
+					{isScreenMedium ? null : <HomeLandingAstronaut pageNumber={currentPage} />}
 				</ReactPageScroller>
 			</Grid>
 			<StarParticles />
