@@ -10,7 +10,7 @@ import {
 	IconButton,
 	Grid
 } from '@material-ui/core';
-import ConfirmationNumberIcon from '@material-ui/icons/ConfirmationNumber';
+import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 import { useDispatch } from 'react-redux';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
@@ -33,8 +33,8 @@ const ProductList: React.FC<IProductListProps> = ({ products }) => {
 			return (
 				<ListItem key={id}>
 					<ListItemAvatar>
-						<Avatar>
-							<ConfirmationNumberIcon />
+						<Avatar style={{ backgroundColor: 'black' }}>
+							<KeyboardArrowRightIcon />
 						</Avatar>
 					</ListItemAvatar>
 					<Link to={`/products/${id}`} style={{ textDecoration: 'none', color: 'white' }}>
