@@ -29,17 +29,14 @@ class DiscountShow extends Component<RouteComponentProps<IRouteComponentMatchPar
 		if (discount) {
 			return (
 				<Grid item key={discount.id}>
-					<Typography>
-						<h1>
-							Discount code: <i style={{ color: 'darkgray' }}>{discount.discount_code}</i>
-						</h1>
-					</Typography>
-					<Typography>
-						<h1>
-							Is expired:{' '}
-							{discount.is_expired ? <i style={{ color: 'darkgray' }}>Yes</i> : <i style={{ color: 'darkgray' }}>No</i>}
-						</h1>
-					</Typography>
+					<h1>
+						Discount code: <i style={{ color: 'darkgray' }}>{discount.discount_code}</i>
+					</h1>
+
+					<h1>
+						Is expired:{' '}
+						{discount.is_expired ? <i style={{ color: 'darkgray' }}>Yes</i> : <i style={{ color: 'darkgray' }}>No</i>}
+					</h1>
 				</Grid>
 			);
 		}
