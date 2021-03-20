@@ -37,13 +37,23 @@ const ShoppingCategoryListItem = () => {
 			<ListItem>
 				<ListItemText id='switch-list-label-asteroid' primary='Asteroid' />
 				<ListItemSecondaryAction>
-					<Switch edge='end' onChange={handleToggle('asteroid')} checked={checked.indexOf('asteroid') !== -1} />
+					<Switch
+						edge='end'
+						onChange={handleToggle('asteroid')}
+						checked={checked.indexOf('asteroid') !== -1}
+						disabled
+					/>
 				</ListItemSecondaryAction>
 			</ListItem>
 			<ListItem>
 				<ListItemText id='switch-list-label-planetoid' primary='Planetoid' />
 				<ListItemSecondaryAction>
-					<Switch edge='end' onChange={handleToggle('planetoid')} checked={checked.indexOf('planetoid') !== -1} />
+					<Switch
+						edge='end'
+						onChange={handleToggle('planetoid')}
+						checked={checked.indexOf('planetoid') !== -1}
+						disabled
+					/>
 				</ListItemSecondaryAction>
 			</ListItem>
 		</List>
