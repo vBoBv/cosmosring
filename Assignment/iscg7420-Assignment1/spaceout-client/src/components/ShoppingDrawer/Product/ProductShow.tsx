@@ -51,25 +51,29 @@ const ProductShow: React.FC<RouteComponentProps<IRouteComponentMatchParamProps>>
 			return (
 				<Grid
 					container
-					alignContent='center'
+					alignItems='center'
 					direction='column'
-					style={{ paddingTop: '5rem', backgroundColor: 'black', color: 'white' }}>
+					style={{ padding: '5rem', backgroundColor: 'black', color: 'white', minHeight: '100vh' }}>
 					<Grid item>
 						<img src={pluto} alt={product.name} />
 					</Grid>
-					<Grid item>
-						<h1>{product.name}</h1>
+					<Grid container item alignItems='center' justify='space-between'>
+						<Grid item>
+							<h1>{product.name}</h1>
+						</Grid>
+						<Grid item>
+							<h3>${product.price}</h3>
+						</Grid>
 					</Grid>
-					<Grid item>
+
+					<Grid item style={{ textAlign: 'justify' }}>
 						<h2>{product.description}</h2>
 					</Grid>
-					<Grid item>
-						<h3>${product.price}</h3>
-					</Grid>
-					<Grid item>
+
+					{/* <Grid item>
 						{product.price}
 						<h5>Category: {product.category}</h5>
-					</Grid>
+					</Grid> */}
 				</Grid>
 			);
 	};

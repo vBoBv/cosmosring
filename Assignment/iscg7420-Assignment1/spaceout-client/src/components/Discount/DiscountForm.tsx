@@ -25,7 +25,7 @@ class DiscountForm extends Component<InjectedFormProps<{}, IDiscountFormProps> &
 
 	renderDiscountFields = this.discountFields.map(({ name, label }) => {
 		return (
-			<Grid item key={name}>
+			<Grid item key={name} style={{ marginBottom: '1rem' }}>
 				<Field name={name} component={renderTextField} label={label} icon={this.renderInputIcon(name)} />
 			</Grid>
 		);

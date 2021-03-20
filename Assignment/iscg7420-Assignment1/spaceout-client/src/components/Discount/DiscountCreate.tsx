@@ -14,7 +14,7 @@ class DiscountCreate extends Component<IDiscountCreateProps> {
 
 	render() {
 		return (
-			<div style={{ backgroundColor: 'black', paddingTop: '5rem' }}>
+			<div style={{ backgroundColor: 'black', minHeight: '100vh', padding: '5rem' }}>
 				<h1>Create Discount</h1>
 				<DiscountForm onSubmit={this.onSubmit} />
 			</div>

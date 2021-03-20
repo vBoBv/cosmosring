@@ -12,7 +12,7 @@ const ProductCreate = () => {
 	};
 
 	return (
-		<div style={{ backgroundColor: 'black', paddingTop: '5rem' }}>
+		<div style={{ backgroundColor: 'black', minHeight: '100vh', padding: '5rem' }}>
 			<h1>Create Product</h1>
 			<ProductForm onSubmitForm={onSubmit} />
 		</div>

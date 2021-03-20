@@ -32,8 +32,8 @@ class DiscountEdit extends Component<RouteComponentProps<IRouteComponentMatchPar
 
 	render() {
 		return (
-			<div style={{ backgroundColor: 'grey', paddingTop: '5rem' }}>
-				<h1>Edit Discount</h1>
+			<div style={{ backgroundColor: 'black', minHeight: '100vh', padding: '5rem' }}>
+				<h1 style={{ color: 'white' }}>Edit Discount</h1>
 				<DiscountForm
 					initialValues={_.pick(
 						this.props.discounts.filter((discount) => discount.id === parseInt(this.props.match.params.id))[0],

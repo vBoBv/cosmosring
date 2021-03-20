@@ -25,7 +25,7 @@ const ProductForm: React.FC<InjectedFormProps<{}, IProductFormProps> & IProductF
 
 	const renderProductFields = productFields.map(({ name, label }) => {
 		return (
-			<Grid item key={name}>
+			<Grid item key={name} style={{ marginBottom: '1rem' }}>
 				<Field name={name} component={renderTextField} label={label} icon={renderInputIcon(name)} />
 			</Grid>
 		);

@@ -29,8 +29,17 @@ class DiscountShow extends Component<RouteComponentProps<IRouteComponentMatchPar
 		if (discount) {
 			return (
 				<Grid item key={discount.id}>
-					<Typography>Discount code: {discount.discount_code}</Typography>
-					<Typography>Is expired: {discount.is_expired ? 'Yes' : 'No'}</Typography>
+					<Typography>
+						<h1>
+							Discount code: <i style={{ color: 'darkgray' }}>{discount.discount_code}</i>
+						</h1>
+					</Typography>
+					<Typography>
+						<h1>
+							Is expired:{' '}
+							{discount.is_expired ? <i style={{ color: 'darkgray' }}>Yes</i> : <i style={{ color: 'darkgray' }}>No</i>}
+						</h1>
+					</Typography>
 				</Grid>
 			);
 		}
@@ -38,7 +47,7 @@ class DiscountShow extends Component<RouteComponentProps<IRouteComponentMatchPar
 
 	render() {
 		return (
-			<Grid container style={{ paddingTop: '5rem', backgroundColor: 'grey' }}>
+			<Grid container style={{ padding: '5rem', backgroundColor: 'black', color: 'white', minHeight: '100vh' }}>
 				{this.renderDiscounts()}
 			</Grid>
 		);

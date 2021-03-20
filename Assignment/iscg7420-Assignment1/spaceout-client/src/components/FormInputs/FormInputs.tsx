@@ -26,6 +26,7 @@ export const renderTextField: React.FC<IInputProps> = ({ input, label, icon, met
 		fullWidth
 		color='secondary'
 		type={label === 'Password' || label === 'Confirm Password' ? 'password' : 'text'}
+		multiline={label === 'Description' ? true : false}
 	/>
 );
 

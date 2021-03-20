@@ -20,7 +20,7 @@ class CategoryCreate extends Component {
 
 	render() {
 		return (
-			<div style={{ backgroundColor: 'black', paddingTop: '5rem' }}>
+			<div style={{ backgroundColor: 'black', minHeight: '100vh', padding: '5rem' }}>
 				<h1>Create Category</h1>
 				<CategoryForm onSubmit={this.onSubmit} />
 			</div>

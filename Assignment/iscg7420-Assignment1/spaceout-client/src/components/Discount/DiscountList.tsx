@@ -32,7 +32,7 @@ class DiscountList extends Component<IDiscountListProps> {
 			return (
 				<ListItem key={id}>
 					<ListItemAvatar>
-						<Avatar>
+						<Avatar style={{ backgroundColor: 'black' }}>
 							<ConfirmationNumberIcon />
 						</Avatar>
 					</ListItemAvatar>

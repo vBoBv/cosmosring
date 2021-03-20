@@ -27,8 +27,8 @@ const ProductEdit: React.FC<RouteComponentProps<IRouteComponentMatchParamProps>>
 	};
 
 	return (
-		<div style={{ backgroundColor: 'grey', paddingTop: '5rem' }}>
-			<h1>Edit Product</h1>
+		<div style={{ backgroundColor: 'black', minHeight: '100vh', padding: '5rem' }}>
+			<h1 style={{ color: 'white' }}>Edit Product</h1>
 			<ProductForm initialValues={_.pick(product, 'name', 'price', 'description')} onSubmitForm={onSubmit} />
 		</div>
 	);

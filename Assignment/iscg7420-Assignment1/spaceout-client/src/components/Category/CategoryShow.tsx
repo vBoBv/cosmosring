@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import { ICategory } from './Categories';
 import { API_URL } from './apiUrl';
+import { Grid } from '@material-ui/core';
 
 import pluto from '../../assets/pluto.png';
 
@@ -36,11 +37,33 @@ class CategoryShow extends Component<RouteComponentProps<IRouteComponentMatchPar
 
 	render() {
 		return (
-			<div>
-				<h1>{this.state.category.name}</h1>
-				<img src={pluto} alt={this.state.category.name} />
-				<p>{this.state.category.description}</p>
-			</div>
+			// <div>
+			// 	<h1>{this.state.category.name}</h1>
+			// 	<img src={pluto} alt={this.state.category.name} />
+			// 	<p>{this.state.category.description}</p>
+			// </div>
+			<Grid
+				container
+				alignItems='center'
+				direction='column'
+				style={{ padding: '5rem', backgroundColor: 'black', color: 'white', minHeight: '100vh' }}>
+				<Grid item>
+					<img src={pluto} alt={this.state.category.name} />
+				</Grid>
+
+				<Grid item>
+					<h1>{this.state.category.name}</h1>
+				</Grid>
+
+				<Grid item style={{ textAlign: 'justify' }}>
+					<h2>{this.state.category.description}</h2>
+				</Grid>
+
+				{/* <Grid item>
+						{product.price}
+						<h5>Category: {product.category}</h5>
+					</Grid> */}
+			</Grid>
 		);
 	}
 }
