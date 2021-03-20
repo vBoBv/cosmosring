@@ -27,7 +27,12 @@ class CategoryList extends Component<ICategoryListProps> {
 						<CardActionArea>
 							<CardMedia component='img' image={pluto} title='' style={{ width: '200px' }} />
 							<CardContent>
-								<Typography gutterBottom noWrap variant='h5' component='h2' style={{ textAlign: 'center' }}>
+								<Typography
+									gutterBottom
+									noWrap
+									variant='h5'
+									component='h2'
+									style={{ textAlign: 'center', color: 'white' }}>
 									{name}
 								</Typography>
 							</CardContent>
