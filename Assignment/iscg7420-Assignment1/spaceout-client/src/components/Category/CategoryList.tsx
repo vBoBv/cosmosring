@@ -23,7 +23,7 @@ class CategoryList extends Component<ICategoryListProps> {
 		return this.props.categories.map(({ id, name }) => {
 			return (
 				<Grid item key={id}>
-					<Card style={{ maxWidth: 200 }}>
+					<Card style={{ backgroundColor: 'black' }}>
 						<CardActionArea>
 							<CardMedia component='img' image={pluto} title='' style={{ width: '200px' }} />
 							<CardContent>
@@ -33,18 +33,23 @@ class CategoryList extends Component<ICategoryListProps> {
 							</CardContent>
 						</CardActionArea>
 					</Card>
+
 					<Grid container justify='space-around'>
-						<Button color='primary' variant='outlined'>
-							<Link to={`/categories/${id}`} style={{ textDecoration: 'none' }}>
+						<Button color='primary' variant='text'>
+							<Link to={`/categories/${id}`} style={{ textDecoration: 'none', color: 'white' }}>
 								View
 							</Link>
 						</Button>
-						<Button color='primary' variant='outlined'>
-							<Link to={`/categories/edit/${id}`} style={{ textDecoration: 'none' }}>
+						<Button color='primary' variant='text'>
+							<Link to={`/categories/edit/${id}`} style={{ textDecoration: 'none', color: 'white' }}>
 								Edit
 							</Link>
 						</Button>
-						<Button color='secondary' variant='outlined' onClick={() => this.onDelete(id!)}>
+						<Button
+							color='secondary'
+							variant='text'
+							onClick={() => this.onDelete(id!)}
+							style={{ textDecoration: 'none', color: 'white' }}>
 							Delete
 						</Button>
 					</Grid>
