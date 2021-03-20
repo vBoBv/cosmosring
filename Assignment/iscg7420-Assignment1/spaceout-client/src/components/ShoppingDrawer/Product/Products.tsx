@@ -15,7 +15,11 @@ const Products = () => {
 	}, [dispatch]);
 
 	return (
-		<Grid container justify='flex-start' direction='column' style={{ padding: '5rem', backgroundColor: 'grey' }}>
+		<Grid
+			container
+			justify='flex-start'
+			direction='column'
+			style={{ padding: '5rem', backgroundColor: 'black', minHeight: '100vh' }}>
 			<Typography>Products</Typography>
 			<Grid item container justify='center'>
 				<Link to='/products/new' style={{ textDecoration: 'none' }}>

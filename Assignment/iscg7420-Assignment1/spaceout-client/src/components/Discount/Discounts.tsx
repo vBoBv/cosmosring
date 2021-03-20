@@ -19,7 +19,11 @@ class Discounts extends Component<IDiscountsProps> {
 
 	render() {
 		return (
-			<Grid container justify='flex-start' direction='column' style={{ padding: '5rem', backgroundColor: 'grey' }}>
+			<Grid
+				container
+				justify='flex-start'
+				direction='column'
+				style={{ padding: '5rem', backgroundColor: 'black', minHeight: '100vh' }}>
 				<Typography>Discounts</Typography>
 				<Grid item container justify='center'>
 					<Link to='/discounts/new' style={{ textDecoration: 'none' }}>
