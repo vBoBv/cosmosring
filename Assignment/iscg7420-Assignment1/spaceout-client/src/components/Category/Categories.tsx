@@ -38,8 +38,13 @@ class Categories extends Component<ICategoriesProps, ICategoriesState> {
 
 	render() {
 		return (
-			<Grid container direction='row' justify='space-evenly' style={{ paddingTop: '5rem', backgroundColor: 'grey' }}>
-				<Grid item container justify='center'>
+			<Grid
+				container
+				direction='row'
+				justify='space-evenly'
+				alignContent='flex-start'
+				style={{ paddingTop: '5rem', backgroundColor: 'black', minHeight: '100vh' }}>
+				<Grid item container justify='center' style={{ marginBottom: '5rem' }}>
 					<Link to='/categories/new' style={{ textDecoration: 'none' }}>
 						<Button variant='contained' color='secondary'>
 							Create a new category
